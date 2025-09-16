@@ -12,7 +12,7 @@ import type {
   Feature,
   Stat,
   CTABlockProps
-} from '@/components/blocks'
+} from '@/shared/components/blocks'
 
 // Services Page Hero
 export const servicesHeroData: Omit<HeroBlockProps, 'title'> & { title: string } = {

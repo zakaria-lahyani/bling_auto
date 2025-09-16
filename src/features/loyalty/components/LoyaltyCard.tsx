@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Award, Crown, Star, Gift, ArrowUp } from 'lucide-react'
-import { Card, Badge, Heading3, BodyText, Caption } from '../../../components/ui'
+import { Card, Badge, Heading3, BodyText, Caption } from '@/shared/components/ui'
 import type { LoyaltyCardViewModel } from '../types'
 
 interface LoyaltyCardProps {

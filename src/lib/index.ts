@@ -1,6 +1,7 @@
-// Central barrel export for all lib modules
+// Central barrel export for lib modules
 export * from './schemas'
-export * from './config'  
-export * from './utils'
+export * from './mockData'
+export * from './rbac'
+export * from './theme'
 
-// Note: SDK and UI will be exported separately due to different usage patterns
+// Note: Config and utils moved to infrastructure/shared

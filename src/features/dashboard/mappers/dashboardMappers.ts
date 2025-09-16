@@ -14,7 +14,7 @@ import type {
   LocationStats as MockLocationStats,
   DailyStats as MockDailyStats,
   CustomerMetrics as MockCustomerMetrics
-} from '../../../lib/mockData/types'
+} from '@/shared/utils/types'
 
 // Mappers from mock data to domain models
 export const mapWashAnalyticsToDashboardMetrics = (data: MockWashAnalytics): DashboardMetrics => ({

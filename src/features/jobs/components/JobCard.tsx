@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Clock, MapPin, Car, User, MoreVertical, Play, CheckCircle, XCircle } from 'lucide-react'
-import { Card, Button, Badge, BodyText, Caption } from '../../../components/ui'
+import { Card, Button, Badge, BodyText, Caption } from '@/shared/components/ui'
 import type { JobCardViewModel } from '../types'
 
 interface JobCardProps {

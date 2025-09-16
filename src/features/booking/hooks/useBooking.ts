@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { sdk } from '../../../lib/sdk'
+import { sdk } from '@/infrastructure/api'
 import type { BookingRequest, BookingSlot, BookingLocation, VehicleInfo } from '../types'
 
 interface BookingState {

@@ -1,4 +1,4 @@
-import type { MenuItem } from '@menu/types'
+import type { MenuItem } from '@/shared/types/menu'
 
 // Navigation configuration based on user roles
 export const getNavigationConfig = (userRole?: string): MenuItem[] => {

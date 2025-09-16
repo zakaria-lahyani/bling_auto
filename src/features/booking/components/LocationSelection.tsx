@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { MapPin, Truck, Building } from 'lucide-react'
-import { Card, Heading3, BodyText, Caption, Badge } from '../../../components/ui'
+import { Card, Heading3, BodyText, Caption, Badge } from '@/shared/components/ui'
 import type { BookingLocation } from '../types'
 
 interface LocationSelectionProps {

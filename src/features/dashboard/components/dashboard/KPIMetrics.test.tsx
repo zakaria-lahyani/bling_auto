@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '../../test/utils/test-utils';
 import KPIMetrics from './KPIMetrics';
-import type { WashAnalytics } from '../../lib/mockData';
+import type { WashAnalytics } from '@/lib/mockData';
 
 const mockWashAnalytics: WashAnalytics = {
   totalWashes: 2847,

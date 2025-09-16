@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Calendar, Clock, MapPin, Car, User, CheckCircle, AlertCircle, XCircle, Eye, MoreHorizontal } from 'lucide-react'
-import { Button } from '../../../components/ui'
+import { Button } from '@/shared/components/ui'
 import { useAppointments } from '../hooks/useAppointments'
 import type { AppointmentFilters } from '../types'
 

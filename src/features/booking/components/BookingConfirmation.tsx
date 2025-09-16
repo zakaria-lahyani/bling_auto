@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { CheckCircle, Calendar, Clock, MapPin, Car, CreditCard, User } from 'lucide-react'
-import { Card, Heading3, Heading2, BodyText, Caption, Button, Badge } from '../../../components/ui'
+import { Card, Heading3, Heading2, BodyText, Caption, Button, Badge } from '@/shared/components/ui'
 import type { BookingSlot, BookingLocation, VehicleInfo } from '../types'
 
 interface Service {

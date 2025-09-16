@@ -26,44 +26,26 @@
       "@/*": [
         "./src/*"
       ],
-      "@core/*": [
-        "./src/@core/*"
+      "@/shared/*": [
+        "./src/shared/*"
       ],
-      "@layouts/*": [
-        "./src/@layouts/*"
+      "@/core/*": [
+        "./src/core/*"
       ],
-      "@menu/*": [
-        "./src/@menu/*"
-      ],
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "@views/*": [
-        "./src/views/*"
-      ],
-      "@configs/*": [
-        "./src/configs/*"
-      ],
-      "@assets/*": [
-        "./src/assets/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
+      "@/infrastructure/*": [
+        "./src/infrastructure/*"
       ],
       "@/features/*": [
         "./src/features/*"
       ],
-      "@/server/*": [
-        "./src/server/*"
+      "@/views/*": [
+        "./src/views/*"
+      ],
+      "@/configs/*": [
+        "./src/configs/*"
       ],
       "@/lib/*": [
         "./src/lib/*"
-      ],
-      "@/hooks/*": [
-        "./src/hooks/*"
-      ],
-      "@/store/*": [
-        "./src/store/*"
       ]
     },
     "target": "ES2017"

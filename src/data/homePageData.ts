@@ -11,7 +11,7 @@ import type {
   Service, 
   Testimonial, 
   Stat 
-} from '@/components/blocks'
+} from '@/shared/components/blocks'
 
 // Hero Section Data
 export const heroData: Omit<HeroBlockProps, 'title'> & { title: string } = {

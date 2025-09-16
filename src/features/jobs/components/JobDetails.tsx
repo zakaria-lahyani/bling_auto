@@ -6,7 +6,7 @@ import {
   AlertCircle, CheckCircle, XCircle, Play, Edit, MessageSquare,
   CreditCard, FileText
 } from 'lucide-react'
-import { Card, Button, Badge, Heading2, Heading3, BodyText, Caption } from '../../../components/ui'
+import { Card, Button, Badge, Heading2, Heading3, BodyText, Caption } from '@/shared/components/ui'
 import { useJob, useJobActions } from '../hooks/useJobs'
 
 interface JobDetailsProps {

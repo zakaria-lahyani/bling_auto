@@ -1,6 +1,6 @@
 import { Car, DollarSign, Clock, Truck } from 'lucide-react';
-import { MetricCard } from '../../../../components/ui';
-import type { WashAnalytics } from '../../../../lib/mockData';
+import { MetricCard } from '@/shared/components/ui';
+import type { WashAnalytics } from '@/lib/mockData';
 
 interface KPIMetricsProps {
   washAnalytics: WashAnalytics;

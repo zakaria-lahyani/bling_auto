@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { appointmentsApi } from '../../../lib/sdk'
+import { appointmentsApi } from '@/infrastructure/api'
 import { mapAppointmentToViewModel } from '../mappers/appointmentMappers'
 import type { 
   Appointment, 

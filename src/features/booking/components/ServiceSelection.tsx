@@ -3,7 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { Clock, MapPin } from 'lucide-react'
-import { Card, Heading3, BodyText, Caption, Badge } from '../../../components/ui'
+import { Card, Heading3, BodyText, Caption, Badge } from '@/shared/components/ui'
 
 interface Service {
   id: string

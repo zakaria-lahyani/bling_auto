@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Plus, Minus, Clock, Edit, Circle, TrendingUp, TrendingDown } from 'lucide-react'
-import { Card, Badge, Heading3, BodyText, Caption } from '../../../components/ui'
+import { Card, Badge, Heading3, BodyText, Caption } from '@/shared/components/ui'
 import type { PointsHistoryViewModel, PointsTransactionViewModel } from '../types'
 
 interface PointsHistoryProps {

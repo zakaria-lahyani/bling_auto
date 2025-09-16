@@ -1,6 +1,6 @@
 import { Users, TrendingUp, Star, Activity } from 'lucide-react';
-import { MetricCard } from '../../../../components/ui';
-import type { CustomerMetrics } from '../../../../lib/mockData';
+import { MetricCard } from '@/shared/components/ui';
+import type { CustomerMetrics } from '@/lib/mockData';
 
 interface CustomerMetricsProps {
   customerMetrics: CustomerMetrics;

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { sdk } from '../../../lib/sdk'
+import { sdk } from '@/infrastructure/api'
 import type { DashboardData } from '@/types/apps/dashboardTypes'
 // Mappers no longer needed with simplified fake-db pattern
 

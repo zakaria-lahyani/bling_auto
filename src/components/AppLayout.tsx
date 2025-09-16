@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Sidebar from './Sidebar'
 import Header from './Header'
 import ErrorBoundary from './ErrorBoundary'
-import { useUserStore } from '../store'
+import { useUserStore } from '@/infrastructure/storage/stores'
 
 interface AppLayoutProps {
   children: React.ReactNode

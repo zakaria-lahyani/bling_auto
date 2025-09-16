@@ -1,4 +1,4 @@
-import type { Settings } from '@core/types'
+import type { Settings } from '@/shared/types'
 
 const themeConfig: Settings = {
   // Template Customization

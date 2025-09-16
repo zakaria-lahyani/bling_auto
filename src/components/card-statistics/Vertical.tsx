@@ -2,7 +2,7 @@
 
 import { ReactNode } from 'react'
 import { TrendingUp, TrendingDown } from 'lucide-react'
-import { cn } from '@core/utils'
+import { cn } from '@/shared/utils'
 
 interface StatisticsCardProps {
   title: string

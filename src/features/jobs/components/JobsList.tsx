@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Filter, Search, Calendar, Clock, MapPin, User } from 'lucide-react'
-import { Button, Input, Badge, Select, Heading3, BodyText, Caption } from '../../../components/ui'
+import { Button, Input, Badge, Select, Heading3, BodyText, Caption } from '@/shared/components/ui'
 import { JobCard } from './JobCard'
 import { useJobs, useJobActions } from '../hooks/useJobs'
 import type { JobFilter } from '../types'

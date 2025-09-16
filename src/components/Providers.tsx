@@ -1,8 +1,8 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { SettingsProvider } from '@core/contexts/settingsContext'
-import type { Settings } from '@core/types'
+import { SettingsProvider } from '@/shared/contexts/settingsContext'
+import type { Settings } from '@/shared/types'
 
 interface ProvidersProps {
   children: ReactNode

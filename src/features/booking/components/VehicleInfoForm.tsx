@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Car, Plus, Star } from 'lucide-react'
-import { Card, Heading3, BodyText, Caption, Button } from '../../../components/ui'
+import { Card, Heading3, BodyText, Caption, Button } from '@/shared/components/ui'
 import type { VehicleInfo } from '../types'
 
 interface VehicleInfoFormProps {

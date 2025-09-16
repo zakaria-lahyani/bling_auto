@@ -1,5 +1,5 @@
-import { Card, Table } from '../../../../components/ui';
-import type { ServiceTypeStats } from '../../../../lib/mockData';
+import { Card, Table } from '@/shared/components/ui';
+import type { ServiceTypeStats } from '@/lib/mockData';
 
 interface ServiceDetailsTableProps {
   serviceStats: ServiceTypeStats[];

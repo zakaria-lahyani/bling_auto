@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { servicesApi } from '../../../lib/sdk'
+import { servicesApi } from '@/infrastructure/api'
 import { mapServiceToViewModel } from '../mappers/serviceMappers'
 import type { ServiceFilters } from '@/types/apps/serviceTypes'
 

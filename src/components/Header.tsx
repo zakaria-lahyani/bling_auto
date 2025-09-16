@@ -3,7 +3,7 @@
 import React from 'react';
 import { Search } from 'lucide-react';
 import Link from 'next/link';
-import ThemeToggle from './ui/ThemeToggle';
+import ThemeToggle from '@/shared/components/ui/ThemeToggle';
 
 const Header: React.FC = () => {
   return (

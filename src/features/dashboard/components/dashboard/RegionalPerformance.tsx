@@ -1,6 +1,6 @@
 import { MapPin, Star } from 'lucide-react';
-import { Card } from '../../../../components/ui';
-import type { LocationStats } from '../../../../lib/mockData';
+import { Card } from '@/shared/components/ui';
+import type { LocationStats } from '@/lib/mockData';
 
 interface RegionalPerformanceProps {
   locationStats: LocationStats[];

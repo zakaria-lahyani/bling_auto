@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Calendar as CalendarIcon, Clock, ChevronLeft, ChevronRight } from 'lucide-react'
-import { Card, Heading3, BodyText, Caption, Button } from '../../../components/ui'
+import { Card, Heading3, BodyText, Caption, Button } from '@/shared/components/ui'
 import type { BookingSlot } from '../types'
 
 interface DateTimeSelectionProps {

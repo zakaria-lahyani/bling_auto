@@ -1,5 +1,5 @@
 import { BarChart3, Receipt, PieChart } from 'lucide-react';
-import { Card } from '../../../../components/ui';
+import { Card } from '@/shared/components/ui';
 
 interface DashboardTabsProps {
   activeTab: 'kpis' | 'expenses' | 'financial';

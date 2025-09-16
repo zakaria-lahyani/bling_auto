@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Home, Settings, Calendar, User, BarChart3, Package, Clipboard, TruckIcon } from 'lucide-react';
-import { useUserStore, type UserRole } from '../store';
+import { useUserStore, type UserRole } from '@/infrastructure/storage/stores';
 
 interface SidebarProps {
   currentRole: UserRole;

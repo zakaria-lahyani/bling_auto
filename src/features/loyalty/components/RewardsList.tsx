@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { Gift, Filter, Search, Tag, Star, Clock, CheckCircle } from 'lucide-react'
-import { Button, Input, Badge, Select, Card, Heading3, BodyText, Caption } from '../../../components/ui'
+import { Button, Input, Badge, Select, Card, Heading3, BodyText, Caption } from '@/shared/components/ui'
 import { useLoyaltyActions } from '../hooks/useLoyalty'
 import type { RewardsListViewModel, RewardViewModel } from '../types'
 

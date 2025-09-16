@@ -14,9 +14,9 @@
  */
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrowRight, Play, CheckCircle, Clock, Droplets, Shield, Car, Sparkles } from 'lucide-react'
-import { AuthService } from '@/lib/auth'
+import { AuthService } from '@/infrastructure/auth/auth'
 
 // Import all block components
 import {
@@ -25,7 +25,7 @@ import {
   ServicesBlock,
   TestimonialsBlock,
   CTABlock
-} from '@/components/blocks'
+} from '@/shared/components/blocks'
 
 // Import page data
 import {
@@ -36,9 +36,15 @@ import {
 } from '@/data/homePageData'
 
 const LandingPage = () => {
-  const user = AuthService.getCurrentUser()
+  const [user, setUser] = useState<ReturnType<typeof AuthService.getCurrentUser>>(null)
+  const [isHydrated, setIsHydrated] = useState(false)
 
-  // Customize hero CTAs based on user authentication
+  useEffect(() => {
+    setUser(AuthService.getCurrentUser())
+    setIsHydrated(true)
+  }, [])
+
+  // Customize hero CTAs based on user authentication (after hydration)
   const customHeroData = {
     ...heroData,
     title: (
@@ -48,8 +54,8 @@ const LandingPage = () => {
       </>
     ),
     primaryCTA: {
-      text: user ? "Go to Dashboard" : "Book Now - $25",
-      href: user ? "/dashboards/analytics" : "/apps/booking",
+      text: isHydrated && user ? "Go to Dashboard" : "Book Now - $25",
+      href: isHydrated && user ? "/dashboards/analytics" : "/apps/booking",
       icon: <ArrowRight size={20} />
     },
     secondaryCTA: {
@@ -92,12 +98,12 @@ const LandingPage = () => {
     ]
   }
 
-  // Customize CTA section based on user authentication
+  // Customize CTA section based on user authentication (after hydration)
   const customCTAData = {
     ...ctaData,
     primaryCTA: {
-      text: user ? "Book Your Service" : "Get Started Today",
-      href: user ? "/apps/booking" : "/login"
+      text: isHydrated && user ? "Book Your Service" : "Get Started Today",
+      href: isHydrated && user ? "/apps/booking" : "/login"
     },
     icon: Sparkles
   }
@@ -119,7 +125,7 @@ const LandingPage = () => {
         {...servicesData}
         theme="light"
         columns={3}
-        ctaLink={user ? "/apps/booking" : "/login"}
+        ctaLink={isHydrated && user ? "/apps/booking" : "/login"}
       />
 
       {/* Testimonials Section - Social proof with auto-sliding */}

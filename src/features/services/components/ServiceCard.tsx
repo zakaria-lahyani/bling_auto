@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Clock, MapPin, Star, Calendar } from 'lucide-react'
-import { Button } from '../../../components/ui'
+import { Button } from '@/shared/components/ui'
 import type { ServiceCardProps } from '../types'
 
 export function ServiceCard({ 

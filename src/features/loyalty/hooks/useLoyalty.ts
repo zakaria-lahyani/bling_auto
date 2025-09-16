@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { sdk } from '../../../lib/sdk'
+import { sdk } from '@/infrastructure/api'
 import type { 
   LoyaltyAccount,
   LoyaltyTier,

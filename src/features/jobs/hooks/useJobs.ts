@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { sdk } from '../../../lib/sdk'
+import { sdk } from '@/infrastructure/api'
 import type { Job, JobFilter, JobCardViewModel, JobsViewModel } from '../types'
 
 export const jobKeys = {

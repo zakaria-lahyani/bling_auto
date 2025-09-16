@@ -1,0 +1,234 @@
+PS C:\Users\zak\Desktop\workspace\apps\bling_auto> npm run typecheck
+
+> car-wash-app@0.1.0 typecheck
+> tsc --noEmit
+
+src/components/card-statistics/Vertical.tsx:5:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+5 import { cn } from '@/shared/utils'
+           ~~
+
+src/components/Providers.tsx:4:34 - error TS2307: Cannot find module '@core/contexts/settingsContext' or its corresponding type declarations.
+
+4 import { SettingsProvider } from '@core/contexts/settingsContext'
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/components/Providers.tsx:5:31 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+5 import type { Settings } from '@core/types'
+                                ~~~~~~~~~~~~~
+
+src/configs/themeConfig.ts:1:31 - error TS2307: Cannot find module '@/shared/types' or its corresponding type declarations.
+
+1 import type { Settings } from '@/shared/types'
+                                ~~~~~~~~~~~~~~~~
+
+src/features/dashboard/components/dashboard/CustomerMetrics.tsx:3:38 - error TS2307: Cannot find module '@/lib/mockData' or its corresponding type declarations.
+
+3 import type { CustomerMetrics } from '@/lib/mockData';
+                                       ~~~~~~~~~~~~~~~~
+
+src/features/dashboard/components/dashboard/KPIMetrics.tsx:3:36 - error TS2307: Cannot find module '@/lib/mockData' or its corresponding type declarations.
+
+3 import type { WashAnalytics } from '@/lib/mockData';
+                                     ~~~~~~~~~~~~~~~~
+
+src/features/dashboard/components/dashboard/RegionalPerformance.tsx:3:36 - error TS2307: Cannot find module '@/lib/mockData' or its corresponding type declarations.
+
+3 import type { LocationStats } from '@/lib/mockData';
+                                     ~~~~~~~~~~~~~~~~
+
+src/features/dashboard/components/dashboard/ServiceDetailsTable.tsx:2:39 - error TS2307: Cannot find module '@/lib/mockData' or its corresponding type declarations.
+
+2 import type { ServiceTypeStats } from '@/lib/mockData';
+                                        ~~~~~~~~~~~~~~~~
+
+src/features/dashboard/mappers/dashboardMappers.ts:17:8 - error TS2307: Cannot find module '../../../lib/mockData/types' or its corresponding type declarations.
+
+17 } from '../../../lib/mockData/types'
+          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/infrastructure/auth/auth.ts:1:31 - error TS2307: Cannot find module './rbac' or its corresponding type declarations.
+
+1 import type { UserRole } from './rbac'
+                                ~~~~~~~~
+
+src/infrastructure/auth/auth.ts:2:22 - error TS2307: Cannot find module './sdk' or its corresponding type declarations.
+
+2 import { auth } from './sdk'
+                       ~~~~~~~
+
+src/infrastructure/providers/providers.tsx:7:31 - error TS2307: Cannot find module './theme' or its corresponding type declarations.
+
+7 import { ThemeProvider } from './theme'
+                                ~~~~~~~~~
+
+src/infrastructure/storage/stores/dashboardStore.ts:13:8 - error TS2307: Cannot find module '../lib/mockData' or its corresponding type declarations.
+
+13 } from '../lib/mockData';
+          ~~~~~~~~~~~~~~~~~
+
+src/lib/index.ts:3:15 - error TS2307: Cannot find module './config' or its corresponding type declarations.
+
+3 export * from './config'
+                ~~~~~~~~~~
+
+src/lib/index.ts:4:15 - error TS2307: Cannot find module './utils' or its corresponding type declarations.
+
+4 export * from './utils'
+                ~~~~~~~~~
+
+src/shared/components/ui/Typography.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils'
+           ~~
+
+src/shared/contexts/settingsContext.tsx:23:77 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+23 import type { Settings, Mode, SystemMode, Skin, Layout, ContentWidth } from '@core/types'
+                                                                               ~~~~~~~~~~~~~
+
+src/shared/hooks/useSettings.tsx:4:60 - error TS2307: Cannot find module '@core/contexts/settingsContext' or its corresponding type declarations.
+
+4 import { SettingsContext, type SettingsContextValue } from '@core/contexts/settingsContext'
+                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/shared/layouts/components/core/BlankLayout.tsx:3:35 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+3 import type { ChildrenType } from '@core/types'
+                                    ~~~~~~~~~~~~~
+
+src/shared/layouts/components/core/LayoutWrapper.tsx:5:47 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+5 import type { ChildrenType, SystemMode } from '@core/types'
+                                                ~~~~~~~~~~~~~
+
+src/shared/layouts/components/core/LayoutWrapper.tsx:13:26 - error TS2339: Property 'children' does not exist on type 'Props'.
+
+13 const LayoutWrapper = ({ children, systemMode, verticalLayout, horizontalLayout }: Props) => {
+                            ~~~~~~~~
+
+src/shared/layouts/components/core/PublicLayout.tsx:6:35 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+6 import type { ChildrenType } from '@core/types'
+                                    ~~~~~~~~~~~~~
+
+src/shared/layouts/components/core/PublicLayout.tsx:8:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+8 import { cn } from '@/shared/utils'
+           ~~
+
+src/shared/layouts/components/core/VerticalLayout.tsx:35:35 - error TS2307: Cannot find module '@core/types' or its corresponding type declarations.
+
+35 import type { ChildrenType } from '@core/types'
+                                     ~~~~~~~~~~~~~
+
+src/shared/layouts/components/shared/AppBar.tsx:6:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+6 import { cn } from '@/shared/utils'
+           ~~
+
+src/shared/layouts/components/shared/Footer.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils'
+           ~~
+
+src/shared/layouts/components/shared/Navigation.tsx:45:31 - error TS2307: Cannot find module '@menu/types' or its corresponding type declarations.
+
+45 import type { MenuItem } from '@menu/types'
+                                 ~~~~~~~~~~~~~
+
+src/shared/layouts/components/shared/Navigation.tsx:46:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+46 import { cn } from '@/shared/utils'
+            ~~
+
+src/shared/layouts/components/shared/Navigation.tsx:47:25 - error TS2307: Cannot find module '@core/utils/iconMapper' or its corresponding type declarations.
+
+47 import { getIcon } from '@core/utils/iconMapper'
+                           ~~~~~~~~~~~~~~~~~~~~~~~~
+
+src/shared/layouts/components/shared/Navigation.tsx:91:33 - error TS7006: Parameter 'child' implicitly has an 'any' type.
+
+91       return item.children.some(child => isItemActive(child))
+                                   ~~~~~
+
+src/shared/layouts/components/shared/Navigation.tsx:109:31 - error TS7006: Parameter 'child' implicitly has an 'any' type.
+
+109           {item.children?.map(child => renderMenuItem(child, depth + 1))}
+                                  ~~~~~
+
+src/shared/layouts/components/shared/Navigation.tsx:182:33 - error TS7006: Parameter 'child' implicitly has an 'any' type.
+
+182             {item.children?.map(child => renderMenuItem(child, depth + 1))}
+                                    ~~~~~
+
+src/shared/layouts/components/specialized/CenteredLayout.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils';
+           ~~
+
+src/shared/layouts/components/specialized/DashboardLayout.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils';
+           ~~
+
+src/shared/layouts/components/specialized/DetailLayout.tsx:6:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+6 import { cn } from '@/shared/utils';
+           ~~
+
+src/shared/layouts/components/specialized/FormLayout.tsx:6:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+6 import { cn } from '@/shared/utils';
+           ~~
+
+src/shared/layouts/components/specialized/ListLayout.tsx:5:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+5 import { cn } from '@/shared/utils';
+           ~~
+
+src/shared/layouts/PageContainer.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils'
+           ~~
+
+src/shared/layouts/Section.tsx:4:10 - error TS2305: Module '"@/shared/utils"' has no exported member 'cn'.
+
+4 import { cn } from '@/shared/utils'
+           ~~
+
+
+Found 39 errors in 29 files.
+
+Errors  Files
+     1  src/components/card-statistics/Vertical.tsx:5
+     2  src/components/Providers.tsx:4
+     1  src/configs/themeConfig.ts:1
+     1  src/features/dashboard/components/dashboard/CustomerMetrics.tsx:3
+     1  src/features/dashboard/components/dashboard/KPIMetrics.tsx:3
+     1  src/features/dashboard/components/dashboard/RegionalPerformance.tsx:3
+     1  src/features/dashboard/components/dashboard/ServiceDetailsTable.tsx:2
+     1  src/features/dashboard/mappers/dashboardMappers.ts:17
+     2  src/infrastructure/auth/auth.ts:1
+     1  src/infrastructure/providers/providers.tsx:7
+     1  src/infrastructure/storage/stores/dashboardStore.ts:13
+     2  src/lib/index.ts:3
+     1  src/shared/components/ui/Typography.tsx:4
+     1  src/shared/contexts/settingsContext.tsx:23
+     1  src/shared/hooks/useSettings.tsx:4
+     1  src/shared/layouts/components/core/BlankLayout.tsx:3
+     2  src/shared/layouts/components/core/LayoutWrapper.tsx:5
+     2  src/shared/layouts/components/core/PublicLayout.tsx:6
+     1  src/shared/layouts/components/core/VerticalLayout.tsx:35
+     1  src/shared/layouts/components/shared/AppBar.tsx:6
+     1  src/shared/layouts/components/shared/Footer.tsx:4
+     6  src/shared/layouts/components/shared/Navigation.tsx:45
+     1  src/shared/layouts/components/specialized/CenteredLayout.tsx:4
+     1  src/shared/layouts/components/specialized/DashboardLayout.tsx:4
+     1  src/shared/layouts/components/specialized/DetailLayout.tsx:6
+     1  src/shared/layouts/components/specialized/FormLayout.tsx:6
+     1  src/shared/layouts/components/specialized/ListLayout.tsx:5
+     1  src/shared/layouts/PageContainer.tsx:4
+     1  src/shared/layouts/Section.tsx:4
+PS C:\Users\zak\Desktop\workspace\apps\bling_auto>
