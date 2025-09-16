@@ -18,7 +18,6 @@ import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Play, CheckCircle } from 'lucide-react'
-import { getIcon } from '@core/utils/iconMapper'
 
 export interface HeroBlockProps {
   title: string | React.ReactNode
@@ -43,7 +42,7 @@ export interface HeroBlockProps {
   stats?: {
     value: string
     label: string
-    icon?: React.ReactNode | string
+    icon?: React.ReactNode
   }
   theme?: 'gradient' | 'solid' | 'image'
   className?: string
@@ -146,13 +145,7 @@ const HeroBlock: React.FC<HeroBlockProps> = ({
                 <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl">
                   <div className="flex items-center gap-3">
                     <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                      {typeof stats.icon === 'string' ? (
-                        <div className="w-6 h-6 text-green-600">{getIcon(stats.icon)}</div>
-                      ) : stats.icon ? (
-                        <div className="w-6 h-6 text-green-600">{stats.icon}</div>
-                      ) : (
-                        <CheckCircle className="w-6 h-6 text-green-600" />
-                      )}
+                      {stats.icon || <CheckCircle className="w-6 h-6 text-green-600" />}
                     </div>
                     <div>
                       <div className="font-bold text-gray-900">{stats.value}</div>

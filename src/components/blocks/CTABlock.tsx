@@ -16,7 +16,6 @@
 import React from 'react'
 import Link from 'next/link'
 import { LucideIcon } from 'lucide-react'
-import { getIcon } from '@core/utils/iconMapper'
 
 export interface CTAButton {
   text: string
@@ -29,7 +28,7 @@ export interface CTABlockProps {
   subtitle?: string
   primaryCTA: CTAButton
   secondaryCTA?: CTAButton
-  icon?: LucideIcon | React.ReactNode | string
+  icon?: LucideIcon | React.ReactNode
   theme?: 'gradient' | 'brand' | 'dark' | 'light'
   size?: 'small' | 'medium' | 'large'
   className?: string
@@ -117,13 +116,7 @@ const CTABlock: React.FC<CTABlockProps> = ({
         {Icon && (
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
-              {typeof Icon === 'string' ? (
-                <div className="w-8 h-8 text-white">{getIcon(Icon)}</div>
-              ) : typeof Icon === 'function' ? (
-                <Icon className="w-8 h-8 text-white" />
-              ) : (
-                <div className="w-8 h-8 text-white">{Icon}</div>
-              )}
+              {React.createElement(Icon as any, { className: "w-8 h-8 text-white" })}
             </div>
           </div>
         )}

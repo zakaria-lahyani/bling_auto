@@ -131,6 +131,13 @@ export const testimonialsData = {
       content: 'Professional service every time. My car looks showroom ready after every wash!',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
+    },
+    {
+      name: 'BOBO Mi',
+      role: 'Marketing Director',
+      content: 'Professional service every time. My car looks showroom ready after every wash!',
+      rating: 5,
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face'
     }
   ] as Testimonial[]
 }

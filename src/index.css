@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Theme System */
+@layer base {
+  :root {
+    /* Light theme colors - softer, less aggressive */
+    --color-page-bg: 255 255 255;
+    --color-page-fg: 51 65 85;
+    --color-surface: 255 255 255;
+    --color-surface-muted: 248 250 252;
+    --color-surface-elevated: 255 255 255;
+    --color-content-primary: 51 65 85;
+    --color-content-secondary: 71 85 105;
+    --color-content-muted: 100 116 139;
+    --color-content-accent: 15 118 110;
+    --color-border: 226 232 240;
+    --color-border-muted: 241 245 249;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --color-page-bg: 15 23 42;
+    --color-page-fg: 241 245 249;
+    --color-surface: 30 41 59;
+    --color-surface-muted: 15 23 42;
+    --color-surface-elevated: 51 65 85;
+    --color-content-primary: 241 245 249;
+    --color-content-secondary: 203 213 225;
+    --color-content-muted: 148 163 184;
+    --color-content-accent: 20 184 166;
+    --color-border: 51 65 85;
+    --color-border-muted: 30 41 59;
+  }
+}
+
+/* Custom animations for loading page */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}

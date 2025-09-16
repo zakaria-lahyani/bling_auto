@@ -14,14 +14,13 @@
 
 import React from 'react'
 import { LucideIcon } from 'lucide-react'
-import { getIcon } from '@core/utils/iconMapper'
 
 export interface Stat {
   id?: string
   value: string | number
   label: string
   description?: string
-  icon?: LucideIcon | React.ReactNode | string
+  icon?: LucideIcon | React.ReactNode
   color?: 'brand' | 'green' | 'blue' | 'purple' | 'orange' | 'red'
   prefix?: string
   suffix?: string
@@ -139,13 +138,7 @@ const StatsBlock: React.FC<StatsBlockProps> = ({
               {/* Icon */}
               {stat.icon && (
                 <div className={`w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4 ${getColorClasses(stat.color)}`}>
-                  {typeof stat.icon === 'string' ? (
-                    <div className="w-6 h-6">{getIcon(stat.icon)}</div>
-                  ) : typeof stat.icon === 'function' ? (
-                    <stat.icon className="w-6 h-6" />
-                  ) : (
-                    <div className="w-6 h-6">{stat.icon}</div>
-                  )}
+                  {React.createElement(stat.icon as any, { className: "w-6 h-6" })}
                 </div>
               )}
               

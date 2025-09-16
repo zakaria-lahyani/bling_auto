@@ -15,7 +15,7 @@
 'use client'
 
 import React from 'react'
-import { ArrowRight, Play, CheckCircle } from 'lucide-react'
+import { ArrowRight, Play, CheckCircle, Clock, Droplets, Shield, Car, Sparkles } from 'lucide-react'
 import { AuthService } from '@/lib/auth'
 
 // Import all block components
@@ -30,7 +30,6 @@ import {
 // Import page data
 import {
   heroData,
-  featuresData,
   servicesData,
   testimonialsData,
   ctaData
@@ -65,13 +64,42 @@ const LandingPage = () => {
     }
   }
 
+  // Features data with React icons
+  const featuresData = {
+    title: "Why Choose CarWash Pro?",
+    subtitle: "We're not just another car wash. We're your vehicle care partners, committed to convenience, quality, and your satisfaction.",
+    features: [
+      {
+        icon: Clock,
+        title: 'Same-Day Service',
+        description: 'Book online and get your car cleaned today. Fast, reliable service.',
+      },
+      {
+        icon: Droplets,
+        title: 'Eco-Friendly',
+        description: 'Water-efficient processes and biodegradable cleaning products.',
+      },
+      {
+        icon: Shield,
+        title: 'Fully Insured',
+        description: 'Professional team with full insurance coverage for your peace of mind.',
+      },
+      {
+        icon: Car,
+        title: 'Mobile Service',
+        description: 'We come to you! Available at your home or office location.',
+      }
+    ]
+  }
+
   // Customize CTA section based on user authentication
   const customCTAData = {
     ...ctaData,
     primaryCTA: {
       text: user ? "Book Your Service" : "Get Started Today",
       href: user ? "/apps/booking" : "/login"
-    }
+    },
+    icon: Sparkles
   }
 
   return (
@@ -94,11 +122,14 @@ const LandingPage = () => {
         ctaLink={user ? "/apps/booking" : "/login"}
       />
 
-      {/* Testimonials Section - Social proof */}
+      {/* Testimonials Section - Social proof with auto-sliding */}
       <TestimonialsBlock 
         {...testimonialsData}
         theme="surface" 
         columns={3}
+        enableSlider={true}
+        autoPlay={true}
+        autoPlayInterval={4000}
       />
 
       {/* Call-to-Action Section - Final conversion push */}

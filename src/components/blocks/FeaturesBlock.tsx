@@ -14,10 +14,9 @@
 
 import React from 'react'
 import { LucideIcon } from 'lucide-react'
-import { getIcon } from '@core/utils/iconMapper'
 
 export interface Feature {
-  icon: LucideIcon | React.ReactNode | string
+  icon: LucideIcon | React.ReactNode
   title: string
   description: string
   link?: {
@@ -93,13 +92,7 @@ const FeaturesBlock: React.FC<FeaturesBlockProps> = ({
             >
               {/* Icon */}
               <div className="w-16 h-16 bg-brand-100 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-200 transition-colors">
-                {typeof feature.icon === 'string' ? (
-                  <div className="w-8 h-8 text-brand-600">{getIcon(feature.icon)}</div>
-                ) : typeof feature.icon === 'function' ? (
-                  <feature.icon className="w-8 h-8 text-brand-600" />
-                ) : (
-                  <div className="w-8 h-8 text-brand-600">{feature.icon}</div>
-                )}
+                {React.createElement(feature.icon as any, { className: "w-8 h-8 text-brand-600" })}
               </div>
               
               {/* Title */}
