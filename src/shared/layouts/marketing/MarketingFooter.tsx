@@ -14,7 +14,7 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Car } from 'lucide-react'
+import { Car, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
 import { cn } from '@/shared/utils'
 
 export interface MarketingFooterProps {
@@ -116,12 +116,64 @@ export function MarketingFooter({
           {/* Contact */}
           <div>
             <h3 className="text-content-primary font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-content-secondary">
+            <ul className="space-y-2 text-content-secondary mb-6">
               <li>support@carwashpro.com</li>
               <li>(555) 123-4567</li>
               <li>Mon-Sat: 8AM-6PM</li>
               <li>Sun: 10AM-4PM</li>
             </ul>
+            
+            {/* Social Media Links */}
+            <div>
+              <h4 className="text-content-primary font-semibold mb-3">Follow Us</h4>
+              <div className="flex gap-3">
+                <a
+                  href="https://facebook.com/blingauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-surface-muted hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook className="w-5 h-5 text-content-secondary group-hover:text-white" />
+                </a>
+                <a
+                  href="https://twitter.com/blingauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-surface-muted hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label="Follow us on Twitter"
+                >
+                  <Twitter className="w-5 h-5 text-content-secondary group-hover:text-white" />
+                </a>
+                <a
+                  href="https://instagram.com/blingauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-surface-muted hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label="Follow us on Instagram"
+                >
+                  <Instagram className="w-5 h-5 text-content-secondary group-hover:text-white" />
+                </a>
+                <a
+                  href="https://youtube.com/@blingauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-surface-muted hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label="Subscribe to our YouTube channel"
+                >
+                  <Youtube className="w-5 h-5 text-content-secondary group-hover:text-white" />
+                </a>
+                <a
+                  href="https://linkedin.com/company/blingauto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-surface-muted hover:bg-brand-500 rounded-lg flex items-center justify-center transition-colors group"
+                  aria-label="Connect with us on LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5 text-content-secondary group-hover:text-white" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

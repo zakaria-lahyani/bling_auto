@@ -123,27 +123,27 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
                 </div>
               )}
               
-              {/* Service Image */}
-              <div className="relative overflow-hidden">
+              {/* Service Image - Dynamic Height */}
+              <div className={`relative overflow-hidden ${service.popular ? 'h-48' : 'h-56'}`}>
                 <Image 
                   src={service.image} 
                   alt={service.name} 
                   width={400}
                   height={250}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
                 />
               </div>
               
               {/* Service Details */}
               <div className="p-6 flex flex-col flex-grow">
-                {/* Header with Price */}
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-xl font-bold text-content-primary">
+                {/* Header with Price - Fixed Height */}
+                <div className="flex items-start justify-between mb-3 min-h-[60px]">
+                  <h3 className="text-xl font-bold text-content-primary leading-tight">
                     {service.name}
                   </h3>
                   {showPricing && (
-                    <div className="text-right">
-                      <div className="text-2xl font-bold text-brand-600">
+                    <div className="text-right flex-shrink-0">
+                      <div className="text-2xl font-bold text-brand-600 leading-tight">
                         ${service.price}
                       </div>
                       <div className="text-sm text-content-muted">
@@ -153,16 +153,18 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
                   )}
                 </div>
                 
-                {/* Description */}
-                <p className="text-content-secondary mb-4">
-                  {service.description}
-                </p>
+                {/* Description - Fixed Height */}
+                <div className="mb-4 min-h-[48px]">
+                  <p className="text-content-secondary leading-relaxed">
+                    {service.description}
+                  </p>
+                </div>
                 
-                {/* Features List */}
-                <div className="space-y-2 mb-6 flex-grow">
+                {/* Features List - Fixed Height */}
+                <div className="space-y-2 mb-6 min-h-[120px]">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                       <span className="text-content-secondary">{feature}</span>
                     </div>
                   ))}
