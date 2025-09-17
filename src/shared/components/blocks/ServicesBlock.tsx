@@ -86,12 +86,25 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-5xl font-bold text-content-primary mb-4">
-            {title}
-          </h2>
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <h2 className="text-3xl lg:text-5xl font-bold text-content-primary">
+              {title}
+            </h2>
+            {showViewAll && (
+              <div className="hidden lg:flex items-center gap-2 bg-brand-50 text-brand-600 px-4 py-2 rounded-full text-sm font-medium">
+                <span>10+ Services Available</span>
+                <div className="w-2 h-2 bg-brand-500 rounded-full animate-pulse"></div>
+              </div>
+            )}
+          </div>
           {subtitle && (
             <p className="text-xl text-content-secondary">
               {subtitle}
+            </p>
+          )}
+          {showViewAll && (
+            <p className="text-content-muted mt-2 text-sm">
+              Showing our most popular services • <Link href={viewAllLink} className="text-brand-600 hover:text-brand-700 font-medium underline">Browse all options</Link>
             </p>
           )}
         </div>
@@ -168,16 +181,63 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
           ))}
         </div>
         
-        {/* View All Services Button */}
+        {/* View All Services Section */}
         {showViewAll && (
-          <div className="text-center mt-12">
-            <Link
-              href={viewAllLink}
-              className="inline-flex items-center gap-2 bg-white border-2 border-brand-500 text-brand-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-50 transition-colors"
-            >
-              {viewAllText}
-              <ArrowRight size={20} />
-            </Link>
+          <div className="mt-12 text-center">
+            <div className="bg-gradient-to-r from-brand-50 to-blue-50 rounded-2xl p-8 border border-brand-100">
+              <div className="max-w-2xl mx-auto">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="flex items-center gap-2 bg-brand-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                    <span>7+ More Services</span>
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-content-primary mb-3">
+                  Complete Automotive Care Solutions
+                </h3>
+                
+                <p className="text-content-secondary mb-6">
+                  From basic maintenance to premium detailing and paint protection, 
+                  we offer a full range of professional car care services tailored to your needs.
+                </p>
+                
+                <div className="grid md:grid-cols-3 gap-4 mb-8 text-sm">
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Interior Detailing</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Paint Correction</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Headlight Restoration</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Engine Bay Cleaning</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Leather Conditioning</span>
+                  </div>
+                  <div className="flex items-center justify-center gap-2 text-brand-600">
+                    <CheckCircle className="w-4 h-4" />
+                    <span>And much more...</span>
+                  </div>
+                </div>
+                
+                <Link
+                  href={viewAllLink}
+                  className="inline-flex items-center gap-2 bg-brand-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-600 transition-colors shadow-lg hover:shadow-xl"
+                >
+                  {viewAllText}
+                  <ArrowRight size={20} />
+                </Link>
+              </div>
+            </div>
           </div>
         )}
       </div>
