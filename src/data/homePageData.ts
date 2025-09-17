@@ -24,7 +24,7 @@ export const heroData: Omit<HeroBlockProps, 'title'> & { title: string } = {
   ],
   primaryCTA: {
     text: "Book Now - $25",
-    href: "/apps/booking"
+    href: "/booking"
   },
   secondaryCTA: {
     text: "Connect With Us",
@@ -148,7 +148,7 @@ export const ctaData = {
   subtitle: "Join thousands of satisfied customers who trust CarWash Pro for their vehicle care needs. Book your first service today and see the difference!",
   primaryCTA: {
     text: "Get Started Today",
-    href: "/apps/booking"
+    href: "/booking"
   },
   secondaryCTA: {
     text: "Connect With Us", 

@@ -12,14 +12,14 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'analytics',
           title: 'Analytics',
           icon: 'BarChart3',
-          path: '/dashboards/analytics',
+          path: '/dashboard/analytics',
           roles: ['Owner', 'Manager']
         },
         {
           id: 'operations',
           title: 'Operations',
           icon: 'LayoutDashboard',
-          path: '/dashboards/operations',
+          path: '/dashboard/operations',
           roles: ['Owner', 'Manager', 'Operator']
         }
       ]
@@ -33,7 +33,7 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'booking',
           title: 'Booking',
           icon: 'Calendar',
-          path: '/apps/booking',
+          path: '/booking',
           badge: {
             label: 'New',
             color: 'primary'
@@ -43,31 +43,31 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'jobs',
           title: 'Jobs Management',
           icon: 'Briefcase',
-          path: '/apps/jobs',
+          path: '/jobs',
           roles: ['Owner', 'Manager', 'Operator']
         },
         {
           id: 'customers',
           title: 'Customers',
           icon: 'Users',
-          path: '/apps/customers',
+          path: '/customers',
           roles: ['Owner', 'Manager']
         },
         {
           id: 'services',
           title: 'Services',
           icon: 'Car',
-          path: '/apps/services',
+          path: '/services',
           children: [
             {
               id: 'services-list',
               title: 'Service Catalog',
-              path: '/apps/services/list'
+              path: '/services/list'
             },
             {
               id: 'services-management',
               title: 'Management',
-              path: '/apps/services/management',
+              path: '/services/management',
               roles: ['Owner', 'Manager']
             }
           ]
@@ -76,23 +76,23 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'inventory',
           title: 'Inventory',
           icon: 'Package',
-          path: '/apps/inventory',
+          path: '/inventory',
           roles: ['Owner', 'Manager'],
           children: [
             {
               id: 'stock-overview',
               title: 'Stock Overview',
-              path: '/apps/inventory/stock'
+              path: '/inventory/stock'
             },
             {
               id: 'supplies',
               title: 'Supplies',
-              path: '/apps/inventory/supplies'
+              path: '/inventory/supplies'
             },
             {
               id: 'orders',
               title: 'Purchase Orders',
-              path: '/apps/inventory/orders'
+              path: '/inventory/orders'
             }
           ]
         },
@@ -100,22 +100,22 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'loyalty',
           title: 'Loyalty Program',
           icon: 'Trophy',
-          path: '/apps/loyalty',
+          path: '/loyalty',
           children: [
             {
               id: 'loyalty-overview',
               title: 'Overview',
-              path: '/apps/loyalty/overview'
+              path: '/loyalty/overview'
             },
             {
               id: 'rewards',
               title: 'Rewards',
-              path: '/apps/loyalty/rewards'
+              path: '/loyalty/rewards'
             },
             {
               id: 'members',
               title: 'Members',
-              path: '/apps/loyalty/members',
+              path: '/loyalty/members',
               roles: ['Owner', 'Manager']
             }
           ]
@@ -131,25 +131,25 @@ export const getNavigationConfig = (userRole?: string): MenuItem[] => {
           id: 'profile',
           title: 'User Profile',
           icon: 'Users',
-          path: '/pages/profile'
+          path: '/profile'
         },
         {
           id: 'account-settings',
           title: 'Account Settings',
           icon: 'Settings',
-          path: '/pages/account-settings'
+          path: '/settings'
         },
         {
           id: 'pricing',
           title: 'Pricing',
           icon: 'CreditCard',
-          path: '/pages/pricing'
+          path: '/pricing'
         },
         {
           id: 'locations',
           title: 'Locations',
           icon: 'MapPin',
-          path: '/pages/locations'
+          path: '/locations'
         }
       ]
     },

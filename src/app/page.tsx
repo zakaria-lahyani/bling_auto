@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import LandingPage from '@/views/marketing/LandingPage'
-import { PublicLayout } from '@/shared/layouts'
 
 export const metadata: Metadata = {
   title: 'CarWash Pro - Professional Car Wash Services',
@@ -8,9 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
-  return (
-    <PublicLayout>
-      <LandingPage />
-    </PublicLayout>
-  )
+  return <LandingPage />
 }

@@ -1,21 +1,14 @@
 /**
- * Landing Page - Modular Block-Based Architecture
+ * Landing Page
  * 
- * This page demonstrates the new block-based architecture where each section
- * is a standalone, reusable component. The page simply imports blocks and 
- * data, making it extremely clean and maintainable.
- * 
- * Benefits:
- * - Easy to understand structure
- * - Reusable blocks across pages  
- * - Centralized data management
- * - Simple to modify or rearrange sections
- * - Consistent styling and behavior
+ * Main marketing landing page using the new MarketingLayout
+ * with modular block-based architecture.
  */
 'use client'
 
 import React, { useState, useEffect } from 'react'
 import { ArrowRight, Play, CheckCircle, Clock, Droplets, Shield, Car, Sparkles } from 'lucide-react'
+import { MarketingLayout } from '@/shared/layouts/marketing'
 import { AuthService } from '@/infrastructure/auth/auth'
 
 // Import all block components
@@ -44,6 +37,12 @@ const LandingPage = () => {
     setIsHydrated(true)
   }, [])
 
+  // Newsletter signup handler
+  const handleNewsletterSignup = (email: string) => {
+    console.log('Newsletter signup:', email)
+    // TODO: Implement newsletter signup logic
+  }
+
   // Customize hero CTAs based on user authentication (after hydration)
   const customHeroData = {
     ...heroData,
@@ -55,7 +54,7 @@ const LandingPage = () => {
     ),
     primaryCTA: {
       text: isHydrated && user ? "Go to Dashboard" : "Book Now - $25",
-      href: isHydrated && user ? "/dashboards/analytics" : "/apps/booking",
+      href: isHydrated && user ? "/dashboard" : "/booking",
       icon: <ArrowRight size={20} />
     },
     secondaryCTA: {
@@ -103,48 +102,59 @@ const LandingPage = () => {
     ...ctaData,
     primaryCTA: {
       text: isHydrated && user ? "Book Your Service" : "Get Started Today",
-      href: isHydrated && user ? "/apps/booking" : "/login"
+      href: isHydrated && user ? "/booking" : "/auth/login"
     },
     icon: Sparkles
   }
 
   return (
-    <div className="space-y-0">
-      {/* Hero Section - Main landing area with primary CTA */}
-      <HeroBlock {...customHeroData} />
+    <MarketingLayout
+      header={{
+        variant: 'default',
+        showAuth: true
+      }}
+      footer={{
+        showNewsletter: true,
+        onNewsletterSignup: handleNewsletterSignup
+      }}
+    >
+      <div className="space-y-0">
+        {/* Hero Section - Main landing area with primary CTA */}
+        <HeroBlock {...customHeroData} />
 
-      {/* Features Section - Why choose us */}
-      <FeaturesBlock 
-        {...featuresData}
-        theme="surface"
-        columns={4}
-      />
+        {/* Features Section - Why choose us */}
+        <FeaturesBlock 
+          {...featuresData}
+          theme="surface"
+          columns={4}
+        />
 
-      {/* Services Section - Our service packages */}
-      <ServicesBlock 
-        {...servicesData}
-        theme="light"
-        columns={3}
-        ctaLink={isHydrated && user ? "/apps/booking" : "/login"}
-      />
+        {/* Services Section - Our service packages */}
+        <ServicesBlock 
+          {...servicesData}
+          theme="light"
+          columns={3}
+          ctaLink={isHydrated && user ? "/booking" : "/auth/login"}
+        />
 
-      {/* Testimonials Section - Social proof with auto-sliding */}
-      <TestimonialsBlock 
-        {...testimonialsData}
-        theme="surface" 
-        columns={3}
-        enableSlider={true}
-        autoPlay={true}
-        autoPlayInterval={4000}
-      />
+        {/* Testimonials Section - Social proof with auto-sliding */}
+        <TestimonialsBlock 
+          {...testimonialsData}
+          theme="surface" 
+          columns={3}
+          enableSlider={true}
+          autoPlay={true}
+          autoPlayInterval={4000}
+        />
 
-      {/* Call-to-Action Section - Final conversion push */}
-      <CTABlock 
-        {...customCTAData}
-        theme="gradient"
-        size="medium"
-      />
-    </div>
+        {/* Call-to-Action Section - Final conversion push */}
+        <CTABlock 
+          {...customCTAData}
+          theme="gradient"
+          size="medium"
+        />
+      </div>
+    </MarketingLayout>
   )
 }
 
