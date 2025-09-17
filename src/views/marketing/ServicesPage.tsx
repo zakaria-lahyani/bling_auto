@@ -6,7 +6,7 @@
  */
 'use client'
 
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { 
   Search,
   Filter,
@@ -24,7 +24,15 @@ import {
   Palette,
   Wrench,
   Car,
-  Zap
+  Zap,
+  X,
+  Eye,
+  Award,
+  Target,
+  Timer,
+  DollarSign,
+  Users,
+  Calendar
 } from 'lucide-react'
 import { MarketingLayout } from '@/shared/layouts/marketing'
 import Link from 'next/link'
@@ -45,12 +53,41 @@ const ServicesPage = () => {
   const [showMobileOnly, setShowMobileOnly] = useState<boolean>(false)
   const [showPopularOnly, setShowPopularOnly] = useState<boolean>(false)
   const [showFeaturedOnly, setShowFeaturedOnly] = useState<boolean>(false)
+  const [selectedService, setSelectedService] = useState<Service | null>(null)
+  const [showServiceDetails, setShowServiceDetails] = useState<boolean>(false)
   
   // Newsletter signup handler (consistent with other pages)
   const handleNewsletterSignup = (email: string) => {
     console.log('Newsletter signup:', email)
     // TODO: Implement newsletter signup logic
   }
+
+  // Service details handlers
+  const openServiceDetails = (service: Service) => {
+    setSelectedService(service)
+    setShowServiceDetails(true)
+    document.body.style.overflow = 'hidden' // Prevent background scroll
+  }
+
+  const closeServiceDetails = () => {
+    setSelectedService(null)
+    setShowServiceDetails(false)
+    document.body.style.overflow = 'unset' // Restore scroll
+  }
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeServiceDetails()
+      }
+    }
+
+    if (showServiceDetails) {
+      document.addEventListener('keydown', handleEscape)
+      return () => document.removeEventListener('keydown', handleEscape)
+    }
+  }, [showServiceDetails])
 
   // Combinable filter logic
   const filteredServices = useMemo(() => {
@@ -228,7 +265,7 @@ const ServicesPage = () => {
                             key={service.id}
                             onClick={() => {
                               setSearchQuery('')
-                              // Could add scroll to service or open modal
+                              openServiceDetails(service)
                             }}
                             className="w-full text-left px-3 py-2 hover:bg-surface rounded-lg transition-colors"
                           >
@@ -536,9 +573,9 @@ const ServicesPage = () => {
             }>
               {filteredServices.map((service) => (
                 viewMode === 'grid' ? (
-                  <ServiceCard key={service.id} service={service} />
+                  <ServiceCard key={service.id} service={service} onViewDetails={openServiceDetails} />
                 ) : (
-                  <ServiceListItem key={service.id} service={service} />
+                  <ServiceListItem key={service.id} service={service} onViewDetails={openServiceDetails} />
                 )
               ))}
             </div>
@@ -574,12 +611,292 @@ const ServicesPage = () => {
           </div>
         </section>
       )}
+
+      {/* Service Details Modal */}
+      {showServiceDetails && selectedService && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-2 sm:p-4 z-50">
+          <div className="bg-white rounded-lg sm:rounded-2xl max-w-6xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden flex flex-col">
+            {/* Modal Header with Always-Visible CTA - Responsive */}
+            <div className="sticky top-0 bg-white border-b border-border shadow-sm z-10">
+              {/* Mobile Header Layout */}
+              <div className="sm:hidden p-4 space-y-3">
+                {/* Top Row: Image, Title, Close */}
+                <div className="flex items-start gap-3">
+                  <img 
+                    src={selectedService.image} 
+                    alt={selectedService.name}
+                    className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
+                  />
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-lg font-bold text-content-primary truncate">{selectedService.name}</h2>
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: 5 }, (_, i) => (
+                        <Star 
+                          key={i} 
+                          className={`w-3 h-3 ${i < Math.floor(selectedService.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                        />
+                      ))}
+                      <span className="text-xs text-content-muted ml-1">({selectedService.reviewCount})</span>
+                    </div>
+                  </div>
+                  <button
+                    onClick={closeServiceDetails}
+                    className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors flex-shrink-0"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+                
+                {/* Bottom Row: Duration and Book Button */}
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-1 text-content-muted">
+                    <Clock className="w-3 h-3" />
+                    <span className="text-xs">{selectedService.duration}</span>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="bg-brand-500 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-brand-600 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl flex-1 justify-center"
+                    onClick={closeServiceDetails}
+                  >
+                    Book ${selectedService.price}
+                    <ArrowRight size={16} />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Desktop Header Layout */}
+              <div className="hidden sm:flex items-center justify-between p-6">
+                <div className="flex items-center gap-4 flex-1">
+                  <img 
+                    src={selectedService.image} 
+                    alt={selectedService.name}
+                    className="w-16 h-16 rounded-xl object-cover"
+                  />
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h2 className="text-2xl font-bold text-content-primary">{selectedService.name}</h2>
+                        <div className="flex items-center gap-4 mt-1">
+                          <div className="flex items-center gap-1">
+                            {Array.from({ length: 5 }, (_, i) => (
+                              <Star 
+                                key={i} 
+                                className={`w-4 h-4 ${i < Math.floor(selectedService.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                              />
+                            ))}
+                            <span className="text-sm text-content-muted ml-1">({selectedService.reviewCount} reviews)</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-content-muted">
+                            <Clock className="w-4 h-4" />
+                            <span className="text-sm">{selectedService.duration}</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Desktop Action Buttons */}
+                <div className="flex items-center gap-3 ml-6">
+                  <Link
+                    href="/contact"
+                    className="bg-brand-500 text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-600 transition-colors flex items-center gap-2 shadow-lg hover:shadow-xl"
+                    onClick={closeServiceDetails}
+                  >
+                    Book ${selectedService.price}
+                    <ArrowRight size={18} />
+                  </Link>
+                  <button
+                    onClick={closeServiceDetails}
+                    className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100 transition-colors"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-4 sm:p-6 overflow-y-auto">
+              <div className="grid lg:grid-cols-3 gap-6 lg:gap-8">
+                {/* Main Info */}
+                <div className="lg:col-span-2 space-y-6 lg:space-y-8">
+                  {/* Overview */}
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <Target className="w-5 h-5 text-brand-500" />
+                      Service Overview
+                    </h3>
+                    <p className="text-content-secondary leading-relaxed mb-4">
+                      {selectedService.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedService.tags.map((tag, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-sm font-medium">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* What's Included */}
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      What's Included
+                    </h3>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {selectedService.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3 p-3 bg-surface rounded-lg">
+                          <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base text-content-secondary">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Benefits */}
+                  <div>
+                    <h3 className="text-lg sm:text-xl font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <Award className="w-5 h-5 text-purple-500" />
+                      Key Benefits
+                    </h3>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {selectedService.benefits.map((benefit, idx) => (
+                        <div key={idx} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
+                          <Award className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm sm:text-base text-content-secondary">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Add-ons */}
+                  {selectedService.addOns && selectedService.addOns.length > 0 && (
+                    <div>
+                      <h3 className="text-lg sm:text-xl font-bold text-content-primary mb-4 flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-brand-500" />
+                        Available Add-ons
+                      </h3>
+                      <div className="space-y-3">
+                        {selectedService.addOns.map((addon) => (
+                          <div key={addon.id} className="flex items-center justify-between p-4 bg-surface rounded-lg border border-border">
+                            <div>
+                              <div className="font-semibold text-content-primary">{addon.name}</div>
+                              <div className="text-sm text-content-muted">{addon.description}</div>
+                            </div>
+                            <div className="text-lg font-bold text-brand-600">+${addon.price}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Sidebar */}
+                <div className="space-y-4 lg:space-y-6">
+                  {/* Pricing */}
+                  <div className="bg-brand-50 p-4 sm:p-6 rounded-xl">
+                    <h3 className="text-lg font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <DollarSign className="w-5 h-5 text-brand-500" />
+                      Pricing & Time
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Service Price:</span>
+                        <div className="text-right">
+                          <div className="text-xl sm:text-2xl font-bold text-brand-600">
+                            ${selectedService.price}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Duration:</span>
+                        <span className="font-semibold">{selectedService.duration}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Estimated Time:</span>
+                        <span className="font-semibold">
+                          {selectedService.estimatedTime.min}-{selectedService.estimatedTime.max} min
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Availability */}
+                  <div className="bg-surface p-4 sm:p-6 rounded-xl">
+                    <h3 className="text-lg font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <MapPin className="w-5 h-5 text-green-500" />
+                      Availability
+                    </h3>
+                    <div className="space-y-3">
+                      {selectedService.availability.mobile && (
+                        <div className="flex items-center gap-3 p-3 bg-green-100 rounded-lg">
+                          <Car className="w-5 h-5 text-green-600" />
+                          <div>
+                            <div className="font-medium">Mobile Service</div>
+                            <div className="text-sm text-content-muted">Available at your location</div>
+                          </div>
+                        </div>
+                      )}
+                      {selectedService.availability.inShop && (
+                        <div className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
+                          <Home className="w-5 h-5 text-blue-600" />
+                          <div>
+                            <div className="font-medium">In-Shop Service</div>
+                            <div className="text-sm text-content-muted">Available at our location</div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Category & Stats */}
+                  <div className="bg-surface p-4 sm:p-6 rounded-xl">
+                    <h3 className="text-lg font-bold text-content-primary mb-4 flex items-center gap-2">
+                      <Users className="w-5 h-5 text-blue-500" />
+                      Service Stats
+                    </h3>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Category:</span>
+                        <span className="font-semibold text-brand-600">{selectedService.category.name}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Rating:</span>
+                        <span className="font-semibold">{selectedService.rating}/5</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-content-secondary">Reviews:</span>
+                        <span className="font-semibold">{selectedService.reviewCount}</span>
+                      </div>
+                      {selectedService.popular && (
+                        <div className="flex items-center gap-2 text-yellow-600 bg-yellow-100 p-2 rounded-lg">
+                          <Star className="w-4 h-4 fill-current" />
+                          <span className="text-sm font-medium">Most Popular</span>
+                        </div>
+                      )}
+                      {selectedService.featured && (
+                        <div className="flex items-center gap-2 text-purple-600 bg-purple-100 p-2 rounded-lg">
+                          <Sparkles className="w-4 h-4" />
+                          <span className="text-sm font-medium">Featured Service</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </MarketingLayout>
   )
 }
 
 // Service Card Component (Grid View)
-const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
+const ServiceCard: React.FC<{ service: Service; onViewDetails: (service: Service) => void }> = ({ service, onViewDetails }) => {
   return (
     <div className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all group h-full flex flex-col">
       {/* Badges */}
@@ -670,13 +987,22 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
         
         {/* Action Buttons */}
         <div className="space-y-2 mt-auto">
-          <Link
-            href="/contact"
-            className="w-full bg-brand-500 text-white py-3 rounded-xl font-semibold hover:bg-brand-600 transition-colors flex items-center justify-center gap-2"
-          >
-            Book This Service
-            <ArrowRight size={16} />
-          </Link>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => onViewDetails(service)}
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-surface text-content-primary border border-border rounded-xl font-medium hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 transition-colors"
+            >
+              <Eye size={16} />
+              <span>Details</span>
+            </button>
+            <Link
+              href="/contact"
+              className="flex items-center justify-center gap-2 px-4 py-3 bg-brand-500 text-white rounded-xl font-semibold hover:bg-brand-600 transition-colors"
+            >
+              <span>Book</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
           {service.availability.mobile && (
             <div className="flex items-center justify-center gap-2 text-sm text-green-600">
               <Home className="w-4 h-4" />
@@ -690,7 +1016,7 @@ const ServiceCard: React.FC<{ service: Service }> = ({ service }) => {
 }
 
 // Service List Item Component (List View)
-const ServiceListItem: React.FC<{ service: Service }> = ({ service }) => {
+const ServiceListItem: React.FC<{ service: Service; onViewDetails: (service: Service) => void }> = ({ service, onViewDetails }) => {
   return (
     <div className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all">
       <div className="flex flex-col md:flex-row">
@@ -778,6 +1104,14 @@ const ServiceListItem: React.FC<{ service: Service }> = ({ service }) => {
             
             {/* Action Area */}
             <div className="lg:w-48 flex flex-col gap-3">
+              <button
+                onClick={() => onViewDetails(service)}
+                className="w-full bg-surface text-content-primary border border-border py-3 px-6 rounded-xl font-medium hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 transition-colors flex items-center justify-center gap-2"
+              >
+                <Eye size={16} />
+                View Details
+              </button>
+              
               <Link
                 href="/contact"
                 className="w-full bg-brand-500 text-white py-3 px-6 rounded-xl font-semibold hover:bg-brand-600 transition-colors flex items-center justify-center gap-2"
