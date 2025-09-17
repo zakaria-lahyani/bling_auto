@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { Star, Clock, Eye, ArrowRight, CheckCircle, Home } from 'lucide-react'
-import { Service } from '@/data/servicesData'
+import type { Service } from '@/core/entities/service'
 
 interface ServiceCardProps {
   service: Service

@@ -17,7 +17,7 @@ import {
   Home,
   Users
 } from 'lucide-react'
-import { Service } from '@/data/servicesData'
+import type { Service } from '@/core/entities/service'
 
 interface ServiceModalProps {
   service: Service
@@ -177,7 +177,7 @@ const ServiceModal: React.FC<ServiceModalProps> = ({ service, isOpen, onClose })
                   Key Benefits
                 </h3>
                 <div className="grid sm:grid-cols-2 gap-3">
-                  {service.benefits.map((benefit, idx) => (
+                  {service.benefits?.map((benefit, idx) => (
                     <div key={idx} className="flex items-start gap-3 p-3 bg-purple-50 rounded-lg">
                       <Award className="w-5 h-5 text-purple-500 flex-shrink-0 mt-0.5" />
                       <span className="text-sm sm:text-base text-content-secondary">{benefit}</span>

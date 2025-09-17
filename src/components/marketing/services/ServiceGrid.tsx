@@ -1,21 +1,21 @@
 'use client'
 
 import React from 'react'
-import { Service } from '@/data/servicesData'
+import type { Service } from '@/core/entities/service'
 import ServiceCard from './ServiceCard'
 import ServiceListItem from './ServiceListItem'
 
 interface ServiceGridProps {
   services: Service[]
   viewMode: 'grid' | 'list'
-  onViewDetails: (service: Service) => void
+  onServiceSelect: (service: Service) => void
   searchQuery?: string
 }
 
 const ServiceGrid: React.FC<ServiceGridProps> = ({ 
   services, 
   viewMode, 
-  onViewDetails,
+  onServiceSelect,
   searchQuery 
 }) => {
   // Empty state
@@ -83,7 +83,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({
             <ServiceCard
               key={service.id}
               service={service}
-              onViewDetails={onViewDetails}
+              onViewDetails={onServiceSelect}
             />
           ))}
         </div>
@@ -93,7 +93,7 @@ const ServiceGrid: React.FC<ServiceGridProps> = ({
             <ServiceListItem
               key={service.id}
               service={service}
-              onViewDetails={onViewDetails}
+              onViewDetails={onServiceSelect}
             />
           ))}
         </div>

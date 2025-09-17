@@ -3,421 +3,419 @@ PS C:\Users\zak\Desktop\workspace\apps\bling_auto> npm run typecheck
 > car-wash-app@0.1.0 typecheck
 > tsc --noEmit
 
-.next/types/app/services/[serviceName]/page.ts:2:24 - error TS2307: Cannot find module '../../../../../src/app/services/[serviceName]/page.js' or its corresponding type declarations.
+src/data/servicesData.ts:92:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-2 import * as entry from '../../../../../src/app/services/[serviceName]/page.js'
-                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 92   {
+      ~
+ 93     id: '1',
+    ~~~~~~~~~~~~
+...
+133     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+134   },
+    ~~~
 
-.next/types/app/services/[serviceName]/page.ts:5:29 - error TS2307: Cannot find module '../../../../../src/app/services/[serviceName]/page.js' or its corresponding type declarations.
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-5 type TEntry = typeof import('../../../../../src/app/services/[serviceName]/page.js')
-                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/data/servicesData.ts:135:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:63:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+135   {
+      ~
+136     id: '2',
+    ~~~~~~~~~~~~
+...
+192     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+193   },
+    ~~~
 
-63       icon: LayoutDashboard,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:194:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:69:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+194   {
+      ~
+195     id: '3',
+    ~~~~~~~~~~~~
+...
+236     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+237   },
+    ~~~
 
-69       icon: Calendar,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:238:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:75:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+238   {
+      ~
+239     id: '4',
+    ~~~~~~~~~~~~
+...
+280     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+281   },
+    ~~~
 
-75       icon: Calendar,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:282:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:81:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+282   {
+      ~
+283     id: '5',
+    ~~~~~~~~~~~~
+...
+333     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+334   },
+    ~~~
 
-81       icon: Users,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:335:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:87:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+335   {
+      ~
+336     id: '6',
+    ~~~~~~~~~~~~
+...
+377     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+378   },
+    ~~~
 
-87       icon: BarChart3,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:379:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:93:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+379   {
+      ~
+380     id: '7',
+    ~~~~~~~~~~~~
+...
+421     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+422   },
+    ~~~
 
-93       icon: Wrench,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:423:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:99:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+423   {
+      ~
+424     id: '8',
+    ~~~~~~~~~~~~
+...
+465     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+466   },
+    ~~~
 
-99       icon: Package,
-         ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:467:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:105:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+467   {
+      ~
+468     id: '9',
+    ~~~~~~~~~~~~
+...
+509     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+510   },
+    ~~~
 
-105       icon: Star,
-          ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/data/servicesData.ts:511:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:111:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+511   {
+      ~
+512     id: '10',
+    ~~~~~~~~~~~~~
+...
+553     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+554   }
+    ~~~
 
-111       icon: FileText,
-          ~~~~
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+src/features/services/components/ServicesPageLayout.tsx:181:15 - error TS2322: Type '{ searchQuery: string; onSearchChange: (query: string) => void; searchSuggestions: string[]; showSuggestions: boolean; onSuggestionClick: (suggestion: string) => void; serviceCategories: ServiceCategory[]; ... 14 more ...; filterCounts: { ...; }; }' is not assignable to type 'IntrinsicAttributes & SearchAndFiltersProps'.
+  Property 'onClearFilters' does not exist on type 'IntrinsicAttributes & SearchAndFiltersProps'.
 
-src/shared/layouts/dashboard/DashboardSidebar.tsx:117:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
+181               onClearFilters={onClearFilters}
+                  ~~~~~~~~~~~~~~
 
-117       icon: Settings,
-          ~~~~
+src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:23:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
 
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
+ 23   {
+      ~
+ 24     id: '1',
+    ~~~~~~~~~~~~
+...
+ 52     updatedAt: '2024-01-01T00:00:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 53   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:54:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
+
+ 54   {
+      ~
+ 55     id: '2',
+    ~~~~~~~~~~~~
+...
+ 83     updatedAt: '2024-01-01T00:00:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 84   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:85:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; reviewCount: number; }' but required in type 'Service'.
+
+ 85   {
+      ~
+ 86     id: '3',
+    ~~~~~~~~~~~~
+...
+114     reviewCount: 234
+    ~~~~~~~~~~~~~~~~~~~~
+115   }
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:205:11 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
+
+205     const newService: Service = {
+              ~~~~~~~~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:126:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; gallery: string[]; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+126   {
+      ~
+127     id: '1',
+    ~~~~~~~~~~~~
+...
+178     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+179   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:180:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; gallery: string[]; category: { ...; }; ... 13 more ...; updatedAt: string; }' but required in type 'Service'.
+
+180   {
+      ~
+181     id: '2',
+    ~~~~~~~~~~~~
+...
+249     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+250   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:251:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+251   {
+      ~
+252     id: '3',
+    ~~~~~~~~~~~~
+...
+300     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+301   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:302:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
+
+302   {
+      ~
+303     id: '4',
+    ~~~~~~~~~~~~
+...
+350     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+351   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:352:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+352   {
+      ~
+353     id: '5',
+    ~~~~~~~~~~~~
+...
+409     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+410   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:411:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
+
+411   {
+      ~
+412     id: '6',
+    ~~~~~~~~~~~~
+...
+459     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+460   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:461:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; gallery: string[]; category: { ...; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+461   {
+      ~
+462     id: '7',
+    ~~~~~~~~~~~~
+...
+522     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+523   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:524:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+524   {
+      ~
+525     id: '8',
+    ~~~~~~~~~~~~
+...
+573     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+574   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:575:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
+
+575   {
+      ~
+576     id: '9',
+    ~~~~~~~~~~~~
+...
+623     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+624   },
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
+
+src/lib/data/marketing/static/services.ts:625:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; gallery: string[]; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
+
+625   {
+      ~
+626     id: '10',
+    ~~~~~~~~~~~~~
+...
+691     updatedAt: '2024-03-01T14:30:00Z'
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+692   }
+    ~~~
+
+  src/core/entities/service/types.ts:145:3
+    145   mobile: boolean  // derived from availability.mobile
+          ~~~~~~
+    'mobile' is declared here.
 
 
-Found 12 errors in 2 files.
+Found 25 errors in 4 files.
 
 Errors  Files
-     2  .next/types/app/services/[serviceName]/page.ts:2
-    10  src/shared/layouts/dashboard/DashboardSidebar.tsx:63
-PS C:\Users\zak\Desktop\workspace\apps\bling_auto> npm run typecheck
-
-> car-wash-app@0.1.0 typecheck
-> tsc --noEmit
-
-.next/types/app/services/[serviceName]/page.ts:2:24 - error TS2307: Cannot find module '../../../../../src/app/services/[serviceName]/page.js' or its corresponding type declarations.
-
-2 import * as entry from '../../../../../src/app/services/[serviceName]/page.js'
-                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.next/types/app/services/[serviceName]/page.ts:5:29 - error TS2307: Cannot find module '../../../../../src/app/services/[serviceName]/page.js' or its corresponding type declarations.
-
-5 type TEntry = typeof import('../../../../../src/app/services/[serviceName]/page.js')
-                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:63:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-63       icon: LayoutDashboard,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:69:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-69       icon: Calendar,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:75:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-75       icon: Calendar,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:81:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-81       icon: Users,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:87:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-87       icon: BarChart3,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:93:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-93       icon: Wrench,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:99:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-99       icon: Package,
-         ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:105:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-105       icon: Star,
-          ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:111:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-111       icon: FileText,
-          ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-src/shared/layouts/dashboard/DashboardSidebar.tsx:117:7 - error TS2322: Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'ComponentType<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-  Type 'ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'FunctionComponent<{ size?: number | undefined; className?: string | undefined; }>'.
-    Types of property 'propTypes' are incompatible.
-      Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>> | undefined' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }> | undefined'.
-        Type 'WeakValidationMap<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>' is not assignable to type 'WeakValidationMap<{ size?: number | undefined; className?: string | undefined; }>'.
-          Types of property 'size' are incompatible.
-            Type 'Validator<string | number | null | undefined> | undefined' is not assignable to type 'Validator<number | null | undefined> | undefined'.
-              Type 'Validator<string | number | null | undefined>' is not assignable to type 'Validator<number | null | undefined>'.
-                Type 'string | number | null | undefined' is not assignable to type 'number | null | undefined'.
-                  Type 'string' is not assignable to type 'number'.
-
-117       icon: Settings,
-          ~~~~
-
-  src/shared/layouts/base/BaseNavigation.tsx:30:3
-    30   icon?: React.ComponentType<{ size?: number; className?: string }>
-         ~~~~
-    The expected type comes from property 'icon' which is declared here on type 'NavigationItem'
-
-
-Found 12 errors in 2 files.
-
-Errors  Files
-     2  .next/types/app/services/[serviceName]/page.ts:2
-    10  src/shared/layouts/dashboard/DashboardSidebar.tsx:63
+    10  src/data/servicesData.ts:92
+     1  src/features/services/components/ServicesPageLayout.tsx:181
+     4  src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:23
+    10  src/lib/data/marketing/static/services.ts:126
 PS C:\Users\zak\Desktop\workspace\apps\bling_auto>

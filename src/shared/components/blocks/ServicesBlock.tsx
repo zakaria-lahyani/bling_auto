@@ -18,15 +18,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 
-export interface Service {
-  id: string
-  name: string
-  description: string
-  price: number
-  duration: string
-  image: string
+// Import Service type from the single source of truth
+import type { Service as CoreService } from '@/core/entities/service'
+
+// Create a simplified interface for this component's needs
+export interface Service extends Pick<CoreService, 'id' | 'name' | 'description' | 'price' | 'duration' | 'image' | 'features'> {
   popular?: boolean
-  features: string[]
   link?: string
 }
 

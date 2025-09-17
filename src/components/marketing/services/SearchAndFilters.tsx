@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { Search, Grid3X3, List, Car, Star, Award } from 'lucide-react'
-import { ServiceCategory } from '@/data/servicesData'
+import type { ServiceCategory } from '@/core/entities/service'
 import { getCategoryIcon } from '@/shared/utils/iconMapper'
 
 interface SearchAndFiltersProps {
@@ -21,11 +21,11 @@ interface SearchAndFiltersProps {
   selectedCategory: string
   onCategoryChange: (categorySlug: string) => void
   showMobileOnly: boolean
-  onMobileToggle: () => void
+  onMobileToggle: (show: boolean) => void
   showPopularOnly: boolean
-  onPopularToggle: () => void
+  onPopularToggle: (show: boolean) => void
   showFeaturedOnly: boolean
-  onFeaturedToggle: () => void
+  onFeaturedToggle: (show: boolean) => void
   
   // Data
   serviceCategories: ServiceCategory[]
@@ -35,6 +35,11 @@ interface SearchAndFiltersProps {
     popular: number
     featured: number
   }
+  
+  // Actions
+  onClearFilters: () => void
+  activeFilterCount: number
+  resultCount: number
 }
 
 const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
@@ -55,7 +60,10 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
   onFeaturedToggle,
   serviceCategories,
   categoryCounts,
-  filterCounts
+  filterCounts,
+  onClearFilters,
+  activeFilterCount,
+  resultCount
 }) => {
   return (
     <div className="bg-white shadow-lg rounded-2xl p-6 mb-8">
@@ -171,7 +179,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
       {/* Special Filters */}
       <div className="flex flex-wrap gap-3">
         <button
-          onClick={onMobileToggle}
+          onClick={() => onMobileToggle(!showMobileOnly)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
             showMobileOnly
               ? 'bg-green-500 text-white shadow-lg'
@@ -191,7 +199,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
         </button>
         
         <button
-          onClick={onPopularToggle}
+          onClick={() => onPopularToggle(!showPopularOnly)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
             showPopularOnly
               ? 'bg-yellow-500 text-white shadow-lg'
@@ -210,7 +218,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
         </button>
         
         <button
-          onClick={onFeaturedToggle}
+          onClick={() => onFeaturedToggle(!showFeaturedOnly)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
             showFeaturedOnly
               ? 'bg-purple-500 text-white shadow-lg'

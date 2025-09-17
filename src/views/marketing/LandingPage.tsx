@@ -20,22 +20,50 @@ import {
   CTABlock
 } from '@/shared/components/blocks'
 
-// Import page data
-import {
-  heroData,
-  servicesData,
-  testimonialsData,
-  ctaData
-} from '@/data/homePageData'
+// Import service hooks
+import { useHomePageData } from '@/features/home/hooks/useHomePageData'
+import { ErrorBoundary } from '@/shared/errors'
 
 const LandingPage = () => {
   const [user, setUser] = useState<ReturnType<typeof AuthService.getCurrentUser>>(null)
   const [isHydrated, setIsHydrated] = useState(false)
+  
+  // Service-driven data fetching
+  const { data: homePageData, isLoading, error } = useHomePageData()
 
   useEffect(() => {
     setUser(AuthService.getCurrentUser())
     setIsHydrated(true)
   }, [])
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // Show error state
+  if (error || !homePageData) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-red-600 mb-4">Unable to load page content</p>
+          <button 
+            onClick={() => window.location.reload()}
+            className="bg-brand-600 text-white px-4 py-2 rounded-md hover:bg-brand-700"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   // Newsletter signup handler
   const handleNewsletterSignup = (email: string) => {
@@ -45,7 +73,7 @@ const LandingPage = () => {
 
   // Customize hero CTAs based on user authentication (after hydration)
   const customHeroData = {
-    ...heroData,
+    ...homePageData.hero,
     title: (
       <>
         Premium Car Wash,{' '}
@@ -53,18 +81,20 @@ const LandingPage = () => {
       </>
     ),
     primaryCTA: {
+      ...homePageData.hero.primaryCTA,
       text: isHydrated && user ? "Go to Dashboard" : "Book Now - $25",
       href: isHydrated && user ? "/dashboard" : "/booking",
       icon: <ArrowRight size={20} />
     },
     secondaryCTA: {
+      ...homePageData.hero.secondaryCTA,
       text: "Connect With Us",
       href: "/connect",
       icon: <Play size={20} />
     },
     stats: {
-      value: "2,500+",
-      label: "Happy Customers",
+      value: homePageData.hero.stats?.value || "2,500+",
+      label: homePageData.hero.stats?.label || "Happy Customers",
       icon: <CheckCircle className="w-6 h-6 text-green-600" />
     }
   }
@@ -99,7 +129,7 @@ const LandingPage = () => {
 
   // Customize CTA section based on user authentication (after hydration)
   const customCTAData = {
-    ...ctaData,
+    ...homePageData.cta,
     primaryCTA: {
       text: isHydrated && user ? "Book Your Service" : "Get Started Today",
       href: isHydrated && user ? "/booking" : "/auth/login"
@@ -108,7 +138,8 @@ const LandingPage = () => {
   }
 
   return (
-    <MarketingLayout
+    <ErrorBoundary>
+      <MarketingLayout
       header={{
         variant: 'default',
         showAuth: true
@@ -148,7 +179,9 @@ const LandingPage = () => {
 
       {/* Services Section - Our service packages */}
       <ServicesBlock 
-        {...servicesData}
+        services={homePageData.services}
+        title="Our Services"
+        subtitle="Choose from our professional car care packages"
         theme="light"
         columns={3}
         ctaLink={isHydrated && user ? "/booking" : "/auth/login"}
@@ -174,7 +207,9 @@ const LandingPage = () => {
 
       {/* Testimonials Section - Social proof with auto-sliding */}
       <TestimonialsBlock 
-        {...testimonialsData}
+        testimonials={homePageData.testimonials}
+        title="What Our Customers Say"
+        subtitle="Real reviews from real customers"
         theme="surface" 
         columns={3}
         enableSlider={true}
@@ -189,6 +224,7 @@ const LandingPage = () => {
         size="medium"
       />
     </MarketingLayout>
+    </ErrorBoundary>
   )
 }
 

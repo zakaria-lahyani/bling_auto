@@ -7,55 +7,11 @@
  * When API is ready, this data structure can be easily replaced with API calls.
  */
 
-export interface Service {
-  id: string
-  name: string
-  description: string
-  shortDescription: string
-  price: number
-  originalPrice?: number
-  duration: string
-  image: string
-  category: {
-    id: string
-    name: string
-    slug: string
-  }
-  popular: boolean
-  featured: boolean
-  tags: string[]
-  features: string[]
-  benefits: string[]
-  addOns?: {
-    id: string
-    name: string
-    price: number
-    description: string
-  }[]
-  availability: {
-    mobile: boolean
-    inShop: boolean
-  }
-  rating: number
-  reviewCount: number
-  estimatedTime: {
-    min: number
-    max: number
-  }
-  createdAt: string
-  updatedAt: string
-}
-
-export interface ServiceCategory {
-  id: string
-  name: string
-  slug: string
-  description: string
-  icon: string
-  color: string
-  serviceCount: number
-  popular: boolean
-}
+// Import types from the single source of truth
+import type { 
+  Service, 
+  ServiceCategory 
+} from '@/core/entities/service'
 
 // Service Categories
 export const serviceCategories: ServiceCategory[] = [
@@ -136,11 +92,13 @@ export const allServices: Service[] = [
   {
     id: '1',
     name: 'Basic Wash',
+    slug: 'basic-wash',
     description: 'Perfect for regular maintenance with comprehensive exterior wash, wheel cleaning, and basic drying. Ideal for keeping your vehicle clean and presentable.',
     shortDescription: 'Exterior wash with wheel cleaning and basic dry',
     price: 25,
     duration: '30 min',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '2',
       name: 'Wash Services',
@@ -177,12 +135,14 @@ export const allServices: Service[] = [
   {
     id: '2',
     name: 'Premium Wash',
+    slug: 'premium-wash',
     description: 'Complete interior and exterior cleaning for a spotless finish. Includes interior vacuuming, dashboard cleaning, and exterior wax application.',
     shortDescription: 'Complete interior and exterior cleaning with wax',
     price: 55,
     originalPrice: 65,
     duration: '75 min',
     image: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '2',
       name: 'Wash Services',
@@ -234,11 +194,13 @@ export const allServices: Service[] = [
   {
     id: '3',
     name: 'Express Detail',
+    slug: 'express-detail',
     description: 'Quick but thorough cleaning for busy schedules. Perfect balance of speed and quality with exterior wash, interior vacuum, and basic detailing.',
     shortDescription: 'Quick but thorough cleaning for busy schedules',
     price: 45,
     duration: '45 min',
     image: 'https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '2',
       name: 'Wash Services',
@@ -276,11 +238,13 @@ export const allServices: Service[] = [
   {
     id: '4',
     name: 'Interior Detailing',
+    slug: 'interior-detailing',
     description: 'Deep cleaning and conditioning for your vehicle\'s interior. Includes steam cleaning, leather conditioning, fabric protection, and odor elimination.',
     shortDescription: 'Deep interior cleaning and conditioning',
     price: 89,
     duration: '2 hours',
     image: 'https://images.unsplash.com/photo-1586337459984-6ae5ad0b9cb0?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '3',
       name: 'Detailing',
@@ -318,12 +282,14 @@ export const allServices: Service[] = [
   {
     id: '5',
     name: 'Full Detailing',
+    slug: 'full-detailing',
     description: 'Complete interior and exterior detailing service. The ultimate car care experience with paint correction, deep interior cleaning, and protection application.',
     shortDescription: 'Ultimate interior and exterior detailing experience',
     price: 149,
     originalPrice: 179,
     duration: '4 hours',
     image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '3',
       name: 'Detailing',
@@ -369,11 +335,13 @@ export const allServices: Service[] = [
   {
     id: '6',
     name: 'Ceramic Protection',
+    slug: 'ceramic-protection',
     description: 'Professional nano-ceramic coating for long-lasting protection. Provides superior gloss, hydrophobic properties, and UV protection for your vehicle\'s paint.',
     shortDescription: 'Professional nano-ceramic coating with 2-year warranty',
     price: 299,
     duration: '4 hours',
     image: 'https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '4',
       name: 'Protection',
@@ -411,11 +379,13 @@ export const allServices: Service[] = [
   {
     id: '7',
     name: 'Paint Correction',
+    slug: 'paint-correction',
     description: 'Professional paint restoration to remove swirls, scratches, and oxidation. Multi-stage polishing process restores paint clarity and depth.',
     shortDescription: 'Professional paint restoration and swirl removal',
     price: 199,
     duration: '3 hours',
     image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '5',
       name: 'Restoration',
@@ -453,11 +423,13 @@ export const allServices: Service[] = [
   {
     id: '8',
     name: 'Headlight Restoration',
+    slug: 'headlight-restoration',
     description: 'Restore clarity and brightness to foggy or yellowed headlights. Professional restoration process improves visibility and vehicle appearance.',
     shortDescription: 'Restore clarity to foggy or yellowed headlights',
     price: 79,
     duration: '1 hour',
     image: 'https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '5',
       name: 'Restoration',
@@ -495,11 +467,13 @@ export const allServices: Service[] = [
   {
     id: '9',
     name: 'Engine Bay Cleaning',
+    slug: 'engine-bay-cleaning',
     description: 'Professional engine compartment cleaning and detailing. Safe degreasing process cleans and protects all engine components.',
     shortDescription: 'Professional engine compartment cleaning',
     price: 69,
     duration: '1.5 hours',
     image: 'https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '6',
       name: 'Specialty',
@@ -537,11 +511,13 @@ export const allServices: Service[] = [
   {
     id: '10',
     name: 'Mobile Service',
+    slug: 'mobile-service',
     description: 'We come to you! Professional car care at your location with all the same quality standards. Perfect for home, office, or any convenient location.',
     shortDescription: 'Professional car care at your location',
     price: 35,
     duration: 'Varies',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop',
+    isActive: true,
     category: {
       id: '7',
       name: 'Mobile',

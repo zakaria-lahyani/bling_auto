@@ -1,20 +1,21 @@
-import type { Service } from '@/types/apps/serviceTypes'
+import type { Service, ServiceAvailability } from '@/core/entities/service'
 import type { ServiceViewModel } from '../types'
 
 export const mapServiceToViewModel = (service: Service): ServiceViewModel => {
+  const availabilityString = mapAvailabilityToString(service.availability)
   return {
     id: service.id,
     name: service.name,
     description: service.description,
     priceDisplay: formatPrice(service.price),
     duration: service.duration,
-    availability: service.availability,
-    categories: service.categories,
+    availability: availabilityString,
+    categories: service.categories || [],
     image: service.image,
     isActive: service.isActive,
-    isPopular: service.isPopular,
-    availabilityDisplay: formatAvailability(service.availability),
-    categoryDisplay: formatCategories(service.categories),
+    isPopular: service.popular || false,
+    availabilityDisplay: formatAvailability(availabilityString),
+    categoryDisplay: formatCategories(service.categories || []),
   }
 }
 
@@ -24,6 +25,18 @@ function formatPrice(price: number): string {
     style: 'currency',
     currency: 'USD'
   }).format(price)
+}
+
+function mapAvailabilityToString(availability: ServiceAvailability): 'onsite' | 'instore' | 'both' {
+  if (availability.mobile && availability.inShop) {
+    return 'both'
+  } else if (availability.mobile) {
+    return 'onsite'
+  } else if (availability.inShop) {
+    return 'instore'
+  } else {
+    return 'instore' // default fallback
+  }
 }
 
 function formatAvailability(availability: string): string {

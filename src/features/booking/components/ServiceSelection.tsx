@@ -5,15 +5,13 @@ import Image from 'next/image'
 import { Clock, MapPin } from 'lucide-react'
 import { Card, Heading3, BodyText, Caption, Badge } from '@/shared/components/ui'
 
-interface Service {
-  id: string
-  name: string
-  description: string
-  price: number
-  duration: number
+// Import Service type from the single source of truth
+import type { Service as CoreService } from '@/core/entities/service'
+
+// Create a simplified interface for this component's needs
+interface Service extends Pick<CoreService, 'id' | 'name' | 'description' | 'price' | 'image' | 'features'> {
+  duration: number // This component uses number instead of string
   availability: 'onsite' | 'mobile' | 'both'
-  image: string
-  features: string[]
   isPopular: boolean
 }
 

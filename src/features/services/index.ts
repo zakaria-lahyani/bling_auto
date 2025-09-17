@@ -15,4 +15,3 @@ export type * from './types'
 
 // Re-export components
 export { ServiceCard } from './components/ServiceCard'
-export { ServiceList } from './components/ServiceList'

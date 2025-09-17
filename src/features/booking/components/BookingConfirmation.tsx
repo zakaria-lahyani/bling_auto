@@ -5,12 +5,12 @@ import { CheckCircle, Calendar, Clock, MapPin, Car, CreditCard, User } from 'luc
 import { Card, Heading3, Heading2, BodyText, Caption, Button, Badge } from '@/shared/components/ui'
 import type { BookingSlot, BookingLocation, VehicleInfo } from '../types'
 
-interface Service {
-  id: string
-  name: string
-  price: number
-  duration: number
-  description: string
+// Import Service type from the single source of truth
+import type { Service as CoreService } from '@/core/entities/service'
+
+// Create a simplified interface for this component's needs
+interface Service extends Pick<CoreService, 'id' | 'name' | 'price' | 'description'> {
+  duration: number // This component uses number instead of string
 }
 
 interface BookingConfirmationProps {
