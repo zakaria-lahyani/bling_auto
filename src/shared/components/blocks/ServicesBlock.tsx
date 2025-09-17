@@ -40,6 +40,9 @@ export interface ServicesBlockProps {
   ctaLink?: string
   theme?: 'light' | 'surface'
   className?: string
+  showViewAll?: boolean
+  viewAllText?: string
+  viewAllLink?: string
 }
 
 const ServicesBlock: React.FC<ServicesBlockProps> = ({
@@ -51,7 +54,10 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
   ctaText = 'Book This Service',
   ctaLink = '/booking',
   theme = 'light',
-  className = ''
+  className = '',
+  showViewAll = false,
+  viewAllText = 'View All Services',
+  viewAllLink = '/services'
 }) => {
   const getThemeClasses = () => {
     switch (theme) {
@@ -95,7 +101,7 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
           {services.map((service) => (
             <div 
               key={service.id} 
-              className="bg-surface border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all group"
+              className="bg-surface border border-border rounded-2xl overflow-hidden hover:shadow-xl transition-all group flex flex-col h-full"
             >
               {/* Popular Badge */}
               {service.popular && (
@@ -116,7 +122,7 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
               </div>
               
               {/* Service Details */}
-              <div className="p-6">
+              <div className="p-6 flex flex-col flex-grow">
                 {/* Header with Price */}
                 <div className="flex items-start justify-between mb-3">
                   <h3 className="text-xl font-bold text-content-primary">
@@ -140,7 +146,7 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
                 </p>
                 
                 {/* Features List */}
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2 mb-6 flex-grow">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center gap-2 text-sm">
                       <CheckCircle className="w-4 h-4 text-green-500" />
@@ -149,10 +155,10 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
                   ))}
                 </div>
                 
-                {/* CTA Button */}
+                {/* CTA Button - Always at bottom */}
                 <Link
                   href={service.link || ctaLink}
-                  className="w-full bg-brand-500 text-white py-3 rounded-xl font-semibold hover:bg-brand-600 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-brand-500 text-white py-3 rounded-xl font-semibold hover:bg-brand-600 transition-colors flex items-center justify-center gap-2 mt-auto"
                 >
                   {ctaText}
                   <ArrowRight size={16} />
@@ -161,6 +167,19 @@ const ServicesBlock: React.FC<ServicesBlockProps> = ({
             </div>
           ))}
         </div>
+        
+        {/* View All Services Button */}
+        {showViewAll && (
+          <div className="text-center mt-12">
+            <Link
+              href={viewAllLink}
+              className="inline-flex items-center gap-2 bg-white border-2 border-brand-500 text-brand-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-brand-50 transition-colors"
+            >
+              {viewAllText}
+              <ArrowRight size={20} />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   )

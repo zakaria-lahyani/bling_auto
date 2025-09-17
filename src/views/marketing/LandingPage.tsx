@@ -135,6 +135,9 @@ const LandingPage = () => {
           theme="light"
           columns={3}
           ctaLink={isHydrated && user ? "/booking" : "/auth/login"}
+          showViewAll={true}
+          viewAllText="View All Services"
+          viewAllLink="/services"
         />
 
         {/* Testimonials Section - Social proof with auto-sliding */}
