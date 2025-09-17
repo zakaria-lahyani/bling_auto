@@ -118,45 +118,76 @@ const LandingPage = () => {
         onNewsletterSignup: handleNewsletterSignup
       }}
     >
-      <div className="space-y-0">
-        {/* Hero Section - Main landing area with primary CTA */}
-        <HeroBlock {...customHeroData} />
+      {/* Hero Section - Main landing area with primary CTA */}
+      <HeroBlock {...customHeroData} />
 
-        {/* Features Section - Why choose us */}
-        <FeaturesBlock 
-          {...featuresData}
-          theme="surface"
-          columns={4}
-        />
+      {/* Section Divider */}
+      <div className="bg-gradient-to-r from-transparent via-brand-200 to-transparent h-px"></div>
 
-        {/* Services Section - Our service packages */}
-        <ServicesBlock 
-          {...servicesData}
-          theme="light"
-          columns={3}
-          ctaLink={isHydrated && user ? "/booking" : "/auth/login"}
-          showViewAll={true}
-          viewAllText="View All Services"
-          viewAllLink="/services"
-        />
+      {/* Features Section - Why choose us */}
+      <FeaturesBlock 
+        {...featuresData}
+        theme="surface"
+        columns={4}
+      />
 
-        {/* Testimonials Section - Social proof with auto-sliding */}
-        <TestimonialsBlock 
-          {...testimonialsData}
-          theme="surface" 
-          columns={3}
-          enableSlider={true}
-          autoPlay={true}
-          autoPlayInterval={4000}
-        />
-
-        {/* Call-to-Action Section - Final conversion push */}
-        <CTABlock 
-          {...customCTAData}
-          theme="gradient"
-          size="medium"
-        />
+      {/* Section Divider */}
+      <div className="bg-white py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-brand-300"></div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-brand-50 rounded-full border border-brand-200">
+              <div className="w-1.5 h-1.5 bg-brand-500 rounded-full"></div>
+              <span className="text-brand-600 font-medium text-xs">Our Services</span>
+              <div className="w-1.5 h-1.5 bg-brand-500 rounded-full"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-brand-300"></div>
+          </div>
+        </div>
       </div>
+
+      {/* Services Section - Our service packages */}
+      <ServicesBlock 
+        {...servicesData}
+        theme="light"
+        columns={3}
+        ctaLink={isHydrated && user ? "/booking" : "/auth/login"}
+        showViewAll={true}
+        viewAllText="View All Services"
+        viewAllLink="/services"
+      />
+
+      {/* Section Divider */}
+      <div className="bg-surface py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center gap-4">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gray-300"></div>
+            <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-full border border-gray-200 shadow-sm">
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+              <span className="text-gray-600 font-medium text-xs">Customer Reviews</span>
+              <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gray-300"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Testimonials Section - Social proof with auto-sliding */}
+      <TestimonialsBlock 
+        {...testimonialsData}
+        theme="surface" 
+        columns={3}
+        enableSlider={true}
+        autoPlay={true}
+        autoPlayInterval={4000}
+      />
+
+      {/* Call-to-Action Section - Final conversion push */}
+      <CTABlock 
+        {...customCTAData}
+        theme="gradient"
+        size="medium"
+      />
     </MarketingLayout>
   )
 }

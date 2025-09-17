@@ -56,7 +56,32 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
   className = ''
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const visibleCount = columns
+  const [visibleCount, setVisibleCount] = useState(1)
+
+  // Update visible count based on screen size
+  useEffect(() => {
+    const updateVisibleCount = () => {
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth
+        let newVisibleCount
+        if (width >= 1024) { // lg breakpoint
+          newVisibleCount = 3
+        } else if (width >= 768) { // md breakpoint
+          newVisibleCount = 2
+        } else {
+          newVisibleCount = 1
+        }
+        
+        setVisibleCount(newVisibleCount)
+        // Reset current index when screen size changes to prevent out-of-bounds
+        setCurrentIndex(0)
+      }
+    }
+
+    updateVisibleCount()
+    window.addEventListener('resize', updateVisibleCount)
+    return () => window.removeEventListener('resize', updateVisibleCount)
+  }, [])
 
   // Auto-play functionality - automatically cycles through testimonials
   useEffect(() => {
@@ -107,16 +132,27 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
   }
 
   const handlePrevious = () => {
-    setCurrentIndex(prev => Math.max(0, prev - 1))
+    setCurrentIndex(prev => {
+      if (prev === 0) {
+        // Loop to the last slide
+        return Math.max(0, testimonials.length - visibleCount)
+      }
+      return prev - 1
+    })
   }
 
   const handleNext = () => {
-    const maxIndex = Math.max(0, testimonials.length - visibleCount)
-    setCurrentIndex(prev => Math.min(maxIndex, prev + 1))
+    setCurrentIndex(prev => {
+      const nextIndex = prev + 1
+      // Loop back to start if we've gone past the last possible slide
+      return nextIndex > testimonials.length - visibleCount ? 0 : nextIndex
+    })
   }
 
+  // For slider mode, we need to show all testimonials but with proper positioning
+  // For non-slider mode, show all testimonials
   const visibleTestimonials = enableSlider 
-    ? testimonials.slice(currentIndex, currentIndex + visibleCount)
+    ? testimonials
     : testimonials
 
   return (
@@ -141,16 +177,14 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
             <>
               <button
                 onClick={handlePrevious}
-                disabled={currentIndex === 0}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white border border-border rounded-full p-2 shadow-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white border border-border rounded-full p-2 shadow-lg hover:bg-gray-50 transition-all"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft className="w-6 h-6 text-content-primary" />
               </button>
               <button
                 onClick={handleNext}
-                disabled={currentIndex >= testimonials.length - visibleCount}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white border border-border rounded-full p-2 shadow-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white border border-border rounded-full p-2 shadow-lg hover:bg-gray-50 transition-all"
                 aria-label="Next testimonials"
               >
                 <ChevronRight className="w-6 h-6 text-content-primary" />
@@ -164,10 +198,10 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
               <div 
                 className="flex gap-8 transition-transform duration-700 ease-in-out"
                 style={{
-                  transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`
+                  transform: `translateX(calc(-${currentIndex} * (${100 / visibleCount}% + ${32 / visibleCount}px)))`
                 }}
               >
-                {testimonials.map((testimonial, index) => (
+                {visibleTestimonials.map((testimonial, index) => (
                   <div 
                     key={testimonial.id || index} 
                     className="bg-page-background border border-border rounded-2xl p-6 hover:shadow-lg transition-shadow flex-shrink-0"
@@ -271,7 +305,7 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
           {/* Dots Indicator */}
           {enableSlider && testimonials.length > visibleCount && (
             <div className="flex justify-center gap-2 mt-8">
-              {Array.from({ length: Math.max(1, testimonials.length - visibleCount + 1) }).map((_, index) => (
+              {Array.from({ length: testimonials.length - visibleCount + 1 }).map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
@@ -280,7 +314,7 @@ const TestimonialsBlock: React.FC<TestimonialsBlockProps> = ({
                       ? 'w-8 bg-brand-500' 
                       : 'w-2 bg-gray-300 hover:bg-gray-400'
                   }`}
-                  aria-label={`Go to testimonial ${index + 1}`}
+                  aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
             </div>
