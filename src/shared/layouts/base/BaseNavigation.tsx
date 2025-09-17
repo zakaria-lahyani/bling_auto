@@ -27,7 +27,7 @@ export interface NavigationItem {
   href: string
   
   /** Icon component */
-  icon?: React.ComponentType<{ size?: number; className?: string }>
+  icon?: React.ComponentType<{ size?: string | number; className?: string }>
   
   /** Badge content (notification count, "new", etc.) */
   badge?: {
