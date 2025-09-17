@@ -3,20 +3,9 @@
  */
 
 import { BaseRepository } from './base.repository'
-import type { Service } from '@/core/entities/service/types'
+import type { Service, ServiceFilters } from '@/core/entities/service/types'
 
-export interface ServiceFilters {
-  category?: string
-  featured?: boolean
-  popular?: boolean
-  active?: boolean
-  availability?: string[]
-  priceRange?: {
-    min?: number
-    max?: number
-  }
-  search?: string
-}
+export type { ServiceFilters }
 
 export interface ServiceCreateDTO {
   name: string

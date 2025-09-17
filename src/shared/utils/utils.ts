@@ -15,7 +15,9 @@ export function formatDate(date: Date | string): string {
 
 export function formatTime(time: string): string {
   // Assuming time is in format "HH:MM" or "HH:MM:SS"
-  const [hours, minutes] = time.split(':');
+  const parts = time.split(':');
+  const hours = parts[0] ?? '0';
+  const minutes = parts[1] ?? '00';
   const hour24 = parseInt(hours, 10);
   const hour12 = hour24 === 0 ? 12 : hour24 > 12 ? hour24 - 12 : hour24;
   const ampm = hour24 >= 12 ? 'PM' : 'AM';

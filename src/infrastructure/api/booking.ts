@@ -147,7 +147,10 @@ export const bookingApi = {
         date.setDate(today.getDate() + i)
         // Skip some dates to simulate availability
         if (i % 3 !== 0) {
-          dates.push(date.toISOString().split('T')[0])
+          const dateString = date.toISOString().split('T')[0]
+          if (dateString) {
+            dates.push(dateString)
+          }
         }
       }
       

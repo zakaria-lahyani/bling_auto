@@ -18,3 +18,24 @@ export {
   Caption, 
   SmallText 
 } from './Typography';
+
+// Enhanced error recovery components
+export {
+  ErrorRecovery,
+  NetworkError,
+  LoadingError,
+  EmptyState,
+  ConnectionStatus,
+  RetryBoundary,
+  type ErrorInfo,
+  type ErrorType
+} from './ErrorRecovery';
+
+// Data state wrapper components
+export {
+  DataStateWrapper,
+  ListStateWrapper,
+  InlineDataState,
+  ConditionalDataRender,
+  DataStateIndicator
+} from './DataStateWrapper';

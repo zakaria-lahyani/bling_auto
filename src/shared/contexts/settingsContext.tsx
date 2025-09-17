@@ -139,6 +139,7 @@ export const SettingsProvider = ({ children, settingsCookie, mode = 'light' }: S
       mediaQuery.addEventListener('change', handleChange)
       return () => mediaQuery.removeEventListener('change', handleChange)
     }
+    return undefined
   }, [settings.mode])
 
   const contextValue = useMemo(

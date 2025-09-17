@@ -1,10 +1,10 @@
 import { fetcher } from './fetcher'
 
-// Import types from fake-db structure
+// Import types from core entities
 import type {
   Service,
   ServiceFilters,
-} from '@/types/apps/serviceTypes'
+} from '@/core/entities/service/types'
 
 export const servicesApi = {
   /**

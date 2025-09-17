@@ -173,6 +173,7 @@ const ServicesPageWithSSG = ({ initialData }: ServicesPageProps) => {
       document.addEventListener('click', handleClickOutside)
       return () => document.removeEventListener('click', handleClickOutside)
     }
+    return undefined
   }, [showSuggestions])
 
   // Services are already filtered by the data layer

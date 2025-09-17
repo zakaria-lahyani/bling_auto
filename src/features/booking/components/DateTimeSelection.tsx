@@ -20,7 +20,8 @@ export const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
 }) => {
   const [selectedDate, setSelectedDate] = useState<string>(() => {
     const today = new Date()
-    return today.toISOString().split('T')[0]
+    const todayString = today.toISOString().split('T')[0]
+    return todayString ?? ''
   })
   
   const [currentMonth, setCurrentMonth] = useState(new Date())
@@ -52,7 +53,7 @@ export const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
   }
 
   const calendarDays = generateCalendarDays(currentMonth)
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Date().toISOString().split('T')[0] ?? ''
 
   const navigateMonth = (direction: 'prev' | 'next') => {
     const newMonth = new Date(currentMonth)
@@ -114,7 +115,7 @@ export const DateTimeSelection: React.FC<DateTimeSelectionProps> = ({
             
             {/* Calendar days */}
             {calendarDays.map((day, index) => {
-              const dateString = day.toISOString().split('T')[0]
+              const dateString = day.toISOString().split('T')[0] ?? ''
               const isCurrentMonth = day.getMonth() === currentMonth.getMonth()
               const isSelected = dateString === selectedDate
               const isAvailable = isDateAvailable(dateString)

@@ -298,7 +298,10 @@ export class AuthService {
       const parts = token.split('.')
       if (parts.length !== 3) return false
       
-      const payload = JSON.parse(atob(parts[1]))
+      const payloadPart = parts[1]
+      if (!payloadPart) return false
+      
+      const payload = JSON.parse(atob(payloadPart))
       const now = Date.now() / 1000
       
       return payload.exp > now

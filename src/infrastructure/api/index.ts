@@ -10,8 +10,8 @@ import { inventoryApi } from './inventory'
 export { servicesApi, appointmentsApi, dashboardApi, bookingApi, jobsApi, loyaltyApi, inventoryApi }
 export { fetcher, ApiError } from './fetcher'
 
-// Re-export types from fake-db structure
-export type * from '@/types/apps/serviceTypes'
+// Re-export types from core entities
+export type * from '@/core/entities/service/types'
 export type * from '@/types/apps/appointmentTypes'
 export type * from '@/types/apps/dashboardTypes'
 

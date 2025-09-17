@@ -122,8 +122,8 @@ const getNavigationItems = (userRole?: string): NavigationItem[] => {
   // Add sub-items for certain roles
   if (userRole === 'Owner' || userRole === 'Manager') {
     const analyticsIndex = baseItems.findIndex(item => item.title === 'Analytics')
-    if (analyticsIndex !== -1) {
-      baseItems[analyticsIndex].children = [
+    if (analyticsIndex !== -1 && baseItems[analyticsIndex]) {
+      baseItems[analyticsIndex]!.children = [
         {
           title: 'Overview',
           href: '/dashboard/analytics/overview',

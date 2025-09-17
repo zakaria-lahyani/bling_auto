@@ -14,4 +14,4 @@ export { mapServiceToViewModel } from './mappers/serviceMappers'
 export type * from './types'
 
 // Re-export components
-export { ServiceCard } from './components/ServiceCard'
+export { default as ServiceCard } from '@/shared/components/ServiceCard'

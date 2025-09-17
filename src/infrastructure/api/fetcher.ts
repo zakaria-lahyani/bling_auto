@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { logApiCall, logApiError } from '@/shared/utils/logger'
 
 export class ApiError extends Error {
   constructor(
@@ -88,15 +89,16 @@ class Fetcher {
         config.body = JSON.stringify(options.body)
       }
 
-      console.log(`[SDK] ${options.method || 'GET'} ${url}`)
+      logApiCall(options.method || 'GET', url, { component: 'api-client' })
 
       const response = await fetch(url, config)
       clearTimeout(timeoutId)
 
       if (!response.ok) {
         const errorText = await response.text().catch(() => response.statusText)
-        console.error(`[SDK] Error ${response.status}:`, errorText)
-        throw new ApiError(response.status, response.statusText, errorText, response)
+        const apiError = new ApiError(response.status, response.statusText, errorText, response)
+        logApiError(options.method || 'GET', url, apiError, { component: 'api-client' })
+        throw apiError
       }
 
       const contentType = response.headers.get('content-type')
@@ -125,11 +127,17 @@ class Fetcher {
       
       if (error instanceof DOMException && error.name === 'AbortError') {
         const timeoutError = new Error(`Request timeout after ${timeout}ms`)
-        console.error('[SDK] Timeout:', timeoutError)
+        logApiError(options.method || 'GET', url, timeoutError, { 
+          component: 'api-client', 
+          metadata: { timeout, type: 'timeout' } 
+        })
         throw timeoutError
       }
       
-      console.error('[SDK] Request failed:', error)
+      logApiError(options.method || 'GET', url, error, { 
+        component: 'api-client', 
+        metadata: { type: 'network_error' } 
+      })
       throw error
     }
   }

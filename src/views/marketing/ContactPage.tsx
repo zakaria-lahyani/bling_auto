@@ -17,6 +17,7 @@ import {
   useNewsletterSubscription 
 } from '@/features/contact/hooks/useContactData'
 import type { ContactFormData } from '@/infrastructure/repositories/interfaces/contact.repository'
+import { logger, logFormSubmission } from '@/shared/utils/logger'
 
 const ContactPage = () => {
   // Service-driven data fetching
@@ -48,6 +49,7 @@ const ContactPage = () => {
     try {
       const result = await contactFormMutation.mutateAsync(formData)
       if (result.success) {
+        logFormSubmission('contact_form', true, { component: 'ContactPage', userId: formData.email })
         setShowSuccessMessage(true)
         setFormData({
           name: '',
@@ -59,16 +61,22 @@ const ContactPage = () => {
         })
       }
     } catch (error) {
-      // Error handled by mutation
-      console.error('Form submission failed:', error)
+      logFormSubmission('contact_form', false, { 
+        component: 'ContactPage', 
+        metadata: { error: error instanceof Error ? error.message : 'Unknown error' } 
+      })
     }
   }
 
   const handleNewsletterSignup = async (email: string) => {
     try {
       await newsletterMutation.mutateAsync(email)
+      logFormSubmission('newsletter_signup', true, { component: 'ContactPage', userId: email })
     } catch (error) {
-      console.error('Newsletter signup failed:', error)
+      logFormSubmission('newsletter_signup', false, { 
+        component: 'ContactPage', 
+        metadata: { error: error instanceof Error ? error.message : 'Unknown error' } 
+      })
     }
   }
 

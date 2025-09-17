@@ -202,13 +202,13 @@ class FallbackServiceRepository extends ApiServiceRepository {
     this.mockRepository = new MockServiceRepository(options)
   }
 
-  protected handleError(error: any, context?: string): never {
+  protected override handleError(error: any, context?: string): never {
     console.warn(`API error in ${context}, falling back to mock data:`, error)
     throw error
   }
 
   // Override methods to add fallback logic
-  async findAll(params?: any): Promise<any> {
+  override async findAll(params?: any): Promise<any> {
     try {
       return await super.findAll(params)
     } catch (error) {
@@ -217,7 +217,7 @@ class FallbackServiceRepository extends ApiServiceRepository {
     }
   }
 
-  async findById(id: string): Promise<any> {
+  override async findById(id: string): Promise<any> {
     try {
       return await super.findById(id)
     } catch (error) {
@@ -226,7 +226,7 @@ class FallbackServiceRepository extends ApiServiceRepository {
     }
   }
 
-  async findByCategory(categorySlug: string): Promise<any> {
+  override async findByCategory(categorySlug: string): Promise<any> {
     try {
       return await super.findByCategory(categorySlug)
     } catch (error) {
@@ -235,7 +235,7 @@ class FallbackServiceRepository extends ApiServiceRepository {
     }
   }
 
-  async findFeatured(): Promise<any> {
+  override async findFeatured(): Promise<any> {
     try {
       return await super.findFeatured()
     } catch (error) {
@@ -244,7 +244,7 @@ class FallbackServiceRepository extends ApiServiceRepository {
     }
   }
 
-  async findPopular(): Promise<any> {
+  override async findPopular(): Promise<any> {
     try {
       return await super.findPopular()
     } catch (error) {
@@ -253,7 +253,7 @@ class FallbackServiceRepository extends ApiServiceRepository {
     }
   }
 
-  async search(query: string): Promise<any> {
+  override async search(query: string): Promise<any> {
     try {
       return await super.search(query)
     } catch (error) {
@@ -276,7 +276,7 @@ class HybridServiceRepository extends MockServiceRepository {
   }
 
   // Use API for write operations
-  async create(data: any): Promise<any> {
+  override async create(data: any): Promise<any> {
     try {
       return await this.apiRepository.create(data)
     } catch (error) {
@@ -285,7 +285,7 @@ class HybridServiceRepository extends MockServiceRepository {
     }
   }
 
-  async update(id: string, data: any): Promise<any> {
+  override async update(id: string, data: any): Promise<any> {
     try {
       return await this.apiRepository.update(id, data)
     } catch (error) {
@@ -294,7 +294,7 @@ class HybridServiceRepository extends MockServiceRepository {
     }
   }
 
-  async delete(id: string): Promise<boolean> {
+  override async delete(id: string): Promise<boolean> {
     try {
       return await this.apiRepository.delete(id)
     } catch (error) {

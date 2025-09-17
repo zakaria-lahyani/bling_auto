@@ -36,6 +36,7 @@ const Modal = ({
         document.body.style.overflow = 'unset';
       };
     }
+    return undefined
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;

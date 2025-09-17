@@ -1,8 +1,8 @@
-// Re-export types from fake-db structure
+// Re-export types from core entities
 export type {
   Service,
   ServiceFilters,
-} from '@/types/apps/serviceTypes'
+} from '@/core/entities/service/types'
 
 // Feature-specific view models
 export interface ServiceViewModel {

@@ -58,7 +58,9 @@ export const BookingConfirmation: React.FC<BookingConfirmationProps> = ({
   }
 
   const calculateEndTime = (startTime: string, duration: number) => {
-    const [hours, minutes] = startTime.split(':').map(Number)
+    const parts = startTime.split(':').map(Number)
+    const hours = parts[0] ?? 0
+    const minutes = parts[1] ?? 0
     const startDate = new Date()
     startDate.setHours(hours, minutes, 0, 0)
     

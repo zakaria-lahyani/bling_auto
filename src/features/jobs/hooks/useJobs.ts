@@ -175,7 +175,7 @@ export function useJobActions() {
 }
 
 export function useTodayJobs() {
-  const today = new Date().toISOString().split('T')[0]
+  const today = new Date().toISOString().split('T')[0] ?? ''
   
   return useQuery({
     queryKey: jobKeys.byDate(today),

@@ -1,0 +1,168 @@
+{
+  "bookings": [
+    {
+      "id": "booking-001",
+      "userId": "user-123",
+      "serviceId": "2",
+      "serviceName": "Premium Detail",
+      "scheduledDate": "2024-04-15T10:00:00Z",
+      "location": {
+        "type": "mobile",
+        "address": "123 Main St, Downtown",
+        "coordinates": {
+          "lat": 40.7128,
+          "lng": -74.0060
+        }
+      },
+      "status": "confirmed",
+      "price": 85,
+      "duration": "2 hours",
+      "notes": "Please focus on interior stains on back seats",
+      "vehicleInfo": {
+        "make": "Toyota",
+        "model": "Camry",
+        "year": 2020,
+        "color": "Silver",
+        "licensePlate": "ABC123"
+      },
+      "paymentInfo": {
+        "method": "credit_card",
+        "status": "paid",
+        "transactionId": "txn_abc123"
+      },
+      "createdAt": "2024-04-10T09:00:00Z",
+      "updatedAt": "2024-04-10T09:00:00Z"
+    },
+    {
+      "id": "booking-002",
+      "userId": "user-456",
+      "serviceId": "5",
+      "serviceName": "Ceramic Coating",
+      "scheduledDate": "2024-04-20T08:00:00Z",
+      "location": {
+        "type": "onsite",
+        "address": "Car Care Center, 456 Service Ave"
+      },
+      "status": "pending",
+      "price": 299,
+      "duration": "4 hours",
+      "notes": "Vehicle has minor scratches that need attention before coating",
+      "vehicleInfo": {
+        "make": "BMW",
+        "model": "X5",
+        "year": 2022,
+        "color": "Black",
+        "licensePlate": "BMW456"
+      },
+      "paymentInfo": {
+        "method": "bank_transfer",
+        "status": "pending"
+      },
+      "createdAt": "2024-04-12T14:30:00Z",
+      "updatedAt": "2024-04-12T14:30:00Z"
+    },
+    {
+      "id": "booking-003",
+      "userId": "user-789",
+      "serviceId": "3",
+      "serviceName": "Mobile Quick Wash",
+      "scheduledDate": "2024-04-18T16:00:00Z",
+      "location": {
+        "type": "mobile",
+        "address": "789 Business Plaza, Suite 100",
+        "coordinates": {
+          "lat": 40.7589,
+          "lng": -73.9851
+        }
+      },
+      "status": "completed",
+      "price": 35,
+      "duration": "45 min",
+      "notes": "Regular customer - knows the routine",
+      "vehicleInfo": {
+        "make": "Honda",
+        "model": "Civic",
+        "year": 2019,
+        "color": "Blue",
+        "licensePlate": "HND789"
+      },
+      "paymentInfo": {
+        "method": "cash",
+        "status": "paid"
+      },
+      "createdAt": "2024-04-16T11:15:00Z",
+      "updatedAt": "2024-04-18T17:00:00Z"
+    },
+    {
+      "id": "booking-004",
+      "userId": "user-321",
+      "serviceId": "4",
+      "serviceName": "Interior Detailing",
+      "scheduledDate": "2024-04-22T13:30:00Z",
+      "location": {
+        "type": "onsite",
+        "address": "Car Care Center, 456 Service Ave"
+      },
+      "status": "in_progress",
+      "price": 65,
+      "duration": "90 min",
+      "notes": "Pet hair removal needed - customer has two dogs",
+      "vehicleInfo": {
+        "make": "Ford",
+        "model": "Explorer",
+        "year": 2021,
+        "color": "White",
+        "licensePlate": "FRD321"
+      },
+      "paymentInfo": {
+        "method": "credit_card",
+        "status": "paid",
+        "transactionId": "txn_def456"
+      },
+      "createdAt": "2024-04-20T08:45:00Z",
+      "updatedAt": "2024-04-22T13:30:00Z"
+    },
+    {
+      "id": "booking-005",
+      "userId": "user-654",
+      "serviceId": "1",
+      "serviceName": "Basic Wash",
+      "scheduledDate": "2024-04-25T09:00:00Z",
+      "location": {
+        "type": "mobile",
+        "address": "987 Residential Dr, Suburbia",
+        "coordinates": {
+          "lat": 40.6892,
+          "lng": -74.0445
+        }
+      },
+      "status": "pending",
+      "price": 25,
+      "duration": "30 min",
+      "vehicleInfo": {
+        "make": "Nissan",
+        "model": "Altima",
+        "year": 2018,
+        "color": "Red"
+      },
+      "paymentInfo": {
+        "method": "digital_wallet",
+        "status": "pending"
+      },
+      "createdAt": "2024-04-23T19:20:00Z",
+      "updatedAt": "2024-04-23T19:20:00Z"
+    }
+  ],
+  "bookingStats": {
+    "totalBookings": 5,
+    "pendingBookings": 2,
+    "confirmedBookings": 1,
+    "inProgressBookings": 1,
+    "completedBookings": 1,
+    "cancelledBookings": 0,
+    "totalRevenue": 509,
+    "averageBookingValue": 101.8,
+    "mobileBookings": 3,
+    "onsiteBookings": 2
+  }
+}

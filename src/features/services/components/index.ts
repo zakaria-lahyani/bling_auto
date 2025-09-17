@@ -1,1 +1,1 @@
-export { ServiceCard } from './ServiceCard'
+export { default as ServiceCard } from '@/shared/components/ServiceCard'

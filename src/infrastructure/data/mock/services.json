@@ -1,0 +1,268 @@
+{
+  "services": [
+    {
+      "id": "1",
+      "name": "Basic Wash",
+      "slug": "basic-wash",
+      "description": "Essential exterior wash with soap and rinse",
+      "shortDescription": "Essential exterior wash",
+      "price": 25,
+      "duration": "30 min",
+      "image": "/images/basic-wash.jpg",
+      "isActive": true,
+      "category": {
+        "id": "wash",
+        "name": "Wash Services",
+        "slug": "wash",
+        "description": "Basic to premium exterior and interior cleaning services",
+        "serviceCount": 3
+      },
+      "featured": false,
+      "popular": true,
+      "availability": {
+        "mobile": true,
+        "inShop": true
+      },
+      "features": ["Exterior wash", "Soap and rinse", "Basic dry"],
+      "tags": ["exterior", "quick", "affordable"],
+      "rating": 4.2,
+      "reviewCount": 156,
+      "estimatedTime": { "min": 25, "max": 35 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Premium Detail",
+      "slug": "premium-detail",
+      "description": "Complete interior and exterior detailing service",
+      "shortDescription": "Complete detailing service",
+      "price": 85,
+      "duration": "2 hours",
+      "image": "/images/premium-detail.jpg",
+      "isActive": true,
+      "category": {
+        "id": "wash",
+        "name": "Wash Services", 
+        "slug": "wash",
+        "description": "Basic to premium exterior and interior cleaning services",
+        "serviceCount": 5
+      },
+      "featured": true,
+      "popular": true,
+      "availability": {
+        "mobile": true,
+        "inShop": true
+      },
+      "features": ["Interior cleaning", "Exterior detail", "Premium products"],
+      "tags": ["interior", "exterior", "premium", "detailed"],
+      "rating": 4.8,
+      "reviewCount": 89,
+      "estimatedTime": { "min": 110, "max": 130 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Mobile Quick Wash",
+      "slug": "mobile-quick-wash",
+      "description": "Fast mobile wash service at your location",
+      "shortDescription": "Fast mobile wash service",
+      "price": 35,
+      "duration": "45 min",
+      "image": "/images/mobile-wash.jpg",
+      "isActive": true,
+      "category": {
+        "id": "wash",
+        "name": "Wash Services",
+        "slug": "wash", 
+        "description": "Basic to premium exterior and interior cleaning services",
+        "serviceCount": 4
+      },
+      "featured": false,
+      "popular": false,
+      "availability": {
+        "mobile": true,
+        "inShop": false
+      },
+      "features": ["Mobile service", "Quick wash", "At your location"],
+      "estimatedTime": { "min": 40, "max": 50 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "tags": ["mobile", "convenient", "quick"],
+      "rating": 4.0,
+      "reviewCount": 234
+    },
+    {
+      "id": "4",
+      "name": "Interior Detailing",
+      "slug": "interior-detailing",
+      "description": "Deep interior cleaning with vacuum, shampoo, and conditioning",
+      "shortDescription": "Deep interior cleaning service",
+      "price": 65,
+      "duration": "90 min",
+      "image": "/images/interior-detailing.jpg",
+      "isActive": true,
+      "category": {
+        "id": "detailing",
+        "name": "Detailing Services",
+        "slug": "detailing",
+        "description": "Professional detailing services",
+        "serviceCount": 3
+      },
+      "featured": true,
+      "popular": false,
+      "availability": {
+        "mobile": false,
+        "inShop": true
+      },
+      "features": ["Deep vacuum", "Upholstery cleaning", "Dashboard conditioning"],
+      "estimatedTime": { "min": 80, "max": 100 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "tags": ["interior", "deep-clean", "detailing"],
+      "rating": 4.6,
+      "reviewCount": 87
+    },
+    {
+      "id": "5",
+      "name": "Ceramic Coating",
+      "slug": "ceramic-coating",
+      "description": "Premium paint protection with ceramic coating application",
+      "shortDescription": "Premium ceramic coating protection",
+      "price": 299,
+      "duration": "4 hours",
+      "image": "/images/ceramic-coating.jpg",
+      "isActive": true,
+      "category": {
+        "id": "protection",
+        "name": "Protection Services",
+        "slug": "protection",
+        "description": "Vehicle protection services",
+        "serviceCount": 2
+      },
+      "featured": true,
+      "popular": true,
+      "availability": {
+        "mobile": false,
+        "inShop": true
+      },
+      "features": ["9H hardness coating", "Hydrophobic finish", "2-year warranty"],
+      "estimatedTime": { "min": 220, "max": 260 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "tags": ["ceramic", "protection", "premium"],
+      "rating": 4.9,
+      "reviewCount": 45
+    },
+    {
+      "id": "6",
+      "name": "Paint Correction",
+      "slug": "paint-correction",
+      "description": "Professional paint correction to remove swirls, scratches, and imperfections",
+      "shortDescription": "Professional paint correction service",
+      "price": 199,
+      "duration": "3 hours",
+      "image": "/images/paint-correction.jpg",
+      "isActive": true,
+      "category": {
+        "id": "restoration",
+        "name": "Restoration",
+        "slug": "restoration",
+        "description": "Paint correction and headlight restoration services",
+        "serviceCount": 2
+      },
+      "featured": false,
+      "popular": false,
+      "availability": {
+        "mobile": false,
+        "inShop": true
+      },
+      "features": ["Swirl removal", "Scratch correction", "Paint polishing"],
+      "estimatedTime": { "min": 160, "max": 200 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "tags": ["restoration", "paint-correction", "polishing"],
+      "rating": 4.7,
+      "reviewCount": 32
+    },
+    {
+      "id": "7",
+      "name": "Engine Bay Cleaning",
+      "slug": "engine-bay-cleaning",
+      "description": "Specialized engine bay cleaning and detailing service",
+      "shortDescription": "Professional engine bay cleaning",
+      "price": 89,
+      "duration": "2 hours",
+      "image": "/images/engine-bay.jpg",
+      "isActive": true,
+      "category": {
+        "id": "specialty",
+        "name": "Specialty",
+        "slug": "specialty",
+        "description": "Specialized services for unique vehicle needs",
+        "serviceCount": 1
+      },
+      "featured": false,
+      "popular": false,
+      "availability": {
+        "mobile": true,
+        "inShop": true
+      },
+      "features": ["Engine degreasing", "Component cleaning", "Protective dressing"],
+      "estimatedTime": { "min": 100, "max": 130 },
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z",
+      "tags": ["specialty", "engine", "cleaning"],
+      "rating": 4.4,
+      "reviewCount": 18
+    }
+  ],
+  "categories": [
+    {
+      "id": "wash",
+      "name": "Wash Services",
+      "slug": "wash",
+      "description": "Basic to premium exterior and interior cleaning services",
+      "serviceCount": 4,
+      "image": "/images/categories/wash.jpg",
+      "featured": true
+    },
+    {
+      "id": "detailing",
+      "name": "Detailing Services",
+      "slug": "detailing",
+      "description": "Professional detailing services for interior and exterior",
+      "serviceCount": 2,
+      "image": "/images/categories/detailing.jpg",
+      "featured": true
+    },
+    {
+      "id": "protection",
+      "name": "Protection Services",
+      "slug": "protection",
+      "description": "Vehicle protection services including ceramic coatings",
+      "serviceCount": 1,
+      "image": "/images/categories/protection.jpg",
+      "featured": false
+    },
+    {
+      "id": "restoration",
+      "name": "Restoration",
+      "slug": "restoration",
+      "description": "Paint correction and restoration services",
+      "serviceCount": 1,
+      "image": "/images/categories/restoration.jpg",
+      "featured": false
+    },
+    {
+      "id": "specialty",
+      "name": "Specialty",
+      "slug": "specialty",
+      "description": "Specialized services for unique vehicle needs",
+      "serviceCount": 1,
+      "image": "/images/categories/specialty.jpg",
+      "featured": false
+    }
+  ]
+}

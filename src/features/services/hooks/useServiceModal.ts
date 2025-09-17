@@ -63,7 +63,7 @@ export function useServiceModal(): UseServiceModalReturn {
     const currentIndex = getCurrentIndex(services)
     if (canNavigateNext(services)) {
       const nextService = services[currentIndex + 1]
-      setSelectedService(nextService)
+      setSelectedService(nextService ?? null)
     }
   }, [getCurrentIndex, canNavigateNext])
 
@@ -71,7 +71,7 @@ export function useServiceModal(): UseServiceModalReturn {
     const currentIndex = getCurrentIndex(services)
     if (canNavigatePrevious(services)) {
       const previousService = services[currentIndex - 1]
-      setSelectedService(previousService)
+      setSelectedService(previousService ?? null)
     }
   }, [getCurrentIndex, canNavigatePrevious])
 

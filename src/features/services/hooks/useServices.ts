@@ -226,7 +226,7 @@ export function useServiceExists(id: string) {
 export function useActiveServices() {
   return useQuery({
     queryKey: [...serviceQueryKeys.all, 'active'],
-    queryFn: () => repositories.service.findWithFilters({ active: true }),
+    queryFn: () => repositories.service.findWithFilters({ isActive: true }),
     staleTime: 1000 * 60 * 10, // 10 minutes
   })
 }

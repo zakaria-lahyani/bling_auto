@@ -51,7 +51,9 @@ function formatDate(dateString: string): string {
 }
 
 function formatTime(timeString: string): string {
-  const [hours, minutes] = timeString.split(':')
+  const parts = timeString.split(':')
+  const hours = parts[0] ?? '0'
+  const minutes = parts[1] ?? '0'
   const date = new Date()
   date.setHours(parseInt(hours), parseInt(minutes))
   

@@ -1,0 +1,212 @@
+{
+  "hero": {
+    "title": "Premium Car Care Services",
+    "subtitle": "Mobile & In-Shop Professional Detailing - Transform your vehicle with our expert car care services",
+    "description": "Professional car detailing services with eco-friendly products, mobile convenience, and satisfaction guarantee.",
+    "badges": ["Mobile Service Available", "Eco-Friendly Products", "Satisfaction Guaranteed"],
+    "primaryCTA": {
+      "text": "Book Service Now",
+      "href": "/booking",
+      "variant": "primary"
+    },
+    "secondaryCTA": {
+      "text": "View Services",
+      "href": "/services",
+      "variant": "secondary"
+    },
+    "backgroundImage": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=1200&h=800&fit=crop",
+    "image": {
+      "src": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&h=600&fit=crop",
+      "alt": "Professional car detailing service",
+      "width": 800,
+      "height": 600
+    },
+    "stats": {
+      "value": "2,500+",
+      "label": "Happy Customers"
+    },
+    "theme": "gradient"
+  },
+  "featuredServices": [
+    {
+      "id": "2",
+      "name": "Premium Wash",
+      "description": "Complete interior and exterior wash with premium protection",
+      "price": 55,
+      "duration": "45 min",
+      "image": "https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=400&h=300&fit=crop",
+      "href": "/services/premium-wash",
+      "popular": true,
+      "featured": true,
+      "features": [
+        "Interior & Exterior Cleaning",
+        "Wax Protection",
+        "Tire Shine",
+        "Window Cleaning"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Full Detailing",
+      "description": "Comprehensive detailing service with paint correction and ceramic coating",
+      "price": 149,
+      "duration": "3 hours",
+      "image": "https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=400&h=300&fit=crop",
+      "href": "/services/full-detailing",
+      "popular": true,
+      "featured": true,
+      "features": [
+        "Paint Correction",
+        "Interior Deep Clean",
+        "Ceramic Coating",
+        "Engine Bay Cleaning"
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Mobile Complete Wash",
+      "description": "Professional car wash service at your location with complete equipment",
+      "price": 75,
+      "duration": "1 hour",
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
+      "href": "/services/mobile-complete-wash",
+      "popular": true,
+      "featured": false,
+      "features": [
+        "At Your Location",
+        "Complete Service",
+        "Professional Equipment",
+        "Flexible Scheduling"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Sarah Johnson",
+      "role": "Business Owner",
+      "company": "Johnson Marketing",
+      "image": "https://images.unsplash.com/photo-1494790108755-2616b2e5c6e8?w=150&h=150&fit=crop&crop=face",
+      "rating": 5,
+      "content": "Absolutely incredible service! They came to my office and my car looks brand new. The attention to detail is amazing.",
+      "location": "Downtown",
+      "serviceUsed": "Mobile Complete Wash",
+      "date": "2024-03-15T00:00:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Mike Chen",
+      "role": "Software Engineer",
+      "company": "TechCorp",
+      "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      "rating": 5,
+      "content": "The ceramic coating service was worth every penny. My car still looks amazing after 6 months, and water just rolls off.",
+      "location": "Tech District",
+      "serviceUsed": "Ceramic Protection",
+      "date": "2024-03-10T00:00:00Z"
+    },
+    {
+      "id": "3",
+      "name": "Emily Rodriguez",
+      "role": "Marketing Manager",
+      "company": "Creative Agency",
+      "image": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
+      "rating": 5,
+      "content": "Professional, reliable, and convenient. I love that they send updates with photos showing the progress. Highly recommend!",
+      "location": "Suburbs",
+      "serviceUsed": "Premium Wash",
+      "date": "2024-03-08T00:00:00Z"
+    },
+    {
+      "id": "4",
+      "name": "David Wilson",
+      "role": "Sales Director",
+      "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
+      "rating": 4,
+      "content": "Great value for money. The mobile service is so convenient, especially for busy professionals like myself.",
+      "location": "Business District",
+      "serviceUsed": "Mobile Quick Wash",
+      "date": "2024-03-05T00:00:00Z"
+    },
+    {
+      "id": "5",
+      "name": "Jennifer Kim",
+      "role": "Designer",
+      "company": "Design Studio",
+      "image": "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=150&h=150&fit=crop&crop=face",
+      "rating": 5,
+      "content": "The interior detailing exceeded my expectations. My car feels like new again, and the team was incredibly professional.",
+      "location": "Arts Quarter",
+      "serviceUsed": "Interior Detailing",
+      "date": "2024-03-02T00:00:00Z"
+    }
+  ],
+  "cta": {
+    "title": "Ready to Transform Your Vehicle?",
+    "description": "Join thousands of satisfied customers who trust us with their car care needs. Book your service today and experience the difference professional detailing makes.",
+    "primaryCTA": {
+      "text": "Book Now",
+      "href": "/booking",
+      "variant": "primary"
+    },
+    "secondaryCTA": {
+      "text": "Get Quote",
+      "href": "/quote",
+      "variant": "secondary"
+    },
+    "backgroundType": "image",
+    "backgroundImage": "/images/cta-background.jpg"
+  },
+  "features": [
+    {
+      "id": "mobile-service",
+      "title": "Mobile Service",
+      "description": "We come to you at your home, office, or any convenient location",
+      "icon": "car",
+      "image": "/images/features/mobile-service.jpg"
+    },
+    {
+      "id": "eco-friendly",
+      "title": "Eco-Friendly Products",
+      "description": "Biodegradable and environmentally safe cleaning products",
+      "icon": "leaf",
+      "image": "/images/features/eco-friendly.jpg"
+    },
+    {
+      "id": "professional-team",
+      "title": "Professional Team",
+      "description": "Certified and experienced detailing professionals",
+      "icon": "users",
+      "image": "/images/features/professional-team.jpg"
+    },
+    {
+      "id": "satisfaction-guarantee",
+      "title": "Satisfaction Guarantee",
+      "description": "100% satisfaction guaranteed or we'll make it right",
+      "icon": "shield-check",
+      "image": "/images/features/satisfaction-guarantee.jpg"
+    }
+  ],
+  "stats": {
+    "happyCustomers": 2500,
+    "servicesCompleted": 15000,
+    "averageRating": 4.8,
+    "yearsExperience": 10,
+    "mobileServicesCompleted": 8500,
+    "repeatCustomers": 85
+  },
+  "metadata": {
+    "title": "Premium Car Care Services - Bling Auto",
+    "description": "Professional mobile and in-shop car detailing services. Transform your vehicle with eco-friendly products and expert care. Book today!",
+    "keywords": [
+      "car wash",
+      "mobile car wash",
+      "car detailing",
+      "ceramic coating",
+      "paint correction",
+      "eco-friendly car care",
+      "professional detailing",
+      "mobile service"
+    ]
+  }
+}

@@ -52,13 +52,16 @@ export const getMockDailyStats = (): DailyStats[] => {
     const mobile = Math.floor(baseWashes * (0.4 + Math.random() * 0.2));
     const onsite = Math.floor(baseWashes - mobile);
     
-    days.push({
-      date: date.toISOString().split('T')[0],
-      washes: Math.floor(baseWashes),
-      revenue: Math.floor(baseWashes * (45 + Math.random() * 30)),
-      mobile,
-      onsite
-    });
+    const dateString = date.toISOString().split('T')[0]
+    if (dateString) {
+      days.push({
+        date: dateString,
+        washes: Math.floor(baseWashes),
+        revenue: Math.floor(baseWashes * (45 + Math.random() * 30)),
+        mobile,
+        onsite
+      });
+    }
   }
   return days;
 };
@@ -231,7 +234,7 @@ export const getMockPlanningAppointments = (): PlanningAppointment[] => [
     operatorId: '1',
     status: 'scheduled',
     priority: 'high',
-    date: new Date().toISOString().split('T')[0],
+    date: new Date().toISOString().split('T')[0] ?? '',
     carDetails: '2022 Toyota Camry - Silver',
     address: '123 Main St, Downtown'
   },
@@ -247,7 +250,7 @@ export const getMockPlanningAppointments = (): PlanningAppointment[] => [
     operatorId: '2',
     status: 'scheduled',
     priority: 'medium',
-    date: new Date().toISOString().split('T')[0],
+    date: new Date().toISOString().split('T')[0] ?? '',
     carDetails: '2021 Honda CR-V - Blue',
     address: '456 Oak Ave, North End'
   }
@@ -379,7 +382,7 @@ export const getMockPlanningData = () => ({
   ] as OperationSlot[],
   dailyOperations: [
     {
-      date: new Date().toISOString().split('T')[0],
+      date: new Date().toISOString().split('T')[0] ?? '',
       slots: [
         {
           id: '1',

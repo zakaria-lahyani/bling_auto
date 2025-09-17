@@ -17,227 +17,19 @@ import {
   NotFoundError 
 } from '../../interfaces/base.repository'
 import type { Service } from '@/core/entities/service/types'
+import { ServiceMapper, ValidationUtils } from '@/infrastructure/dto'
+import { logger } from '@/shared/utils/logger'
+import { MockDataLoader } from '@/infrastructure/data/mock'
 
-// Mock data - in real app, this would come from a JSON file or mock API
-const MOCK_SERVICES: Service[] = [
-  {
-    id: '1',
-    name: 'Basic Wash',
-    slug: 'basic-wash',
-    description: 'Essential exterior wash with soap and rinse',
-    shortDescription: 'Essential exterior wash',
-    price: 25,
-    duration: '30 min',
-    image: '/images/basic-wash.jpg',
-    isActive: true,
-    category: {
-      id: 'wash',
-      name: 'Wash Services',
-      slug: 'wash',
-      description: 'Basic to premium exterior and interior cleaning services',
-      serviceCount: 3
-    },
-    featured: false,
-    popular: true,
-    availability: {
-      mobile: true,
-      inShop: true
-    },
-    features: ['Exterior wash', 'Soap and rinse', 'Basic dry'],
-    tags: ['exterior', 'quick', 'affordable'],
-    rating: 4.2,
-    reviewCount: 156,
-    estimatedTime: { min: 25, max: 35 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z'
-  },
-  {
-    id: '2',
-    name: 'Premium Detail',
-    slug: 'premium-detail',
-    description: 'Complete interior and exterior detailing service',
-    shortDescription: 'Complete detailing service',
-    price: 85,
-    duration: '2 hours',
-    image: '/images/premium-detail.jpg',
-    isActive: true,
-    category: {
-      id: 'wash',
-      name: 'Wash Services', 
-      slug: 'wash',
-      description: 'Basic to premium exterior and interior cleaning services',
-      serviceCount: 5
-    },
-    featured: true,
-    popular: true,
-    availability: {
-      mobile: true,
-      inShop: true
-    },
-    features: ['Interior cleaning', 'Exterior detail', 'Premium products'],
-    tags: ['interior', 'exterior', 'premium', 'detailed'],
-    rating: 4.8,
-    reviewCount: 89,
-    estimatedTime: { min: 110, max: 130 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z'
-  },
-  {
-    id: '3',
-    name: 'Mobile Quick Wash',
-    slug: 'mobile-quick-wash',
-    description: 'Fast mobile wash service at your location',
-    shortDescription: 'Fast mobile wash service',
-    price: 35,
-    duration: '45 min',
-    image: '/images/mobile-wash.jpg',
-    isActive: true,
-    category: {
-      id: 'wash',
-      name: 'Wash Services',
-      slug: 'wash', 
-      description: 'Basic to premium exterior and interior cleaning services',
-      serviceCount: 4
-    },
-    featured: false,
-    popular: false,
-    availability: {
-      mobile: true,
-      inShop: false
-    },
-    features: ['Mobile service', 'Quick wash', 'At your location'],
-    estimatedTime: { min: 40, max: 50 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-    tags: ['mobile', 'convenient', 'quick'],
-    rating: 4.0,
-    reviewCount: 234
-  },
-  {
-    id: '4',
-    name: 'Interior Detailing',
-    slug: 'interior-detailing',
-    description: 'Deep interior cleaning with vacuum, shampoo, and conditioning',
-    shortDescription: 'Deep interior cleaning service',
-    price: 65,
-    duration: '90 min',
-    image: '/images/interior-detailing.jpg',
-    isActive: true,
-    category: {
-      id: 'detailing',
-      name: 'Detailing Services',
-      slug: 'detailing',
-      description: 'Professional detailing services',
-      serviceCount: 3
-    },
-    featured: true,
-    popular: false,
-    availability: {
-      mobile: false,
-      inShop: true
-    },
-    features: ['Deep vacuum', 'Upholstery cleaning', 'Dashboard conditioning'],
-    estimatedTime: { min: 80, max: 100 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-    tags: ['interior', 'deep-clean', 'detailing'],
-    rating: 4.6,
-    reviewCount: 87
-  },
-  {
-    id: '5',
-    name: 'Ceramic Coating',
-    slug: 'ceramic-coating',
-    description: 'Premium paint protection with ceramic coating application',
-    shortDescription: 'Premium ceramic coating protection',
-    price: 299,
-    duration: '4 hours',
-    image: '/images/ceramic-coating.jpg',
-    isActive: true,
-    category: {
-      id: 'protection',
-      name: 'Protection Services',
-      slug: 'protection',
-      description: 'Vehicle protection services',
-      serviceCount: 2
-    },
-    featured: true,
-    popular: true,
-    availability: {
-      mobile: false,
-      inShop: true
-    },
-    features: ['9H hardness coating', 'Hydrophobic finish', '2-year warranty'],
-    estimatedTime: { min: 220, max: 260 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-    tags: ['ceramic', 'protection', 'premium'],
-    rating: 4.9,
-    reviewCount: 45
-  },
-  {
-    id: '6',
-    name: 'Paint Correction',
-    slug: 'paint-correction',
-    description: 'Professional paint correction to remove swirls, scratches, and imperfections',
-    shortDescription: 'Professional paint correction service',
-    price: 199,
-    duration: '3 hours',
-    image: '/images/paint-correction.jpg',
-    isActive: true,
-    category: {
-      id: 'restoration',
-      name: 'Restoration',
-      slug: 'restoration',
-      description: 'Paint correction and headlight restoration services',
-      serviceCount: 2
-    },
-    featured: false,
-    popular: false,
-    availability: {
-      mobile: false,
-      inShop: true
-    },
-    features: ['Swirl removal', 'Scratch correction', 'Paint polishing'],
-    estimatedTime: { min: 160, max: 200 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-    tags: ['restoration', 'paint-correction', 'polishing'],
-    rating: 4.7,
-    reviewCount: 32
-  },
-  {
-    id: '7',
-    name: 'Engine Bay Cleaning',
-    slug: 'engine-bay-cleaning',
-    description: 'Specialized engine bay cleaning and detailing service',
-    shortDescription: 'Professional engine bay cleaning',
-    price: 89,
-    duration: '2 hours',
-    image: '/images/engine-bay.jpg',
-    isActive: true,
-    category: {
-      id: 'specialty',
-      name: 'Specialty',
-      slug: 'specialty',
-      description: 'Specialized services for unique vehicle needs',
-      serviceCount: 1
-    },
-    featured: false,
-    popular: false,
-    availability: {
-      mobile: true,
-      inShop: true
-    },
-    features: ['Engine degreasing', 'Component cleaning', 'Protective dressing'],
-    estimatedTime: { min: 100, max: 130 },
-    createdAt: '2024-01-01T00:00:00Z',
-    updatedAt: '2024-01-01T00:00:00Z',
-    tags: ['specialty', 'engine', 'cleaning'],
-    rating: 4.4,
-    reviewCount: 18
+// Mock data loaded from external JSON files
+let MOCK_SERVICES: Service[] = []
+
+// Initialize mock data
+const initializeMockData = () => {
+  if (MOCK_SERVICES.length === 0) {
+    MOCK_SERVICES = [...MockDataLoader.getServices()]
   }
-]
+}
 
 export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCreateDTO, ServiceUpdateDTO> 
   implements IServiceRepository {
@@ -254,6 +46,9 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
     // Simulate API delay
     await this.simulateDelay()
 
+    // Initialize data if needed
+    initializeMockData()
+    
     let result = [...MOCK_SERVICES]
 
     if (params?.filters) {
@@ -275,7 +70,8 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const service = MOCK_SERVICES.find(s => s.id === id) || null
+    initializeMockData()
+    const service = MockDataLoader.getServiceById(id)
     this.setCache(cacheKey, service)
     return service
   }
@@ -326,41 +122,70 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
   async create(data: ServiceCreateDTO): Promise<Service> {
     await this.simulateDelay()
 
-    const newService: Service = {
-      id: `mock-${Date.now()}`,
-      name: data.name,
-      slug: data.name.toLowerCase().replace(/\s+/g, '-'),
-      description: data.description,
-      shortDescription: data.description?.substring(0, 100) || '',
-      price: data.price,
-      duration: typeof data.duration === 'number' ? `${data.duration} min` : data.duration,
-      image: data.images?.[0] || '/images/default-service.jpg',
-      isActive: true,
-      category: {
-        id: data.category,
-        name: data.category,
-        slug: data.category,
-        description: '',
-        serviceCount: 0
-      },
-      featured: data.featured || false,
-      popular: data.popular || false,
-      availability: {
-        mobile: data.availability?.includes('mobile') || false,
-        inShop: data.availability?.includes('inShop') || data.availability?.includes('onsite') || false
-      },
-      features: [], // Default empty features since DTO doesn't include this
-      tags: data.tags || [],
-      rating: 0,
-      reviewCount: 0,
-      estimatedTime: { min: 30, max: 60 },
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString()
-    }
+    try {
+      // Validate input using DTO
+      const validatedInput = ServiceMapper.toCreateDTO(data as any)
+      
+      const newServiceData = {
+        id: `mock-${Date.now()}`,
+        name: validatedInput.name,
+        slug: validatedInput.name.toLowerCase().replace(/\s+/g, '-'),
+        description: validatedInput.description,
+        shortDescription: validatedInput.shortDescription || validatedInput.description.substring(0, 100),
+        price: validatedInput.price,
+        duration: ServiceMapper.normalizeDuration(validatedInput.duration),
+        image: validatedInput.images?.[0] || '/images/default-service.jpg',
+        images: validatedInput.images,
+        isActive: true,
+        category: {
+          id: validatedInput.category,
+          name: validatedInput.category,
+          slug: validatedInput.category.toLowerCase().replace(/\s+/g, '-'),
+          description: '',
+          serviceCount: 0
+        },
+        featured: validatedInput.featured || false,
+        popular: validatedInput.popular || false,
+        availability: validatedInput.availability || {
+          mobile: false,
+          inShop: true
+        },
+        features: validatedInput.features || [],
+        tags: validatedInput.tags || [],
+        rating: 0,
+        reviewCount: 0,
+        estimatedTime: { 
+          min: ServiceMapper.extractDurationMinutes(ServiceMapper.normalizeDuration(validatedInput.duration)) - 5, 
+          max: ServiceMapper.extractDurationMinutes(ServiceMapper.normalizeDuration(validatedInput.duration)) + 5 
+        },
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+      }
 
-    MOCK_SERVICES.push(newService)
-    this.invalidateCache()
-    return newService
+      // Use mapper to ensure consistent structure
+      const mappedService = ServiceMapper.toDomain(newServiceData as any)
+      
+      // Add to in-memory store and external data loader
+      initializeMockData()
+      MOCK_SERVICES.push(mappedService)
+      MockDataLoader.addService(mappedService)
+      this.invalidateCache()
+      
+      logger.info('Service created in mock repository', {
+        component: 'MockServiceRepository',
+        action: 'create',
+        metadata: { serviceId: mappedService.id, serviceName: mappedService.name }
+      })
+      
+      return mappedService
+    } catch (error) {
+      logger.error('Failed to create service in mock repository', {
+        component: 'MockServiceRepository',
+        action: 'create',
+        metadata: { error: error instanceof Error ? error.message : String(error), data }
+      })
+      throw error
+    }
   }
 
   async update(id: string, data: ServiceUpdateDTO): Promise<Service> {
@@ -372,35 +197,65 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
     }
 
     const existing = MOCK_SERVICES[index]
-    const updated: Service = {
-      ...existing,
-      ...data,
-      category: typeof data.category === 'string' ? {
-        id: data.category,
-        name: data.category,
-        slug: data.category.toLowerCase().replace(/\s+/g, '-')
-      } : data.category || existing.category,
-      duration: data.duration ? (typeof data.duration === 'number' ? `${data.duration} min` : data.duration) : existing.duration,
-      availability: data.availability ? {
-        mobile: data.availability.includes('mobile'),
-        inShop: data.availability.includes('inShop') || data.availability.includes('onsite')
-      } : existing.availability,
-      updatedAt: new Date().toISOString()
+    if (!existing) {
+      throw new NotFoundError('Service', id)
     }
-    MOCK_SERVICES[index] = updated
-    this.invalidateCache()
-    return updated
+
+    try {
+      // Validate input using DTO
+      const validatedInput = ServiceMapper.toUpdateDTO(data as any)
+      
+      // Merge with existing data
+      const updatedData = ValidationUtils.deepMerge(existing, {
+        ...validatedInput,
+        duration: validatedInput.duration ? ServiceMapper.normalizeDuration(validatedInput.duration) : existing.duration,
+        category: typeof validatedInput.category === 'string' ? {
+          id: validatedInput.category,
+          name: validatedInput.category,
+          slug: validatedInput.category.toLowerCase().replace(/\s+/g, '-'),
+          description: 'description' in existing.category ? existing.category.description : '',
+          serviceCount: 'serviceCount' in existing.category ? existing.category.serviceCount : 0
+        } : validatedInput.category || existing.category,
+        updatedAt: new Date().toISOString()
+      })
+      
+      // Use mapper to ensure consistent structure
+      const mappedService = ServiceMapper.toDomain(updatedData as any)
+      
+      // Update in-memory store and external data loader
+      initializeMockData()
+      MOCK_SERVICES[index] = mappedService
+      MockDataLoader.updateService(id, mappedService)
+      this.invalidateCache()
+      
+      logger.info('Service updated in mock repository', {
+        component: 'MockServiceRepository',
+        action: 'update',
+        metadata: { serviceId: id }
+      })
+      
+      return mappedService
+    } catch (error) {
+      logger.error('Failed to update service in mock repository', {
+        component: 'MockServiceRepository',
+        action: 'update',
+        metadata: { error: error instanceof Error ? error.message : String(error), serviceId: id, data }
+      })
+      throw error
+    }
   }
 
   async delete(id: string): Promise<boolean> {
     await this.simulateDelay()
 
+    initializeMockData()
     const index = MOCK_SERVICES.findIndex(s => s.id === id)
     if (index === -1) {
       return false
     }
 
     MOCK_SERVICES.splice(index, 1)
+    MockDataLoader.removeService(id)
     this.invalidateCache()
     return true
   }
@@ -408,13 +263,14 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
   async count(filters?: FilterParams): Promise<number> {
     await this.simulateDelay()
     
+    initializeMockData()
     if (!filters) return MOCK_SERVICES.length
     return this.applyFilters(MOCK_SERVICES, filters).length
   }
 
   async exists(id: string): Promise<boolean> {
     await this.simulateDelay()
-    return MOCK_SERVICES.some(s => s.id === id)
+    return MockDataLoader.getServiceById(id) !== null
   }
 
   // Service-specific methods
@@ -425,7 +281,7 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const result = MOCK_SERVICES.filter(s => s.category.slug === categorySlug)
+    const result = MockDataLoader.getServicesByCategory(categorySlug)
     this.setCache(cacheKey, result)
     return result
   }
@@ -437,7 +293,7 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const result = MOCK_SERVICES.filter(s => s.featured)
+    const result = MockDataLoader.getFeaturedServices()
     this.setCache(cacheKey, result)
     return result
   }
@@ -449,7 +305,7 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const result = MOCK_SERVICES.filter(s => s.popular)
+    const result = MockDataLoader.getPopularServices()
     this.setCache(cacheKey, result)
     return result
   }
@@ -478,13 +334,7 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const lowercaseQuery = query.toLowerCase()
-    const result = MOCK_SERVICES.filter(s => 
-      s.name.toLowerCase().includes(lowercaseQuery) ||
-      s.description.toLowerCase().includes(lowercaseQuery) ||
-      s.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
-    )
-
+    const result = MockDataLoader.searchServices(query)
     this.setCache(cacheKey, result)
     return result
   }
@@ -496,47 +346,15 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    let result = [...MOCK_SERVICES]
-
-    if (filters.category) {
-      result = result.filter(s => s.category.slug === filters.category)
-    }
-
-    if (filters.featured !== undefined) {
-      result = result.filter(s => s.featured === filters.featured)
-    }
-
-    if (filters.popular !== undefined) {
-      result = result.filter(s => s.popular === filters.popular)
-    }
-
-    if (filters.availability) {
-      result = result.filter(s => {
-        return filters.availability!.some(avail => {
-          if (avail === 'mobile') return s.availability.mobile
-          if (avail === 'onsite') return s.availability.onsite
-          return false
-        })
-      })
-    }
-
-    if (filters.priceRange) {
-      const { min, max } = filters.priceRange
-      result = result.filter(s => {
-        if (min !== undefined && s.price < min) return false
-        if (max !== undefined && s.price > max) return false
-        return true
-      })
-    }
-
-    if (filters.search) {
-      const query = filters.search.toLowerCase()
-      result = result.filter(s => 
-        s.name.toLowerCase().includes(query) ||
-        s.description.toLowerCase().includes(query) ||
-        s.tags.some(tag => tag.toLowerCase().includes(query))
-      )
-    }
+    const result = MockDataLoader.filterServices({
+      category: Array.isArray(filters.category) ? filters.category[0] : filters.category,
+      featured: filters.featured,
+      popular: filters.popular,
+      priceMin: filters.priceMin,
+      priceMax: filters.priceMax,
+      availability: filters.availability,
+      query: filters.query
+    })
 
     this.setCache(cacheKey, result)
     return result
@@ -549,14 +367,7 @@ export class MockServiceRepository extends BaseRepositoryImpl<Service, ServiceCr
 
     await this.simulateDelay()
 
-    const service = await this.findById(serviceId)
-    if (!service) return []
-
-    // Find services in the same category, excluding the current service
-    const result = MOCK_SERVICES
-      .filter(s => s.id !== serviceId && s.category.slug === service.category.slug)
-      .slice(0, limit)
-
+    const result = MockDataLoader.getRelatedServices(serviceId, limit)
     this.setCache(cacheKey, result)
     return result
   }

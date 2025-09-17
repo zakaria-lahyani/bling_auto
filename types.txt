@@ -3,419 +3,200 @@ PS C:\Users\zak\Desktop\workspace\apps\bling_auto> npm run typecheck
 > car-wash-app@0.1.0 typecheck
 > tsc --noEmit
 
-src/data/servicesData.ts:92:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
- 92   {
-      ~
- 93     id: '1',
-    ~~~~~~~~~~~~
-...
-133     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-134   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:135:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
-
-135   {
-      ~
-136     id: '2',
-    ~~~~~~~~~~~~
-...
-192     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-193   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:194:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-194   {
-      ~
-195     id: '3',
-    ~~~~~~~~~~~~
-...
-236     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-237   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:238:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-238   {
-      ~
-239     id: '4',
-    ~~~~~~~~~~~~
-...
-280     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-281   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:282:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
-
-282   {
-      ~
-283     id: '5',
-    ~~~~~~~~~~~~
-...
-333     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-334   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:335:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-335   {
-      ~
-336     id: '6',
-    ~~~~~~~~~~~~
-...
-377     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-378   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:379:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-379   {
-      ~
-380     id: '7',
-    ~~~~~~~~~~~~
-...
-421     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-422   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:423:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-423   {
-      ~
-424     id: '8',
-    ~~~~~~~~~~~~
-...
-465     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-466   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:467:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-467   {
-      ~
-468     id: '9',
-    ~~~~~~~~~~~~
-...
-509     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-510   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/data/servicesData.ts:511:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 10 more ...; updatedAt: string; }' but required in type 'Service'.
-
-511   {
-      ~
-512     id: '10',
-    ~~~~~~~~~~~~~
-...
-553     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-554   }
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/features/services/components/ServicesPageLayout.tsx:181:15 - error TS2322: Type '{ searchQuery: string; onSearchChange: (query: string) => void; searchSuggestions: string[]; showSuggestions: boolean; onSuggestionClick: (suggestion: string) => void; serviceCategories: ServiceCategory[]; ... 14 more ...; filterCounts: { ...; }; }' is not assignable to type 'IntrinsicAttributes & SearchAndFiltersProps'.
-  Property 'onClearFilters' does not exist on type 'IntrinsicAttributes & SearchAndFiltersProps'.
-
-181               onClearFilters={onClearFilters}
-                  ~~~~~~~~~~~~~~
-
-src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:23:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
-
- 23   {
-      ~
- 24     id: '1',
-    ~~~~~~~~~~~~
-...
- 52     updatedAt: '2024-01-01T00:00:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 53   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:54:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
-
- 54   {
-      ~
- 55     id: '2',
-    ~~~~~~~~~~~~
-...
- 83     updatedAt: '2024-01-01T00:00:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- 84   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:85:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; reviewCount: number; }' but required in type 'Service'.
-
- 85   {
-      ~
- 86     id: '3',
-    ~~~~~~~~~~~~
-...
-114     reviewCount: 234
-    ~~~~~~~~~~~~~~~~~~~~
-115   }
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:205:11 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; description: string; serviceCount: number; }; ... 9 more ...; updatedAt: string; }' but required in type 'Service'.
-
-205     const newService: Service = {
-              ~~~~~~~~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:126:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; gallery: string[]; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-126   {
-      ~
-127     id: '1',
-    ~~~~~~~~~~~~
-...
-178     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-179   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:180:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; gallery: string[]; category: { ...; }; ... 13 more ...; updatedAt: string; }' but required in type 'Service'.
-
-180   {
-      ~
-181     id: '2',
-    ~~~~~~~~~~~~
-...
-249     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-250   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:251:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-251   {
-      ~
-252     id: '3',
-    ~~~~~~~~~~~~
-...
-300     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-301   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:302:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
-
-302   {
-      ~
-303     id: '4',
-    ~~~~~~~~~~~~
-...
-350     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-351   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:352:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-352   {
-      ~
-353     id: '5',
-    ~~~~~~~~~~~~
-...
-409     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-410   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:411:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
-
-411   {
-      ~
-412     id: '6',
-    ~~~~~~~~~~~~
-...
-459     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-460   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:461:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; originalPrice: number; duration: string; image: string; isActive: true; gallery: string[]; category: { ...; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-461   {
-      ~
-462     id: '7',
-    ~~~~~~~~~~~~
-...
-522     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-523   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:524:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-524   {
-      ~
-525     id: '8',
-    ~~~~~~~~~~~~
-...
-573     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-574   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:575:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; category: { id: string; name: string; slug: string; }; ... 11 more ...; updatedAt: string; }' but required in type 'Service'.
-
-575   {
-      ~
-576     id: '9',
-    ~~~~~~~~~~~~
-...
-623     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-624   },
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-src/lib/data/marketing/static/services.ts:625:3 - error TS2741: Property 'mobile' is missing in type '{ id: string; name: string; slug: string; description: string; shortDescription: string; price: number; duration: string; image: string; isActive: true; gallery: string[]; category: { id: string; name: string; slug: string; }; ... 12 more ...; updatedAt: string; }' but required in type 'Service'.
-
-625   {
-      ~
-626     id: '10',
-    ~~~~~~~~~~~~~
-...
-691     updatedAt: '2024-03-01T14:30:00Z'
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-692   }
-    ~~~
-
-  src/core/entities/service/types.ts:145:3
-    145   mobile: boolean  // derived from availability.mobile
-          ~~~~~~
-    'mobile' is declared here.
-
-
-Found 25 errors in 4 files.
+src/infrastructure/dto/homepage.dto.ts:110:37 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+
+110           icon: dto.hero.primaryCTA.icon
+                                        ~~~~
+
+src/infrastructure/dto/homepage.dto.ts:115:39 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+
+115           icon: dto.hero.secondaryCTA.icon
+                                          ~~~~
+
+src/infrastructure/dto/homepage.dto.ts:118:7 - error TS2353: Object literal may only specify known properties, and 'featuredServices' does not exist in type 'HomePageData'.
+
+118       featuredServices: dto.featuredServices.map(service => ({
+          ~~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:138:25 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+138           text: dto.cta.primaryButton?.text || dto.cta.primaryCTA?.text || '',
+                            ~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:139:25 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+139           href: dto.cta.primaryButton?.href || dto.cta.primaryCTA?.href || ''
+                            ~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:141:34 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+141         secondaryButton: dto.cta.secondaryButton ? {
+                                     ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:142:25 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+142           text: dto.cta.secondaryButton.text,
+                            ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:143:25 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+143           href: dto.cta.secondaryButton.href
+                            ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:147:18 - error TS2339: Property 'stats' does not exist on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'.
+
+147       stats: dto.stats
+                     ~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:159:9 - error TS2353: Object literal may only specify known properties, and 'badges' does not exist in type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
+
+159         badges: data.hero.badges,
+            ~~~~~~
+
+  src/infrastructure/dto/homepage.dto.ts:80:3
+    80   hero: HeroSectionSchema,
+         ~~~~~~~~~~~~~~~~~~~~~~~
+    The expected type comes from property 'hero' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
+
+src/infrastructure/dto/homepage.dto.ts:166:7 - error TS2322: Type 'HomeServicePreview[]' is not assignable to type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }[]'.
+  Property 'href' is missing in type 'HomeServicePreview' but required in type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }'.
+
+166       featuredServices: data.services,
+          ~~~~~~~~~~~~~~~~
+
+  src/infrastructure/dto/homepage.dto.ts:44:3
+    44   href: z.string(),
+         ~~~~~~~~~~~~~~~~
+    'href' is declared here.
+  src/infrastructure/dto/homepage.dto.ts:81:3
+    81   featuredServices: z.array(HomeServicePreviewSchema),
+         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    The expected type comes from property 'featuredServices' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
+
+src/infrastructure/dto/homepage.dto.ts:174:9 - error TS2353: Object literal may only specify known properties, and 'primaryButton' does not exist in type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+174         primaryButton: data.cta.primaryButton,
+            ~~~~~~~~~~~~~
+
+  src/infrastructure/dto/homepage.dto.ts:83:3
+    83   cta: CtaSectionSchema,
+         ~~~~~~~~~~~~~~~~~~~~~
+    The expected type comes from property 'cta' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
+
+src/infrastructure/dto/homepage.dto.ts:189:19 - error TS2339: Property 'badges' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
+
+189       badges: dto.badges,
+                      ~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:193:30 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+
+193         icon: dto.primaryCTA.icon
+                                 ~~~~
+
+src/infrastructure/dto/homepage.dto.ts:198:32 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+
+198         icon: dto.secondaryCTA.icon
+                                   ~~~~
+
+src/infrastructure/dto/homepage.dto.ts:200:18 - error TS2339: Property 'image' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
+
+200       image: dto.image,
+                     ~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:202:18 - error TS2339: Property 'theme' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
+
+202       theme: dto.theme
+                     ~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:218:25 - error TS2551: Property 'features' does not exist on type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }'. Did you mean 'featured'?
+
+218       features: service.features || []
+                            ~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:247:19 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+247         text: dto.primaryButton?.text || dto.primaryCTA?.text || '',
+                      ~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:248:19 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+248         href: dto.primaryButton?.href || dto.primaryCTA?.href || ''
+                      ~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:250:28 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+250       secondaryButton: dto.secondaryButton ? {
+                               ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:251:19 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+251         text: dto.secondaryButton.text,
+                      ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/homepage.dto.ts:252:19 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
+
+252         href: dto.secondaryButton.href
+                      ~~~~~~~~~~~~~~~
+
+src/infrastructure/dto/service.dto.ts:91:7 - error TS2561: Object literal may only specify known properties, but 'images' does not exist in type 'Service'. Did you mean to write 'image'?
+
+91       images: dto.images || [],
+         ~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:132:30 - error TS2339: Property 'items' does not exist on type 'never'.
+
+132           data: servicesData.items,
+                                 ~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:133:35 - error TS2339: Property 'isLoading' does not exist on type 'never'.
+
+133           isLoading: servicesData.isLoading,
+                                      ~~~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:134:33 - error TS2339: Property 'isError' does not exist on type 'never'.
+
+134           isError: servicesData.isError,
+                                    ~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:135:31 - error TS2339: Property 'error' does not exist on type 'never'.
+
+135           error: servicesData.error,
+                                  ~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:136:33 - error TS2339: Property 'isEmpty' does not exist on type 'never'.
+
+136           isEmpty: servicesData.isEmpty,
+                                    ~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:137:33 - error TS2339: Property 'isStale' does not exist on type 'never'.
+
+137           isStale: servicesData.isStale,
+                                    ~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:138:36 - error TS2339: Property 'isFetching' does not exist on type 'never'.
+
+138           isFetching: servicesData.isFetching,
+                                       ~~~~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:139:31 - error TS2339: Property 'retry' does not exist on type 'never'.
+
+139           retry: servicesData.retry,
+                                  ~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:140:33 - error TS2339: Property 'refetch' does not exist on type 'never'.
+
+140           refetch: servicesData.refetch,
+                                    ~~~~~~~
+
+src/shared/components/examples/ImprovedServiceGrid.tsx:141:37 - error TS2339: Property 'lastUpdated' does not exist on type 'never'.
+
+141           lastUpdated: servicesData.lastUpdated
+                                        ~~~~~~~~~~~
+
+
+Found 34 errors in 3 files.
 
 Errors  Files
-    10  src/data/servicesData.ts:92
-     1  src/features/services/components/ServicesPageLayout.tsx:181
-     4  src/infrastructure/repositories/implementations/mock/service.mock.repository.ts:23
-    10  src/lib/data/marketing/static/services.ts:126
-PS C:\Users\zak\Desktop\workspace\apps\bling_auto>
+    23  src/infrastructure/dto/homepage.dto.ts:110
+     1  src/infrastructure/dto/service.dto.ts:91
+    10  src/shared/components/examples/ImprovedServiceGrid.tsx:132

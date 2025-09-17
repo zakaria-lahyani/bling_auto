@@ -10,6 +10,7 @@ import React, { useState, useEffect } from 'react'
 import { ArrowRight, Play, CheckCircle, Clock, Droplets, Shield, Car, Sparkles } from 'lucide-react'
 import { MarketingLayout } from '@/shared/layouts/marketing'
 import { AuthService } from '@/infrastructure/auth/auth'
+import { logUserAction } from '@/shared/utils/logger'
 
 // Import all block components
 import {
@@ -67,7 +68,7 @@ const LandingPage = () => {
 
   // Newsletter signup handler
   const handleNewsletterSignup = (email: string) => {
-    console.log('Newsletter signup:', email)
+    logUserAction('newsletter_signup', undefined, { email })
     // TODO: Implement newsletter signup logic
   }
 
