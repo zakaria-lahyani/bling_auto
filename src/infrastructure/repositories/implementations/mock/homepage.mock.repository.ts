@@ -32,16 +32,14 @@ export class MockHomePageRepository implements IHomePageRepository {
       this.getCtaData()
     ])
 
+    const homepageData = MockDataLoader.getHomepageData()
+    
     const rawData = {
       hero,
-      featuredServices,
+      services: featuredServices,
       testimonials,
       cta,
-      metadata: {
-        title: "Premium Car Care Services - Bling Auto",
-        description: "Professional mobile and in-shop car detailing services. Transform your vehicle with eco-friendly products and expert care.",
-        keywords: ["car wash", "detailing", "mobile service", "ceramic coating"]
-      }
+      stats: homepageData.stats
     }
 
     // Validate and transform using DTO mapper
@@ -59,7 +57,7 @@ export class MockHomePageRepository implements IHomePageRepository {
     await this.simulateDelay()
     
     const homepageData = MockDataLoader.getHomepageData()
-    return HomePageMapper.validateAndMapFeaturedServices(homepageData.featuredServices)
+    return HomePageMapper.validateAndMapFeaturedServices(homepageData.services)
   }
 
   async getTestimonials(): Promise<Testimonial[]> {

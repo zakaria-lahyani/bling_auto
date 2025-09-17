@@ -27,7 +27,7 @@
     },
     "theme": "gradient"
   },
-  "featuredServices": [
+  "services": [
     {
       "id": "2",
       "name": "Premium Wash",
@@ -144,15 +144,13 @@
   "cta": {
     "title": "Ready to Transform Your Vehicle?",
     "description": "Join thousands of satisfied customers who trust us with their car care needs. Book your service today and experience the difference professional detailing makes.",
-    "primaryCTA": {
+    "primaryButton": {
       "text": "Book Now",
-      "href": "/booking",
-      "variant": "primary"
+      "href": "/booking"
     },
-    "secondaryCTA": {
+    "secondaryButton": {
       "text": "Get Quote",
-      "href": "/quote",
-      "variant": "secondary"
+      "href": "/quote"
     },
     "backgroundType": "image",
     "backgroundImage": "/images/cta-background.jpg"

@@ -75,12 +75,7 @@ const LandingPage = () => {
   // Customize hero CTAs based on user authentication (after hydration)
   const customHeroData = {
     ...homePageData.hero,
-    title: (
-      <>
-        Premium Car Wash,{' '}
-        <span className="text-brand-200">Wherever You Are</span>
-      </>
-    ),
+    title: "Premium Car Wash, Wherever You Are",
     primaryCTA: {
       ...homePageData.hero.primaryCTA,
       text: isHydrated && user ? "Go to Dashboard" : "Book Now - $25",
@@ -103,7 +98,7 @@ const LandingPage = () => {
   // Features data with React icons
   const featuresData = {
     title: "Why Choose CarWash Pro?",
-    subtitle: "We're not just another car wash. We're your vehicle care partners, committed to convenience, quality, and your satisfaction.",
+    subtitle: `We're not just another car wash. We're your vehicle care partners, committed to convenience, quality, and your satisfaction.`,
     features: [
       {
         icon: Clock,
@@ -141,15 +136,15 @@ const LandingPage = () => {
   return (
     <ErrorBoundary>
       <MarketingLayout
-      header={{
-        variant: 'default',
-        showAuth: true
-      }}
-      footer={{
-        showNewsletter: true,
-        onNewsletterSignup: handleNewsletterSignup
-      }}
-    >
+        header={{
+          variant: 'default',
+          showAuth: true
+        }}
+        footer={{
+          showNewsletter: true,
+          onNewsletterSignup: handleNewsletterSignup
+        }}
+      >
       {/* Hero Section - Main landing area with primary CTA */}
       <HeroBlock {...customHeroData} />
 

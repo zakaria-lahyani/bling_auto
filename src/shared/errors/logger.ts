@@ -74,72 +74,20 @@ export class ConsoleLogProvider implements LogProvider {
 
 /**
  * Sentry Log Provider (Production)
+ * Note: Currently disabled to avoid TypeScript compilation issues
+ * Can be re-enabled when @sentry/nextjs is installed
  */
 export class SentryLogProvider implements LogProvider {
   name = 'sentry'
-  private sentry: any
-
-  constructor() {
-    if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_SENTRY_DSN) {
-      // Lazy load Sentry to avoid SSR issues
-      this.initSentry()
-    }
-  }
-
-  private async initSentry() {
-    try {
-      // Try to dynamically import Sentry - will fail gracefully if not installed
-      const sentryModule = await import('@sentry/nextjs' as any)
-      const { captureException, configureScope, Severity } = sentryModule
-      this.sentry = { captureException, configureScope, Severity }
-    } catch (error) {
-      // Sentry is not installed or available - this is expected in development
-      console.warn('Sentry not available:', error)
-    }
-  }
 
   log(error: AppError, context?: LogContext): void {
-    if (!this.sentry) return
-
-    this.sentry.configureScope((scope: any) => {
-      scope.setTag('errorCode', error.code)
-      scope.setLevel(this.mapSeverityToSentryLevel(error.severity))
-      scope.setContext('error', {
-        code: error.code,
-        userMessage: error.userMessage,
-        statusCode: error.statusCode,
-        retryable: error.retryable
-      })
-      
-      if (error.context) {
-        scope.setContext('errorContext', error.context)
-      }
-      
-      if (context) {
-        scope.setContext('logContext', context)
-      }
-    })
-
-    this.sentry.captureException(error.originalError || error)
-  }
-
-  private mapSeverityToSentryLevel(severity: ErrorSeverity): string {
-    switch (severity) {
-      case ErrorSeverity.CRITICAL:
-        return 'fatal'
-      case ErrorSeverity.HIGH:
-        return 'error'
-      case ErrorSeverity.MEDIUM:
-        return 'warning'
-      case ErrorSeverity.LOW:
-        return 'info'
-      default:
-        return 'error'
-    }
+    // Placeholder - Sentry logging disabled
+    console.info('Sentry logging disabled - install @sentry/nextjs to enable')
   }
 
   isEnabled(): boolean {
-    return !!process.env.NEXT_PUBLIC_SENTRY_DSN && process.env.NODE_ENV === 'production'
+    // Disabled until @sentry/nextjs is properly installed
+    return false
   }
 }
 
@@ -257,7 +205,6 @@ export class ErrorLogger {
       enabled: true,
       providers: [
         new ConsoleLogProvider(),
-        new SentryLogProvider(),
         new AnalyticsLogProvider(),
         new LocalStorageLogProvider()
       ],

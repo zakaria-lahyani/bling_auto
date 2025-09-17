@@ -74,7 +74,7 @@ const SearchAndFilters: React.FC<SearchAndFiltersProps> = ({
             <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-content-muted w-5 h-5" />
             <input
               type="text"
-              placeholder="Search services... (e.g., 'wash', 'ceramic', 'mobile')"
+              placeholder="Search services... (e.g., wash, ceramic, mobile)"
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               className="w-full pl-12 pr-4 py-4 text-lg border-2 border-border rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-colors bg-surface"
