@@ -8,16 +8,19 @@ import { ICategoryRepository } from '../interfaces/category.repository'
 import { IHomePageRepository } from '../interfaces/homepage.repository'
 import { IServicesPageRepository } from '../interfaces/servicespage.repository'
 import { IContactRepository } from '../interfaces/contact.repository'
+import { IClientRepository } from '../interfaces/client.repository'
 
 // Mock implementations
 import { MockServiceRepository } from '../implementations/mock/service.mock.repository'
 import { MockHomePageRepository } from '../implementations/mock/homepage.mock.repository'
 import { MockServicesPageRepository } from '../implementations/mock/servicespage.mock.repository'
 import { MockContactRepository } from '../implementations/mock/contact.mock.repository'
+import { MockClientRepository } from '../implementations/mock/client.mock.repository'
 // import { MockCategoryRepository } from '../implementations/mock/category.mock.repository'
 
 // API implementations
 import { ApiServiceRepository } from '../implementations/api/service.api.repository'
+import { ApiClientRepository } from '../implementations/api/client.api.repository'
 // import { ApiCategoryRepository } from '../implementations/api/category.api.repository'
 // import { ApiHomePageRepository } from '../implementations/api/homepage.api.repository'
 // import { ApiServicesPageRepository } from '../implementations/api/servicespage.api.repository'
@@ -105,6 +108,18 @@ class RepositoryFactory {
     return repository
   }
 
+  getClientRepository(): IClientRepository {
+    const key = 'client'
+    
+    if (this.instances.has(key)) {
+      return this.instances.get(key)
+    }
+
+    const repository = this.createClientRepository()
+    this.instances.set(key, repository)
+    return repository
+  }
+
   private createServiceRepository(): IServiceRepository {
     const options = {
       cacheEnabled: this.config.cacheEnabled,
@@ -170,6 +185,22 @@ class RepositoryFactory {
       case 'mock':
       default:
         return new MockContactRepository()
+    }
+  }
+
+  private createClientRepository(): IClientRepository {
+    switch (this.config.dataSource) {
+      case 'api':
+        return this.config.fallbackToMock 
+          ? new FallbackClientRepository()
+          : new ApiClientRepository()
+      
+      case 'hybrid':
+        return new HybridClientRepository()
+      
+      case 'mock':
+      default:
+        return new MockClientRepository()
     }
   }
 
@@ -305,6 +336,99 @@ class HybridServiceRepository extends MockServiceRepository {
 
   // Use mock for read operations (faster during development)
   // This keeps the UI responsive while backend is being developed
+}
+
+/**
+ * Fallback Client Repository
+ * Uses API but falls back to mock data on failure
+ */
+class FallbackClientRepository extends ApiClientRepository {
+  private mockRepository: MockClientRepository
+
+  constructor() {
+    super()
+    this.mockRepository = new MockClientRepository()
+  }
+
+  // Override critical methods with fallback logic
+  override async findById(id: string) {
+    try {
+      return await super.findById(id)
+    } catch (error) {
+      console.warn(`API findById(${id}) failed, using mock data`)
+      return this.mockRepository.findById(id)
+    }
+  }
+
+  override async getDashboardData(clientId: string) {
+    try {
+      return await super.getDashboardData(clientId)
+    } catch (error) {
+      console.warn(`API getDashboardData(${clientId}) failed, using mock data`)
+      return this.mockRepository.getDashboardData(clientId)
+    }
+  }
+
+  override async getVehicles(clientId: string) {
+    try {
+      return await super.getVehicles(clientId)
+    } catch (error) {
+      console.warn(`API getVehicles(${clientId}) failed, using mock data`)
+      return this.mockRepository.getVehicles(clientId)
+    }
+  }
+
+  override async getBookings(clientId: string, filters?: any) {
+    try {
+      return await super.getBookings(clientId, filters)
+    } catch (error) {
+      console.warn(`API getBookings(${clientId}) failed, using mock data`)
+      return this.mockRepository.getBookings(clientId, filters)
+    }
+  }
+}
+
+/**
+ * Hybrid Client Repository
+ * Uses different strategies for different operations
+ */
+class HybridClientRepository extends MockClientRepository {
+  private apiRepository: ApiClientRepository
+
+  constructor() {
+    super()
+    this.apiRepository = new ApiClientRepository()
+  }
+
+  // Use API for write operations
+  override async update(id: string, data: any) {
+    try {
+      return await this.apiRepository.update(id, data)
+    } catch (error) {
+      console.warn(`API update(${id}) failed, using mock repository`)
+      return super.update(id, data)
+    }
+  }
+
+  override async addVehicle(clientId: string, vehicleData: any) {
+    try {
+      return await this.apiRepository.addVehicle(clientId, vehicleData)
+    } catch (error) {
+      console.warn(`API addVehicle(${clientId}) failed, using mock repository`)
+      return super.addVehicle(clientId, vehicleData)
+    }
+  }
+
+  override async createBooking(clientId: string, bookingData: any) {
+    try {
+      return await this.apiRepository.createBooking(clientId, bookingData)
+    } catch (error) {
+      console.warn(`API createBooking(${clientId}) failed, using mock repository`)
+      return super.createBooking(clientId, bookingData)
+    }
+  }
+
+  // Use mock for read operations (faster during development)
 }
 
 // Export singleton instance

@@ -1,0 +1,58 @@
+{
+  "paymentMethods": [
+    {
+      "id": "payment-1",
+      "clientId": "client-1",
+      "type": "card",
+      "provider": "visa",
+      "last4": "1234",
+      "expiryMonth": 12,
+      "expiryYear": 2025,
+      "holderName": "Sarah Johnson",
+      "isPrimary": true,
+      "isActive": true,
+      "createdAt": "2022-01-15T00:00:00.000Z",
+      "updatedAt": "2023-12-01T10:00:00.000Z"
+    },
+    {
+      "id": "payment-2",
+      "clientId": "client-1",
+      "type": "card",
+      "provider": "mastercard",
+      "last4": "5678",
+      "expiryMonth": 6,
+      "expiryYear": 2024,
+      "holderName": "Sarah Johnson",
+      "isPrimary": false,
+      "isActive": true,
+      "createdAt": "2022-03-20T00:00:00.000Z",
+      "updatedAt": "2023-10-15T14:20:00.000Z"
+    },
+    {
+      "id": "payment-3",
+      "clientId": "client-2",
+      "type": "card",
+      "provider": "visa",
+      "last4": "9012",
+      "expiryMonth": 8,
+      "expiryYear": 2026,
+      "holderName": "Michael Chen",
+      "isPrimary": true,
+      "isActive": true,
+      "createdAt": "2019-05-10T00:00:00.000Z",
+      "updatedAt": "2024-01-08T09:30:00.000Z"
+    },
+    {
+      "id": "payment-4",
+      "clientId": "client-1",
+      "type": "wallet",
+      "provider": "apple",
+      "last4": "3456",
+      "holderName": "Apple Pay",
+      "isPrimary": false,
+      "isActive": true,
+      "createdAt": "2023-05-10T00:00:00.000Z",
+      "updatedAt": "2023-12-20T16:15:00.000Z"
+    }
+  ]
+}

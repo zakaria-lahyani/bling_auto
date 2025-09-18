@@ -1,0 +1,80 @@
+{
+  "clients": [
+    {
+      "id": "client-1",
+      "name": "Sarah Johnson",
+      "email": "sarah@example.com",
+      "phone": "+1 (555) 123-4567",
+      "avatar": null,
+      "membershipStatus": "premium",
+      "memberSince": "2020-06-15T00:00:00.000Z",
+      "loyaltyPoints": 850,
+      "walletBalance": 45.50,
+      "preferredPaymentMethodId": "payment-1",
+      "defaultAddressId": "address-1",
+      "preferences": {
+        "notifications": {
+          "email": true,
+          "sms": true,
+          "push": true
+        },
+        "services": {
+          "ecoFriendly": true,
+          "premiumProducts": true,
+          "expressService": false,
+          "preferredTimeSlots": ["9:00 AM", "2:00 PM"]
+        },
+        "communication": {
+          "marketingEmails": false,
+          "serviceTips": true,
+          "promotions": true
+        },
+        "display": {
+          "darkMode": false,
+          "language": "en",
+          "currency": "USD"
+        }
+      },
+      "createdAt": "2020-06-15T00:00:00.000Z",
+      "updatedAt": "2024-01-15T10:30:00.000Z"
+    },
+    {
+      "id": "client-2",
+      "name": "Michael Chen",
+      "email": "michael@example.com",
+      "phone": "+1 (555) 987-6543",
+      "avatar": null,
+      "membershipStatus": "elite",
+      "memberSince": "2019-03-20T00:00:00.000Z",
+      "loyaltyPoints": 2150,
+      "walletBalance": 120.00,
+      "preferredPaymentMethodId": "payment-3",
+      "defaultAddressId": "address-3",
+      "preferences": {
+        "notifications": {
+          "email": true,
+          "sms": false,
+          "push": true
+        },
+        "services": {
+          "ecoFriendly": false,
+          "premiumProducts": true,
+          "expressService": true,
+          "preferredTimeSlots": ["8:00 AM", "6:00 PM"]
+        },
+        "communication": {
+          "marketingEmails": true,
+          "serviceTips": true,
+          "promotions": true
+        },
+        "display": {
+          "darkMode": true,
+          "language": "en",
+          "currency": "USD"
+        }
+      },
+      "createdAt": "2019-03-20T00:00:00.000Z",
+      "updatedAt": "2024-01-14T15:45:00.000Z"
+    }
+  ]
+}

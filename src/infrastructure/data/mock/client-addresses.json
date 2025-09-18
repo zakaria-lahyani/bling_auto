@@ -1,0 +1,76 @@
+{
+  "addresses": [
+    {
+      "id": "address-1",
+      "clientId": "client-1",
+      "label": "Home",
+      "street": "123 Main Street",
+      "city": "Brooklyn",
+      "state": "NY",
+      "zipCode": "11201",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 40.6892,
+        "longitude": -73.9442
+      },
+      "isDefault": true,
+      "instructions": "Blue house with white garage. Please park in driveway.",
+      "createdAt": "2020-06-15T00:00:00.000Z",
+      "updatedAt": "2023-08-10T14:30:00.000Z"
+    },
+    {
+      "id": "address-2",
+      "clientId": "client-1",
+      "label": "Office",
+      "street": "456 Business Ave",
+      "city": "Manhattan",
+      "state": "NY",
+      "zipCode": "10001",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 40.7505,
+        "longitude": -73.9934
+      },
+      "isDefault": false,
+      "instructions": "Office building parking garage, Level B2, Space 24.",
+      "createdAt": "2021-03-10T00:00:00.000Z",
+      "updatedAt": "2023-11-15T09:45:00.000Z"
+    },
+    {
+      "id": "address-3",
+      "clientId": "client-2",
+      "label": "Home",
+      "street": "789 Oak Boulevard",
+      "city": "Queens",
+      "state": "NY",
+      "zipCode": "11375",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 40.7282,
+        "longitude": -73.8370
+      },
+      "isDefault": true,
+      "instructions": "Corner house with red door. Driveway on the left side.",
+      "createdAt": "2019-03-20T00:00:00.000Z",
+      "updatedAt": "2024-01-05T16:20:00.000Z"
+    },
+    {
+      "id": "address-4",
+      "clientId": "client-2",
+      "label": "Vacation Home",
+      "street": "321 Beach Road",
+      "city": "Montauk",
+      "state": "NY",
+      "zipCode": "11954",
+      "country": "USA",
+      "coordinates": {
+        "latitude": 41.0374,
+        "longitude": -71.9540
+      },
+      "isDefault": false,
+      "instructions": "Beachfront house with wooden deck. Call when arrived.",
+      "createdAt": "2020-07-01T00:00:00.000Z",
+      "updatedAt": "2023-06-20T12:00:00.000Z"
+    }
+  ]
+}

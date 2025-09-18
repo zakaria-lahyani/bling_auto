@@ -46,6 +46,40 @@ export {
   type CtaSectionDTO
 } from './homepage.dto'
 
+// Client DTOs
+export {
+  ClientMapper,
+  ClientResponseSchema,
+  ClientCreateSchema,
+  ClientUpdateSchema,
+  ClientProfileSchema,
+  ClientDashboardSchema,
+  ClientStatsSchema,
+  ServiceRecommendationSchema,
+  VehicleCreateSchema,
+  VehicleUpdateSchema,
+  AddressCreateSchema,
+  AddressUpdateSchema,
+  PaymentMethodCreateSchema,
+  PaymentMethodUpdateSchema,
+  type ClientResponseDTO,
+  type ClientCreateDTO,
+  type ClientUpdateDTO,
+  type ClientProfileDTO,
+  type ClientDashboardDTO,
+  type ClientStatsDTO,
+  type VehicleDTO,
+  type VehicleCreateDTO,
+  type VehicleUpdateDTO,
+  type ClientAddressDTO,
+  type AddressCreateDTO,
+  type AddressUpdateDTO,
+  type PaymentMethodDTO,
+  type PaymentMethodCreateDTO,
+  type PaymentMethodUpdateDTO,
+  type ServiceRecommendationDTO
+} from './client.dto'
+
 // Common validation utilities
 import { z } from 'zod'
 

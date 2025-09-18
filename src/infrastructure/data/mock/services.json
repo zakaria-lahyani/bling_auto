@@ -15,7 +15,7 @@
         "name": "Wash Services",
         "slug": "wash",
         "description": "Basic to premium exterior and interior cleaning services",
-        "serviceCount": 3
+        "serviceCount": 4
       },
       "featured": false,
       "popular": true,
@@ -24,6 +24,7 @@
         "inShop": true
       },
       "features": ["Exterior wash", "Soap and rinse", "Basic dry"],
+      "benefits": ["Quick and affordable", "No water spots", "Mobile convenience"],
       "tags": ["exterior", "quick", "affordable"],
       "rating": 4.2,
       "reviewCount": 156,
@@ -46,7 +47,7 @@
         "name": "Wash Services", 
         "slug": "wash",
         "description": "Basic to premium exterior and interior cleaning services",
-        "serviceCount": 5
+        "serviceCount": 4
       },
       "featured": true,
       "popular": true,
@@ -55,6 +56,7 @@
         "inShop": true
       },
       "features": ["Interior cleaning", "Exterior detail", "Premium products"],
+      "benefits": ["Long-lasting shine", "Professional results", "Complete protection", "Enhanced resale value"],
       "tags": ["interior", "exterior", "premium", "detailed"],
       "rating": 4.8,
       "reviewCount": 89,
@@ -86,6 +88,7 @@
         "inShop": false
       },
       "features": ["Mobile service", "Quick wash", "At your location"],
+      "benefits": ["No travel time", "Convenient scheduling", "Save time and effort"],
       "estimatedTime": { "min": 40, "max": 50 },
       "createdAt": "2024-01-01T00:00:00Z",
       "updatedAt": "2024-01-01T00:00:00Z",
@@ -108,7 +111,7 @@
         "name": "Detailing Services",
         "slug": "detailing",
         "description": "Professional detailing services",
-        "serviceCount": 3
+        "serviceCount": 1
       },
       "featured": true,
       "popular": false,
@@ -233,7 +236,7 @@
       "name": "Detailing Services",
       "slug": "detailing",
       "description": "Professional detailing services for interior and exterior",
-      "serviceCount": 2,
+      "serviceCount": 1,
       "image": "/images/categories/detailing.jpg",
       "featured": true
     },

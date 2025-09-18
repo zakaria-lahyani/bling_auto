@@ -8,11 +8,17 @@
 import type { Service } from '@/core/entities/service/types'
 import type { HomePageData } from '@/infrastructure/repositories/interfaces/homepage.repository'
 import type { Booking } from '@/core/entities/booking/types'
+import type { Client } from '@/core/entities/client/types'
 
 // Import JSON data
 import servicesData from './services.json'
 import homepageData from './homepage.json'
 import bookingsData from './bookings.json'
+import clientsData from './clients.json'
+import vehiclesData from './vehicles.json'
+import paymentMethodsData from './payment-methods.json'
+import clientBookingsData from './client-bookings.json'
+import clientAddressesData from './client-addresses.json'
 
 // Type definitions for JSON structure
 interface ServicesJSON {
@@ -23,6 +29,26 @@ interface ServicesJSON {
 interface BookingsJSON {
   bookings: any[]
   bookingStats: any
+}
+
+interface ClientsJSON {
+  clients: any[]
+}
+
+interface VehiclesJSON {
+  vehicles: any[]
+}
+
+interface PaymentMethodsJSON {
+  paymentMethods: any[]
+}
+
+interface ClientBookingsJSON {
+  bookings: any[]
+}
+
+interface ClientAddressesJSON {
+  addresses: any[]
 }
 
 // Cache for loaded data
@@ -296,6 +322,205 @@ export class MockDataLoader {
     return true
   }
 
+  // ============================================================================
+  // CLIENT-RELATED DATA METHODS
+  // ============================================================================
+
+  /**
+   * Load all clients
+   */
+  static getClients(): Client[] {
+    return cache.get('clients', () => {
+      const data = clientsData as ClientsJSON
+      return data.clients || []
+    })
+  }
+
+  /**
+   * Get client by ID
+   */
+  static getClientById(id: string): Client | null {
+    const clients = this.getClients()
+    return clients.find(client => client.id === id) || null
+  }
+
+  /**
+   * Get client by email
+   */
+  static getClientByEmail(email: string): Client | null {
+    const clients = this.getClients()
+    return clients.find(client => client.email === email) || null
+  }
+
+  /**
+   * Get client by phone
+   */
+  static getClientByPhone(phone: string): Client | null {
+    const clients = this.getClients()
+    return clients.find(client => client.phone === phone) || null
+  }
+
+  /**
+   * Load all vehicles
+   */
+  static getVehicles(): any[] {
+    return cache.get('vehicles', () => {
+      const data = vehiclesData as VehiclesJSON
+      return data.vehicles || []
+    })
+  }
+
+  /**
+   * Get vehicles by client ID
+   */
+  static getVehiclesByClientId(clientId: string): any[] {
+    const vehicles = this.getVehicles()
+    return vehicles.filter(vehicle => vehicle.clientId === clientId)
+  }
+
+  /**
+   * Get vehicle by ID
+   */
+  static getVehicleById(id: string): any | null {
+    const vehicles = this.getVehicles()
+    return vehicles.find(vehicle => vehicle.id === id) || null
+  }
+
+  /**
+   * Load all payment methods
+   */
+  static getPaymentMethods(): any[] {
+    return cache.get('paymentMethods', () => {
+      const data = paymentMethodsData as PaymentMethodsJSON
+      return data.paymentMethods || []
+    })
+  }
+
+  /**
+   * Get payment methods by client ID
+   */
+  static getPaymentMethodsByClientId(clientId: string): any[] {
+    const methods = this.getPaymentMethods()
+    return methods.filter(method => method.clientId === clientId)
+  }
+
+  /**
+   * Get payment method by ID
+   */
+  static getPaymentMethodById(id: string): any | null {
+    const methods = this.getPaymentMethods()
+    return methods.find(method => method.id === id) || null
+  }
+
+  /**
+   * Load all client bookings
+   */
+  static getClientBookings(): any[] {
+    return cache.get('clientBookings', () => {
+      const data = clientBookingsData as ClientBookingsJSON
+      return data.bookings || []
+    })
+  }
+
+  /**
+   * Get client bookings by client ID
+   */
+  static getClientBookingsByClientId(clientId: string): any[] {
+    const bookings = this.getClientBookings()
+    return bookings.filter(booking => booking.clientId === clientId)
+  }
+
+  /**
+   * Get upcoming bookings by client ID
+   */
+  static getUpcomingBookingsByClientId(clientId: string): any[] {
+    const bookings = this.getClientBookingsByClientId(clientId)
+    const now = new Date()
+    return bookings
+      .filter(booking => new Date(booking.scheduledDate) > now)
+      .sort((a, b) => new Date(a.scheduledDate).getTime() - new Date(b.scheduledDate).getTime())
+  }
+
+  /**
+   * Get client booking by ID
+   */
+  static getClientBookingById(id: string): any | null {
+    const bookings = this.getClientBookings()
+    return bookings.find(booking => booking.id === id) || null
+  }
+
+  /**
+   * Load all client addresses
+   */
+  static getClientAddresses(): any[] {
+    return cache.get('clientAddresses', () => {
+      const data = clientAddressesData as ClientAddressesJSON
+      return data.addresses || []
+    })
+  }
+
+  /**
+   * Get client addresses by client ID
+   */
+  static getClientAddressesByClientId(clientId: string): any[] {
+    const addresses = this.getClientAddresses()
+    return addresses.filter(address => address.clientId === clientId)
+  }
+
+  /**
+   * Get client address by ID
+   */
+  static getClientAddressById(id: string): any | null {
+    const addresses = this.getClientAddresses()
+    return addresses.find(address => address.id === id) || null
+  }
+
+  /**
+   * Search clients by name or email
+   */
+  static searchClients(query: string): Client[] {
+    const clients = this.getClients()
+    const lowercaseQuery = query.toLowerCase()
+    
+    return clients.filter(client =>
+      client.name.toLowerCase().includes(lowercaseQuery) ||
+      client.email.toLowerCase().includes(lowercaseQuery)
+    )
+  }
+
+  /**
+   * Filter client bookings
+   */
+  static filterClientBookings(clientId: string, filters: {
+    status?: string
+    upcoming?: boolean
+    dateFrom?: string
+    dateTo?: string
+  }): any[] {
+    let bookings = this.getClientBookingsByClientId(clientId)
+    
+    if (filters.status) {
+      bookings = bookings.filter(booking => booking.status === filters.status)
+    }
+    
+    if (filters.upcoming) {
+      const now = new Date()
+      bookings = bookings.filter(booking => new Date(booking.scheduledDate) > now)
+    }
+    
+    if (filters.dateFrom) {
+      const fromDate = new Date(filters.dateFrom)
+      bookings = bookings.filter(booking => new Date(booking.scheduledDate) >= fromDate)
+    }
+    
+    if (filters.dateTo) {
+      const toDate = new Date(filters.dateTo)
+      bookings = bookings.filter(booking => new Date(booking.scheduledDate) <= toDate)
+    }
+    
+    return bookings
+  }
+
   /**
    * Clear all caches
    */
@@ -317,7 +542,7 @@ export class MockDataLoader {
   /**
    * Refresh specific data type
    */
-  static refresh(dataType: 'services' | 'categories' | 'homepage' | 'bookings' | 'all'): void {
+  static refresh(dataType: 'services' | 'categories' | 'homepage' | 'bookings' | 'clients' | 'vehicles' | 'paymentMethods' | 'clientBookings' | 'clientAddresses' | 'all'): void {
     if (dataType === 'all') {
       cache.clear()
     } else {
@@ -332,5 +557,12 @@ export const loadCategories = () => MockDataLoader.getCategories()
 export const loadHomepageData = () => MockDataLoader.getHomepageData()
 export const loadBookings = () => MockDataLoader.getBookings()
 
+// Client-related data loaders
+export const loadClients = () => MockDataLoader.getClients()
+export const loadVehicles = () => MockDataLoader.getVehicles()
+export const loadPaymentMethods = () => MockDataLoader.getPaymentMethods()
+export const loadClientBookings = () => MockDataLoader.getClientBookings()
+export const loadClientAddresses = () => MockDataLoader.getClientAddresses()
+
 // Export for backward compatibility
-export { servicesData, homepageData, bookingsData }
+export { servicesData, homepageData, bookingsData, clientsData, vehiclesData, paymentMethodsData, clientBookingsData, clientAddressesData }

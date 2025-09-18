@@ -1,0 +1,60 @@
+{
+  "vehicles": [
+    {
+      "id": "vehicle-1",
+      "clientId": "client-1",
+      "make": "Tesla",
+      "model": "Model 3",
+      "year": "2022",
+      "color": "Pearl White",
+      "plateNumber": "ABC123",
+      "vin": "5YJ3E1EA5KF123456",
+      "isPrimary": true,
+      "notes": "Main vehicle for family use",
+      "createdAt": "2022-01-15T00:00:00.000Z",
+      "updatedAt": "2024-01-10T09:20:00.000Z"
+    },
+    {
+      "id": "vehicle-2",
+      "clientId": "client-1",
+      "make": "BMW",
+      "model": "X5",
+      "year": "2021",
+      "color": "Black",
+      "plateNumber": "XYZ789",
+      "vin": "WBAJA7C55KC123456",
+      "isPrimary": false,
+      "notes": "Weekend vehicle",
+      "createdAt": "2022-03-20T00:00:00.000Z",
+      "updatedAt": "2023-12-15T14:30:00.000Z"
+    },
+    {
+      "id": "vehicle-3",
+      "clientId": "client-2",
+      "make": "Audi",
+      "model": "A4",
+      "year": "2023",
+      "color": "Silver",
+      "plateNumber": "MNO456",
+      "vin": "WAUDH74F07N123456",
+      "isPrimary": true,
+      "notes": "Business vehicle",
+      "createdAt": "2023-01-10T00:00:00.000Z",
+      "updatedAt": "2024-01-05T11:15:00.000Z"
+    },
+    {
+      "id": "vehicle-4",
+      "clientId": "client-2",
+      "make": "Mercedes",
+      "model": "GLE",
+      "year": "2022",
+      "color": "White",
+      "plateNumber": "DEF789",
+      "vin": "4JGDF7CE3MA123456",
+      "isPrimary": false,
+      "notes": "Family SUV",
+      "createdAt": "2023-06-05T00:00:00.000Z",
+      "updatedAt": "2023-11-20T16:45:00.000Z"
+    }
+  ]
+}

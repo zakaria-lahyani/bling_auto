@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '../index.css'
 import StructuredData from '../components/StructuredData'
 import { Providers } from '@/infrastructure/providers/providers'
+import DevNavigation from '../components/DevNavigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -91,6 +92,7 @@ export default function RootLayout({
         <StructuredData />
         <Providers>
           {children}
+          <DevNavigation />
         </Providers>
       </body>
     </html>

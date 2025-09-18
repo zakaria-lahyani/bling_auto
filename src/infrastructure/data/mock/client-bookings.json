@@ -1,0 +1,139 @@
+{
+  "bookings": [
+    {
+      "id": "booking-1",
+      "clientId": "client-1",
+      "serviceId": "service-1",
+      "vehicleId": "vehicle-1",
+      "addressId": "address-1",
+      "scheduledDate": "2024-01-20T14:00:00.000Z",
+      "scheduledTime": "2:00 PM",
+      "estimatedDuration": 90,
+      "status": "confirmed",
+      "paymentMethodId": "payment-1",
+      "price": {
+        "basePrice": 75.00,
+        "discount": 7.50,
+        "discountReason": "Premium member discount",
+        "addOns": [
+          {
+            "id": "addon-1",
+            "name": "Interior cleaning",
+            "price": 15.00,
+            "quantity": 1
+          }
+        ],
+        "serviceFee": 2.50,
+        "tip": 10.00,
+        "tax": 7.20,
+        "total": 85.20,
+        "currency": "USD",
+        "promoCodeApplied": null,
+        "loyaltyPointsUsed": 0
+      },
+      "washer": {
+        "id": "washer-1",
+        "name": "John Martinez",
+        "photo": null,
+        "rating": 4.8,
+        "totalJobs": 324,
+        "phoneNumber": "+1 (555) 123-9876",
+        "isAvailable": true
+      },
+      "notes": "Please park in the driveway",
+      "completedAt": null,
+      "rating": null,
+      "createdAt": "2024-01-15T10:30:00.000Z",
+      "updatedAt": "2024-01-16T09:15:00.000Z"
+    },
+    {
+      "id": "booking-2",
+      "clientId": "client-1",
+      "serviceId": "service-2",
+      "vehicleId": "vehicle-2",
+      "addressId": "address-1",
+      "scheduledDate": "2024-01-10T10:00:00.000Z",
+      "scheduledTime": "10:00 AM",
+      "estimatedDuration": 60,
+      "status": "completed",
+      "paymentMethodId": "payment-1",
+      "price": {
+        "basePrice": 45.00,
+        "discount": 4.50,
+        "discountReason": "Premium member discount",
+        "addOns": [],
+        "serviceFee": 2.50,
+        "tip": 8.00,
+        "tax": 4.08,
+        "total": 55.08,
+        "currency": "USD",
+        "promoCodeApplied": null,
+        "loyaltyPointsUsed": 0
+      },
+      "washer": {
+        "id": "washer-2",
+        "name": "Maria Rodriguez",
+        "photo": null,
+        "rating": 4.9,
+        "totalJobs": 567,
+        "phoneNumber": "+1 (555) 987-6543",
+        "isAvailable": true
+      },
+      "notes": null,
+      "completedAt": "2024-01-10T11:15:00.000Z",
+      "rating": {
+        "rating": 5,
+        "review": "Excellent service! Very thorough and professional.",
+        "photos": [],
+        "washerResponse": null,
+        "createdAt": "2024-01-10T12:00:00.000Z"
+      },
+      "createdAt": "2024-01-08T14:20:00.000Z",
+      "updatedAt": "2024-01-10T12:00:00.000Z"
+    },
+    {
+      "id": "booking-3",
+      "clientId": "client-2",
+      "serviceId": "service-3",
+      "vehicleId": "vehicle-3",
+      "addressId": "address-3",
+      "scheduledDate": "2024-01-25T16:00:00.000Z",
+      "scheduledTime": "4:00 PM",
+      "estimatedDuration": 120,
+      "status": "pending",
+      "paymentMethodId": "payment-3",
+      "price": {
+        "basePrice": 120.00,
+        "discount": 24.00,
+        "discountReason": "Elite member discount (20%)",
+        "addOns": [
+          {
+            "id": "addon-2",
+            "name": "Engine bay cleaning",
+            "price": 25.00,
+            "quantity": 1
+          },
+          {
+            "id": "addon-3",
+            "name": "Tire shine",
+            "price": 10.00,
+            "quantity": 1
+          }
+        ],
+        "serviceFee": 3.00,
+        "tip": 0,
+        "tax": 10.56,
+        "total": 144.56,
+        "currency": "USD",
+        "promoCodeApplied": null,
+        "loyaltyPointsUsed": 100
+      },
+      "washer": null,
+      "notes": "Please call upon arrival",
+      "completedAt": null,
+      "rating": null,
+      "createdAt": "2024-01-18T11:45:00.000Z",
+      "updatedAt": "2024-01-18T11:45:00.000Z"
+    }
+  ]
+}

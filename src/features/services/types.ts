@@ -2,7 +2,15 @@
 export type {
   Service,
   ServiceFilters,
-} from '@/core/entities/service/types'
+  ServiceSummary,
+  ServiceSearchParams,
+  ServiceSearchResponse,
+  ServiceCategory,
+  ServiceAvailability
+} from '../../core/entities/service/types'
+
+// Import for local use
+import type { Service, ServiceFilters } from '../../core/entities/service/types'
 
 // Feature-specific view models
 export interface ServiceViewModel {
@@ -13,25 +21,26 @@ export interface ServiceViewModel {
   duration: string
   availability: 'onsite' | 'instore' | 'both'
   categories: string[]
-  image?: string
+  image: string
   isActive: boolean
   isPopular: boolean
   availabilityDisplay: string
   categoryDisplay: string
 }
 
-export interface ServiceListViewModel {
-  services: ServiceViewModel[]
+// Feature-specific hooks return types
+export interface ServiceListState {
+  services: Service[]
   totalCount: number
   hasMore: boolean
   isLoading: boolean
   error?: string
+  filters: ServiceFilters
 }
 
-export interface ServiceCardProps {
-  service: ServiceViewModel
-  onSelect?: (serviceId: string) => void
-  onBook?: (serviceId: string) => void
-  showBookButton?: boolean
-  isSelected?: boolean
+export interface ServiceSearchState {
+  query: string
+  results: Service[]
+  isSearching: boolean
+  searchError?: string
 }

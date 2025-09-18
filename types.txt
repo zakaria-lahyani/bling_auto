@@ -1,202 +1,29 @@
-PS C:\Users\zak\Desktop\workspace\apps\bling_auto> npm run typecheck
+ npm run typecheck
 
 > car-wash-app@0.1.0 typecheck
 > tsc --noEmit
 
-src/infrastructure/dto/homepage.dto.ts:110:37 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+src/infrastructure/repositories/implementations/mock/client.mock.repository.ts:54:7 - error TS2322: Type 'string' is not assignable to type 'Date'.
 
-110           icon: dto.hero.primaryCTA.icon
-                                        ~~~~
+54       updatedAt: new Date().toISOString()
+         ~~~~~~~~~
 
-src/infrastructure/dto/homepage.dto.ts:115:39 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
+  src/core/entities/client/types.ts:24:3
+    24   updatedAt: Date
+         ~~~~~~~~~
+    The expected type comes from property 'updatedAt' which is declared here on type 'Client'
 
-115           icon: dto.hero.secondaryCTA.icon
-                                          ~~~~
+src/infrastructure/repositories/implementations/mock/client.mock.repository.ts:80:7 - error TS2322: Type 'string' is not assignable to type 'Date'.
 
-src/infrastructure/dto/homepage.dto.ts:118:7 - error TS2353: Object literal may only specify known properties, and 'featuredServices' does not exist in type 'HomePageData'.
+80       updatedAt: new Date().toISOString()
+         ~~~~~~~~~
 
-118       featuredServices: dto.featuredServices.map(service => ({
-          ~~~~~~~~~~~~~~~~
+  src/core/entities/client/types.ts:24:3
+    24   updatedAt: Date
+         ~~~~~~~~~
+    The expected type comes from property 'updatedAt' which is declared here on type 'Client'
 
-src/infrastructure/dto/homepage.dto.ts:138:25 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
 
-138           text: dto.cta.primaryButton?.text || dto.cta.primaryCTA?.text || '',
-                            ~~~~~~~~~~~~~
+Found 2 errors in the same file, starting at: src/infrastructure/repositories/implementations/mock/client.mock.repository.ts:54
 
-src/infrastructure/dto/homepage.dto.ts:139:25 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-139           href: dto.cta.primaryButton?.href || dto.cta.primaryCTA?.href || ''
-                            ~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:141:34 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-141         secondaryButton: dto.cta.secondaryButton ? {
-                                     ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:142:25 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-142           text: dto.cta.secondaryButton.text,
-                            ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:143:25 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-143           href: dto.cta.secondaryButton.href
-                            ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:147:18 - error TS2339: Property 'stats' does not exist on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'.
-
-147       stats: dto.stats
-                     ~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:159:9 - error TS2353: Object literal may only specify known properties, and 'badges' does not exist in type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
-
-159         badges: data.hero.badges,
-            ~~~~~~
-
-  src/infrastructure/dto/homepage.dto.ts:80:3
-    80   hero: HeroSectionSchema,
-         ~~~~~~~~~~~~~~~~~~~~~~~
-    The expected type comes from property 'hero' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
-
-src/infrastructure/dto/homepage.dto.ts:166:7 - error TS2322: Type 'HomeServicePreview[]' is not assignable to type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }[]'.
-  Property 'href' is missing in type 'HomeServicePreview' but required in type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }'.
-
-166       featuredServices: data.services,
-          ~~~~~~~~~~~~~~~~
-
-  src/infrastructure/dto/homepage.dto.ts:44:3
-    44   href: z.string(),
-         ~~~~~~~~~~~~~~~~
-    'href' is declared here.
-  src/infrastructure/dto/homepage.dto.ts:81:3
-    81   featuredServices: z.array(HomeServicePreviewSchema),
-         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    The expected type comes from property 'featuredServices' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
-
-src/infrastructure/dto/homepage.dto.ts:174:9 - error TS2353: Object literal may only specify known properties, and 'primaryButton' does not exist in type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-174         primaryButton: data.cta.primaryButton,
-            ~~~~~~~~~~~~~
-
-  src/infrastructure/dto/homepage.dto.ts:83:3
-    83   cta: CtaSectionSchema,
-         ~~~~~~~~~~~~~~~~~~~~~
-    The expected type comes from property 'cta' which is declared here on type '{ hero: { title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; ...'
-
-src/infrastructure/dto/homepage.dto.ts:189:19 - error TS2339: Property 'badges' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
-
-189       badges: dto.badges,
-                      ~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:193:30 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
-
-193         icon: dto.primaryCTA.icon
-                                 ~~~~
-
-src/infrastructure/dto/homepage.dto.ts:198:32 - error TS2339: Property 'icon' does not exist on type '{ text: string; href: string; variant?: "primary" | "secondary" | undefined; }'.
-
-198         icon: dto.secondaryCTA.icon
-                                   ~~~~
-
-src/infrastructure/dto/homepage.dto.ts:200:18 - error TS2339: Property 'image' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
-
-200       image: dto.image,
-                     ~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:202:18 - error TS2339: Property 'theme' does not exist on type '{ title: string; subtitle: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; description?: string | undefined; secondaryCTA?: { text: string; href: string; variant?: "primary" | ... 1 more ... | undefined; } | undefined; backgroundImage?: string | undefined; stats?: ...'.
-
-202       theme: dto.theme
-                     ~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:218:25 - error TS2551: Property 'features' does not exist on type '{ description: string; image: string; id: string; name: string; href: string; price: number; duration: string; featured?: boolean | undefined; popular?: boolean | undefined; }'. Did you mean 'featured'?
-
-218       features: service.features || []
-                            ~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:247:19 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-247         text: dto.primaryButton?.text || dto.primaryCTA?.text || '',
-                      ~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:248:19 - error TS2339: Property 'primaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-248         href: dto.primaryButton?.href || dto.primaryCTA?.href || ''
-                      ~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:250:28 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-250       secondaryButton: dto.secondaryButton ? {
-                               ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:251:19 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-251         text: dto.secondaryButton.text,
-                      ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/homepage.dto.ts:252:19 - error TS2339: Property 'secondaryButton' does not exist on type '{ title: string; description: string; primaryCTA: { text: string; href: string; variant?: "primary" | "secondary" | undefined; }; secondaryCTA?: { text: string; href: string; variant?: "primary" | "secondary" | undefined; } | undefined; backgroundImage?: string | undefined; backgroundType?: "gradient" | ... 2 more ....'.
-
-252         href: dto.secondaryButton.href
-                      ~~~~~~~~~~~~~~~
-
-src/infrastructure/dto/service.dto.ts:91:7 - error TS2561: Object literal may only specify known properties, but 'images' does not exist in type 'Service'. Did you mean to write 'image'?
-
-91       images: dto.images || [],
-         ~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:132:30 - error TS2339: Property 'items' does not exist on type 'never'.
-
-132           data: servicesData.items,
-                                 ~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:133:35 - error TS2339: Property 'isLoading' does not exist on type 'never'.
-
-133           isLoading: servicesData.isLoading,
-                                      ~~~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:134:33 - error TS2339: Property 'isError' does not exist on type 'never'.
-
-134           isError: servicesData.isError,
-                                    ~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:135:31 - error TS2339: Property 'error' does not exist on type 'never'.
-
-135           error: servicesData.error,
-                                  ~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:136:33 - error TS2339: Property 'isEmpty' does not exist on type 'never'.
-
-136           isEmpty: servicesData.isEmpty,
-                                    ~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:137:33 - error TS2339: Property 'isStale' does not exist on type 'never'.
-
-137           isStale: servicesData.isStale,
-                                    ~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:138:36 - error TS2339: Property 'isFetching' does not exist on type 'never'.
-
-138           isFetching: servicesData.isFetching,
-                                       ~~~~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:139:31 - error TS2339: Property 'retry' does not exist on type 'never'.
-
-139           retry: servicesData.retry,
-                                  ~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:140:33 - error TS2339: Property 'refetch' does not exist on type 'never'.
-
-140           refetch: servicesData.refetch,
-                                    ~~~~~~~
-
-src/shared/components/examples/ImprovedServiceGrid.tsx:141:37 - error TS2339: Property 'lastUpdated' does not exist on type 'never'.
-
-141           lastUpdated: servicesData.lastUpdated
-                                        ~~~~~~~~~~~
-
-
-Found 34 errors in 3 files.
-
-Errors  Files
-    23  src/infrastructure/dto/homepage.dto.ts:110
-     1  src/infrastructure/dto/service.dto.ts:91
-    10  src/shared/components/examples/ImprovedServiceGrid.tsx:132
+PS C:\Users\zak\Desktop\workspace\apps\bling_auto>
