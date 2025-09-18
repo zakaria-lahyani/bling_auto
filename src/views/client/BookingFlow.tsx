@@ -1,13 +1,13 @@
 /**
- * Booking Flow - Streamlined booking process for clients
+ * Booking Flow - Premium, Modern booking experience
  * 
- * Step-by-step booking with service selection, scheduling,
- * location picker, and payment confirmation.
+ * Features smooth step transitions, enhanced visual feedback,
+ * and premium UI elements with glassmorphism design.
  */
 
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Car,
   Calendar,
@@ -27,7 +27,15 @@ import {
   MapPinIcon,
   Plus,
   Gift,
-  Info
+  Info,
+  Zap,
+  Heart,
+  Crown,
+  Flame,
+  ChevronRight,
+  Users,
+  Timer,
+  Truck
 } from 'lucide-react'
 import ClientLayout from '@/shared/layouts/client/ClientLayout'
 
@@ -55,20 +63,25 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
   const [selectedDateTime, setSelectedDateTime] = useState<any>(null)
   const [selectedLocation, setSelectedLocation] = useState<any>(null)
   const [selectedPayment, setSelectedPayment] = useState<any>(null)
+  const [isAnimating, setIsAnimating] = useState(false)
 
-  // Mock data
+  // Enhanced service data with modern appeal
   const services = [
     {
       id: 'basic',
-      name: 'Basic Wash',
+      name: 'Essential Wash',
       price: 25,
       originalPrice: null,
       duration: '30 min',
-      description: 'Essential exterior wash with soap and rinse',
-      features: ['Exterior wash', 'Soap and rinse', 'Basic dry'],
+      description: 'Perfect for regular maintenance with premium soap and care',
+      features: ['Exterior wash', 'Premium soap', 'Spot-free rinse', 'Basic dry'],
       popular: true,
       discount: null,
-      icon: Droplets
+      icon: Droplets,
+      color: 'from-blue-500 to-blue-600',
+      bgColor: 'from-blue-50 to-blue-100',
+      rating: 4.8,
+      bookings: '2.1k+'
     },
     {
       id: 'premium',
@@ -76,35 +89,47 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
       price: 72,
       originalPrice: 85,
       duration: '2 hours',
-      description: 'Complete interior and exterior detailing',
-      features: ['Interior cleaning', 'Exterior detail', 'Premium products', 'Tire shine'],
+      description: 'Complete transformation inside and out',
+      features: ['Interior deep clean', 'Exterior detail', 'Premium products', 'Tire shine', 'Air freshener'],
       recommended: true,
       discount: 15,
-      icon: Sparkles
+      icon: Sparkles,
+      color: 'from-purple-500 to-purple-600',
+      bgColor: 'from-purple-50 to-purple-100',
+      rating: 4.9,
+      bookings: '1.8k+'
     },
     {
       id: 'express',
-      name: 'Express Wax',
+      name: 'Express Shine',
       price: 45,
       originalPrice: null,
       duration: '45 min',
-      description: 'Quick wash with protective wax coating',
-      features: ['Wash & rinse', 'Wax application', 'Quick dry'],
+      description: 'Quick wash with lasting protection',
+      features: ['Wash & rinse', 'Wax application', 'Quick dry', 'Wheel clean'],
       popular: false,
       discount: null,
-      icon: Star
+      icon: Zap,
+      color: 'from-amber-500 to-amber-600',
+      bgColor: 'from-amber-50 to-amber-100',
+      rating: 4.7,
+      bookings: '980+'
     },
     {
       id: 'ceramic',
-      name: 'Ceramic Coating',
+      name: 'Ceramic Shield',
       price: 254,
       originalPrice: 299,
       duration: '4 hours',
-      description: 'Premium paint protection with ceramic coating',
-      features: ['Paint correction', 'Ceramic application', '2-year warranty', 'Hydrophobic finish'],
+      description: 'Ultimate protection with ceramic coating technology',
+      features: ['Paint correction', 'Ceramic application', '2-year warranty', 'Hydrophobic finish', 'UV protection'],
       premium: true,
       discount: 15,
-      icon: Shield
+      icon: Shield,
+      color: 'from-emerald-500 to-emerald-600',
+      bgColor: 'from-emerald-50 to-emerald-100',
+      rating: 5.0,
+      bookings: '450+'
     }
   ]
 
@@ -132,11 +157,11 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
   ]
 
   const steps = [
-    { key: 'service', title: 'Service', completed: currentStep !== 'service' },
-    { key: 'datetime', title: 'Date & Time', completed: ['location', 'payment', 'confirmation'].includes(currentStep) },
-    { key: 'location', title: 'Location', completed: ['payment', 'confirmation'].includes(currentStep) },
-    { key: 'payment', title: 'Payment', completed: currentStep === 'confirmation' },
-    { key: 'confirmation', title: 'Confirm', completed: false }
+    { key: 'service', title: 'Service', icon: Car, completed: currentStep !== 'service', color: 'from-blue-500 to-blue-600' },
+    { key: 'datetime', title: 'Date & Time', icon: Calendar, completed: ['location', 'payment', 'confirmation'].includes(currentStep), color: 'from-green-500 to-green-600' },
+    { key: 'location', title: 'Location', icon: MapPin, completed: ['payment', 'confirmation'].includes(currentStep), color: 'from-orange-500 to-orange-600' },
+    { key: 'payment', title: 'Payment', icon: CreditCard, completed: currentStep === 'confirmation', color: 'from-purple-500 to-purple-600' },
+    { key: 'confirmation', title: 'Confirm', icon: CheckCircle, completed: false, color: 'from-emerald-500 to-emerald-600' }
   ]
 
   const nextStep = () => {
@@ -145,7 +170,11 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
     if (currentIndex < stepOrder.length - 1) {
       const nextStepValue = stepOrder[currentIndex + 1]
       if (nextStepValue) {
-        setCurrentStep(nextStepValue)
+        setIsAnimating(true)
+        setTimeout(() => {
+          setCurrentStep(nextStepValue)
+          setIsAnimating(false)
+        }, 150)
       }
     }
   }
@@ -156,7 +185,11 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
     if (currentIndex > 0) {
       const prevStepValue = stepOrder[currentIndex - 1]
       if (prevStepValue) {
-        setCurrentStep(prevStepValue)
+        setIsAnimating(true)
+        setTimeout(() => {
+          setCurrentStep(prevStepValue)
+          setIsAnimating(false)
+        }, 150)
       }
     }
   }
@@ -165,52 +198,100 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
     switch (currentStep) {
       case 'service':
         return (
-          <div className="space-y-6">
+          <div className={`space-y-8 transition-all duration-300 ${isAnimating ? 'opacity-0 transform translate-x-4' : 'opacity-100 transform translate-x-0'}`}>
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Choose Your Service</h2>
-              <p className="text-gray-600">Select the perfect wash for your car</p>
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-500/10 to-purple-500/10 backdrop-blur-sm rounded-2xl px-6 py-3 mb-6">
+                <Car className="w-6 h-6 text-brand-600" />
+                <span className="text-brand-700 font-semibold">Step 1 of 5</span>
+              </div>
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-3">
+                Choose Your Service
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Select the perfect wash experience for your vehicle
+              </p>
             </div>
             
-            <div className="grid md:grid-cols-2 gap-4">
-              {services.map((service) => (
+            <div className="grid md:grid-cols-2 gap-6">
+              {services.map((service, index) => (
                 <div
                   key={service.id}
                   onClick={() => setSelectedService(service)}
-                  className={`relative border-2 rounded-2xl p-6 cursor-pointer transition-all hover:shadow-lg ${
+                  className={`group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02] ${
                     selectedService?.id === service.id
-                      ? 'border-brand-500 bg-brand-50'
-                      : 'border-gray-200 hover:border-brand-300'
+                      ? 'shadow-2xl shadow-brand-500/25 ring-2 ring-brand-500'
+                      : 'shadow-xl hover:shadow-2xl hover:shadow-gray-500/20'
                   }`}
+                  style={{ animationDelay: `${index * 100}ms` }}
                 >
-                  {/* Service badges */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {service.popular && (
-                        <span className="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full font-medium">
-                          Popular
-                        </span>
-                      )}
-                      {service.recommended && (
-                        <span className="px-2 py-1 bg-brand-100 text-brand-700 text-xs rounded-full font-medium">
-                          Recommended
-                        </span>
-                      )}
-                      {service.premium && (
-                        <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded-full font-medium">
-                          Premium
-                        </span>
-                      )}
-                      {service.discount && (
-                        <span className="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full font-medium">
-                          {service.discount}% OFF
-                        </span>
-                      )}
+                  {/* Gradient Background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.bgColor} opacity-50`}></div>
+                  
+                  {/* Selection Overlay */}
+                  {selectedService?.id === service.id && (
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-10`}></div>
+                  )}
+                  
+                  <div className="relative bg-white/80 backdrop-blur-sm p-8 h-full">
+                    {/* Service badges */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex flex-wrap gap-2">
+                        {service.popular && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs rounded-full font-medium shadow-lg">
+                            <Flame className="w-3 h-3" />
+                            Popular
+                          </span>
+                        )}
+                        {service.recommended && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-xs rounded-full font-medium shadow-lg">
+                            <Crown className="w-3 h-3" />
+                            Recommended
+                          </span>
+                        )}
+                        {service.premium && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-xs rounded-full font-medium shadow-lg">
+                            <Award className="w-3 h-3" />
+                            Premium
+                          </span>
+                        )}
+                        {service.discount && (
+                          <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-gradient-to-r from-red-500 to-red-600 text-white text-xs rounded-full font-medium shadow-lg animate-pulse">
+                            <Zap className="w-3 h-3" />
+                            {service.discount}% OFF
+                          </span>
+                        )}
+                      </div>
+                      <div className={`p-3 rounded-2xl bg-gradient-to-br ${service.color} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <service.icon className="w-7 h-7 text-white" />
+                      </div>
                     </div>
-                    <service.icon className="w-6 h-6 text-brand-600" />
-                  </div>
 
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{service.name}</h3>
-                  <p className="text-sm text-gray-600 mb-4">{service.description}</p>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-brand-600 transition-colors">
+                          {service.name}
+                        </h3>
+                        <p className="text-gray-600 leading-relaxed">{service.description}</p>
+                      </div>
+
+                      {/* Rating and Social Proof */}
+                      <div className="flex items-center gap-4 py-2">
+                        <div className="flex items-center gap-1">
+                          <div className="flex items-center">
+                            {[...Array(5)].map((_, i) => (
+                              <Star 
+                                key={i} 
+                                className={`w-4 h-4 ${i < Math.floor(service.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                              />
+                            ))}
+                          </div>
+                          <span className="text-sm font-semibold text-gray-700 ml-1">{service.rating}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-sm text-gray-500">
+                          <Users className="w-4 h-4" />
+                          <span>{service.bookings} bookings</span>
+                        </div>
+                      </div>
                   
                   <div className="space-y-2 mb-4">
                     {service.features.map((feature, index) => (
@@ -484,7 +565,7 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
 
   return (
     <ClientLayout user={user}>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-4xl mx-auto">
         
         {/* Progress Steps */}
         <div className="mb-8">

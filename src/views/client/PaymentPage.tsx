@@ -1,8 +1,6 @@
 /**
- * Payment & Wallet Management Page
- * 
- * Comprehensive payment management including cards, wallet balance,
- * transaction history, invoices, and promo codes.
+ * Modern Payment & Wallet Management Page
+ * Premium glassmorphism design with enhanced UX and animations
  */
 
 'use client'
@@ -35,7 +33,14 @@ import {
   Trash2,
   Star,
   Lock,
-  CreditCardIcon
+  CreditCardIcon,
+  Sparkles,
+  Zap,
+  Crown,
+  Flame,
+  Copy,
+  ExternalLink,
+  RefreshCw
 } from 'lucide-react'
 import ClientLayout from '@/shared/layouts/client/ClientLayout'
 
@@ -214,160 +219,249 @@ const PaymentPage: React.FC<PaymentPageProps> = ({
 
   return (
     <ClientLayout user={user}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="space-y-8">
         
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Payment & Wallet</h1>
-          <p className="text-gray-600">Manage your payment methods, wallet, and transaction history</p>
+        {/* Modern Header with Glassmorphism */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-500/10 to-purple-500/10 backdrop-blur-sm rounded-2xl px-6 py-3 mb-6">
+            <Wallet className="w-6 h-6 text-brand-600" />
+            <span className="text-brand-700 font-semibold">Financial Management</span>
+          </div>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent mb-4">
+            Payment & Wallet
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            Complete financial control with secure payments and smart rewards
+          </p>
         </div>
 
-        {/* Wallet Summary Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-2">
-              <Wallet className="w-8 h-8 opacity-80" />
-              <span className="text-sm opacity-90">Available</span>
+        {/* Enhanced Wallet Summary Cards */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02]">
+            {/* Gradient Background */}
+            <div className="absolute inset-0 bg-gradient-to-br from-emerald-500 via-emerald-600 to-green-600"></div>
+            
+            {/* Animated Background Elements */}
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-1/2 -right-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+              <div className="absolute -bottom-1/2 -left-1/2 w-32 h-32 bg-white/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
             </div>
-            <div className="text-3xl font-bold mb-1">${user.walletBalance.toFixed(2)}</div>
-            <p className="text-sm opacity-90">Wallet Balance</p>
-            <button className="mt-4 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
-              Add Funds <ArrowUpRight className="w-4 h-4" />
-            </button>
+            
+            <div className="relative p-6 sm:p-8 text-white">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-2 sm:p-3 rounded-2xl bg-white/20 backdrop-blur-sm">
+                  <Wallet className="w-6 sm:w-8 h-6 sm:h-8" />
+                </div>
+                <span className="text-xs sm:text-sm opacity-90 font-medium">Available</span>
+              </div>
+              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">${user.walletBalance.toFixed(2)}</div>
+              <p className="text-white/80 mb-4 text-sm sm:text-base">Wallet Balance</p>
+              <button className="group flex items-center gap-2 text-xs sm:text-sm font-medium bg-white/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30">
+                <Plus className="w-3 sm:w-4 h-3 sm:h-4" />
+                <span>Add Funds</span>
+                <ArrowUpRight className="w-3 sm:w-4 h-3 sm:h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              </button>
+            </div>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-2">
-              <Star className="w-8 h-8 opacity-80" />
-              <span className="text-sm opacity-90">Available</span>
+          <div className="group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02]">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-500 via-purple-600 to-indigo-600"></div>
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-1/2 -right-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
             </div>
-            <div className="text-3xl font-bold mb-1">{user.loyaltyPoints}</div>
-            <p className="text-sm opacity-90">Loyalty Points</p>
-            <p className="mt-4 text-sm opacity-90">≈ ${Math.floor(user.loyaltyPoints / 10)} value</p>
+            <div className="relative p-8 text-white">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-2xl bg-white/20 backdrop-blur-sm">
+                  <Star className="w-8 h-8" />
+                </div>
+                <span className="text-sm opacity-90 font-medium">Available</span>
+              </div>
+              <div className="text-4xl font-bold mb-2">{user.loyaltyPoints}</div>
+              <p className="text-white/80 mb-1">Loyalty Points</p>
+              <p className="text-sm text-white/70">≈ ${Math.floor(user.loyaltyPoints / 10)} value</p>
+            </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-2">
-              <TrendingUp className="w-8 h-8 opacity-80" />
-              <span className="text-sm opacity-90">This Month</span>
+          <div className="group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02]">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-blue-600 to-cyan-600"></div>
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-1/2 -right-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
             </div>
-            <div className="text-3xl font-bold mb-1">$155</div>
-            <p className="text-sm opacity-90">Total Spent</p>
-            <p className="mt-4 text-sm opacity-90">3 services</p>
+            <div className="relative p-8 text-white">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-2xl bg-white/20 backdrop-blur-sm">
+                  <TrendingUp className="w-8 h-8" />
+                </div>
+                <span className="text-sm opacity-90 font-medium">This Month</span>
+              </div>
+              <div className="text-4xl font-bold mb-2">$155</div>
+              <p className="text-white/80 mb-1">Total Spent</p>
+              <p className="text-sm text-white/70">3 services</p>
+            </div>
           </div>
 
-          <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 text-white">
-            <div className="flex items-center justify-between mb-2">
-              <Gift className="w-8 h-8 opacity-80" />
-              <span className="text-sm opacity-90">Active</span>
+          <div className="group relative overflow-hidden rounded-3xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02]">
+            <div className="absolute inset-0 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500"></div>
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute -top-1/2 -right-1/2 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
             </div>
-            <div className="text-3xl font-bold mb-1">2</div>
-            <p className="text-sm opacity-90">Promo Codes</p>
-            <button className="mt-4 text-sm font-medium flex items-center gap-1 hover:gap-2 transition-all">
-              View All <ArrowUpRight className="w-4 h-4" />
-            </button>
+            <div className="relative p-8 text-white">
+              <div className="flex items-center justify-between mb-4">
+                <div className="p-3 rounded-2xl bg-white/20 backdrop-blur-sm">
+                  <Gift className="w-8 h-8" />
+                </div>
+                <span className="text-sm opacity-90 font-medium">Active</span>
+              </div>
+              <div className="text-4xl font-bold mb-2">2</div>
+              <p className="text-white/80 mb-4">Promo Codes</p>
+              <button className="group flex items-center gap-2 text-sm font-medium bg-white/20 backdrop-blur-sm px-4 py-2 rounded-xl hover:bg-white/30 transition-all duration-300 border border-white/30">
+                <span>View All</span>
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex bg-gray-100 rounded-xl p-1 mb-6">
-          <button
-            onClick={() => setActiveTab('methods')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'methods'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Payment Methods
-          </button>
-          <button
-            onClick={() => setActiveTab('wallet')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'wallet'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Wallet & Points
-          </button>
-          <button
-            onClick={() => setActiveTab('transactions')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'transactions'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Transactions
-          </button>
-          <button
-            onClick={() => setActiveTab('invoices')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition-colors ${
-              activeTab === 'invoices'
-                ? 'bg-white text-gray-900 shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Invoices
-          </button>
+        {/* Enhanced Tabs */}
+        <div className="bg-white/60 backdrop-blur-xl rounded-2xl p-1 sm:p-2 border border-white/20 shadow-xl mb-8">
+          <div className="flex gap-1 sm:gap-2">
+            <button
+              onClick={() => setActiveTab('methods')}
+              className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base ${
+                activeTab === 'methods'
+                  ? 'bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <span className="hidden sm:inline">💳 </span>Payment<span className="hidden md:inline"> Methods</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('wallet')}
+              className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base ${
+                activeTab === 'wallet'
+                  ? 'bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <span className="hidden sm:inline">💰 </span>Wallet<span className="hidden md:inline"> & Points</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('transactions')}
+              className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base ${
+                activeTab === 'transactions'
+                  ? 'bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <span className="hidden sm:inline">📊 </span>History
+            </button>
+            <button
+              onClick={() => setActiveTab('invoices')}
+              className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold transition-all duration-300 text-xs sm:text-sm md:text-base ${
+                activeTab === 'invoices'
+                  ? 'bg-gradient-to-r from-brand-500 to-brand-600 text-white shadow-lg shadow-brand-500/25'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/60'
+              }`}
+            >
+              <span className="hidden sm:inline">📄 </span>Invoices
+            </button>
+          </div>
         </div>
 
         {/* Tab Content */}
         {activeTab === 'methods' && (
-          <div className="space-y-6">
-            {/* Payment Methods List */}
-            <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-gray-900">Saved Payment Methods</h2>
+          <div className="space-y-8">
+            {/* Enhanced Payment Methods List */}
+            <div className="bg-white/70 backdrop-blur-sm rounded-3xl border border-white/20 shadow-xl p-8">
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">Payment Methods</h2>
+                  <p className="text-gray-600">Manage your saved payment options securely</p>
+                </div>
                 <button
                   onClick={() => setShowAddCard(true)}
-                  className="flex items-center gap-2 bg-brand-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-brand-700 transition-colors"
+                  className="flex items-center gap-2 bg-gradient-to-r from-brand-500 to-brand-600 text-white px-6 py-3 rounded-2xl font-semibold hover:from-brand-600 hover:to-brand-700 transition-all duration-300 transform hover:scale-105 shadow-xl shadow-brand-500/25"
                 >
-                  <Plus className="w-4 h-4" />
-                  Add Card
+                  <Plus className="w-5 h-5" />
+                  Add New Card
                 </button>
               </div>
 
-              <div className="space-y-4">
-                {paymentMethods.map((method) => (
-                  <div key={method.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-xl hover:border-brand-300 transition-colors">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center text-2xl">
-                        {method.icon}
-                      </div>
-                      <div>
-                        <div className="flex items-center gap-2">
-                          <span className="font-semibold text-gray-900">
-                            {method.type === 'visa' && 'Visa'}
-                            {method.type === 'mastercard' && 'Mastercard'}
-                            {method.type === 'apple' && 'Apple Pay'}
-                            {' '}****{method.last4}
-                          </span>
-                          {method.primary && (
-                            <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full font-medium">
-                              Primary
-                            </span>
-                          )}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {method.expiry ? `Expires ${method.expiry}` : 'Digital Wallet'}
-                        </div>
-                      </div>
+              <div className="grid gap-6">
+                {paymentMethods.map((method, index) => (
+                  <div 
+                    key={method.id} 
+                    className="group relative overflow-hidden rounded-2xl transition-all duration-300 hover:scale-[1.02]"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {/* Card Background Gradient */}
+                    <div className={`absolute inset-0 ${
+                      method.type === 'visa' ? 'bg-gradient-to-r from-blue-600 to-blue-700' :
+                      method.type === 'mastercard' ? 'bg-gradient-to-r from-red-600 to-orange-600' :
+                      'bg-gradient-to-r from-gray-800 to-gray-900'
+                    }`}></div>
+                    
+                    {/* Glassmorphism Overlay */}
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                    
+                    {/* Animated Background Elements */}
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div className="absolute -top-8 -right-8 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
+                      <div className="absolute -bottom-8 -left-8 w-32 h-32 bg-white/5 rounded-full blur-xl"></div>
                     </div>
                     
-                    <div className="flex items-center gap-2">
-                      {!method.primary && (
-                        <button className="text-sm text-brand-600 hover:text-brand-700 font-medium">
-                          Set as Primary
-                        </button>
-                      )}
-                      <button className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors">
-                        <Edit className="w-4 h-4" />
-                      </button>
-                      <button className="p-2 text-gray-400 hover:text-red-600 rounded-lg hover:bg-red-50 transition-colors">
-                        <Trash2 className="w-4 h-4" />
-                      </button>
+                    <div className="relative p-6 text-white">
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-4">
+                          <div className="w-14 h-14 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center text-2xl">
+                            {method.type === 'visa' && '💳'}
+                            {method.type === 'mastercard' && '💳'}
+                            {method.type === 'apple' && '🍎'}
+                          </div>
+                          <div>
+                            <div className="flex items-center gap-3 mb-1">
+                              <span className="text-xl font-bold">
+                                {method.type === 'visa' && 'Visa'}
+                                {method.type === 'mastercard' && 'Mastercard'}
+                                {method.type === 'apple' && 'Apple Pay'}
+                                {' '}****{method.last4}
+                              </span>
+                              {method.primary && (
+                                <span className="px-3 py-1 bg-gradient-to-r from-green-500 to-green-600 text-white text-xs rounded-full font-bold shadow-lg">
+                                  PRIMARY
+                                </span>
+                              )}
+                            </div>
+                            <div className="text-white/80">
+                              {method.expiry ? `Expires ${method.expiry}` : 'Digital Wallet'}
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-center gap-2">
+                          {!method.primary && (
+                            <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-xl font-medium hover:bg-white/30 transition-all duration-300 border border-white/30">
+                              Set Primary
+                            </button>
+                          )}
+                          <button className="p-3 text-white/80 hover:text-white hover:bg-white/20 rounded-xl transition-all duration-300">
+                            <Edit className="w-5 h-5" />
+                          </button>
+                          <button className="p-3 text-white/80 hover:text-red-300 hover:bg-red-500/20 rounded-xl transition-all duration-300">
+                            <Trash2 className="w-5 h-5" />
+                          </button>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="text-white/60 text-sm">
+                          {method.name}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Shield className="w-4 h-4 text-white/60" />
+                          <span className="text-white/60 text-sm">Secured</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 ))}
