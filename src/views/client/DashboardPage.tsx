@@ -467,16 +467,14 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                 </div>
               </div>
               
-              {/* Large Screens: Smart Auto-Fit Grid */}
+              {/* Large Screens: 2-Column Grid */}
               <div className="hidden xl:block">
-                <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
+                <div className="grid grid-cols-2 gap-6">
                   {quickActions.map((action, index) => (
                     <a
                       key={index}
                       href={action.href}
-                      className={`group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02] ${
-                        action.featured ? 'xl:col-span-2' : ''
-                      }`}
+                      className="group relative overflow-hidden rounded-2xl cursor-pointer transition-all duration-500 transform hover:scale-[1.02]"
                       style={{ animationDelay: `${index * 100}ms` }}
                     >
                       {/* Background Gradient */}
@@ -597,7 +595,7 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                 </div>
               </div>
 
-              {/* Mobile: Vertical List */}
+              {/* Mobile: Vertical List - Centered Text */}
               <div className="space-y-3 md:hidden">
                 {quickActions.map((action, index) => (
                   <a
@@ -616,26 +614,22 @@ const DashboardPage: React.FC<DashboardPageProps> = ({
                     <div className={`absolute inset-0 bg-gradient-to-r ${action.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
                     
                     <div className="relative p-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2.5 rounded-lg bg-gradient-to-br ${action.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300 flex-shrink-0`}>
-                          <action.icon className="w-4 h-4 text-white" />
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <div className={`p-2.5 rounded-lg bg-gradient-to-br ${action.gradient} shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                          <action.icon className="w-5 h-5 text-white" />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center justify-between">
-                            <div className="flex-1 min-w-0">
-                              <h3 className="text-sm font-bold text-gray-900 group-hover:text-brand-600 transition-colors leading-tight">{action.title}</h3>
-                              <p className="text-xs text-gray-600 leading-tight mt-0.5">{action.description}</p>
-                            </div>
-                            <div className="flex items-center gap-2 flex-shrink-0 ml-3">
-                              {action.popular && (
-                                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full font-medium animate-pulse">
-                                  <Flame className="w-2.5 h-2.5" />
-                                </span>
-                              )}
-                              <ArrowUpRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:text-brand-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-                            </div>
+                        <div className="space-y-1">
+                          <div className="flex items-center justify-center gap-2">
+                            <h3 className="text-sm font-bold text-gray-900 group-hover:text-brand-600 transition-colors leading-tight">{action.title}</h3>
+                            {action.popular && (
+                              <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-orange-500 to-red-500 text-white text-xs rounded-full font-medium animate-pulse">
+                                <Flame className="w-2.5 h-2.5" />
+                              </span>
+                            )}
                           </div>
+                          <p className="text-xs text-gray-600 leading-tight">{action.description}</p>
                         </div>
+                        <ArrowUpRight className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 group-hover:text-brand-600 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                       </div>
                     </div>
                   </a>
