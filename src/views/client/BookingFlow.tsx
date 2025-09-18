@@ -314,12 +314,14 @@ const BookingFlow: React.FC<BookingFlowProps> = ({
                       {service.duration}
                     </div>
                   </div>
+                    </div>
 
                   {selectedService?.id === service.id && (
                     <div className="absolute -top-2 -right-2 w-6 h-6 bg-brand-500 rounded-full flex items-center justify-center">
                       <CheckCircle className="w-4 h-4 text-white" />
                     </div>
                   )}
+                  </div>
                 </div>
               ))}
             </div>

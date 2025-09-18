@@ -5,7 +5,7 @@
 
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback, useMemo, memo } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { 
@@ -46,6 +46,74 @@ interface ClientLayoutProps {
   notifications?: number
 }
 
+// Memoized Navigation Item Component
+const NavigationItem = memo<{
+  item: any
+  index: number
+  sidebarOpen: boolean
+  isActive: boolean
+}>(({ item, index, sidebarOpen, isActive }) => (
+  <Link
+    href={item.href}
+    className={`group relative flex items-center transition-all duration-300 hover:scale-[1.02] active:scale-95 ${
+      sidebarOpen 
+        ? 'gap-2.5 px-3 py-2.5 rounded-xl' 
+        : 'justify-center p-3 rounded-lg mx-1'
+    } ${
+      isActive
+        ? 'bg-gradient-to-r from-brand-50 to-purple-50 text-brand-700 shadow-md shadow-brand-500/8 transform scale-[1.01]'
+        : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-sm'
+    }`}
+    style={{ animationDelay: `${index * 50}ms` }}
+    title={!sidebarOpen ? item.label : undefined}
+  >
+    <div className={`relative p-2 rounded-lg transition-all duration-300 group-hover:scale-105 ${
+      isActive
+        ? `bg-gradient-to-br ${item.gradient} text-white shadow-lg shadow-${item.gradient.split('-')[1]}-500/25`
+        : 'bg-gray-100 group-hover:bg-gray-200 text-gray-500 group-hover:text-gray-700'
+    }`}>
+      <item.icon className="w-4 h-4 transition-transform duration-200 group-active:scale-90" />
+      {isActive && (
+        <div className="absolute inset-0 bg-white/20 rounded-lg animate-pulse"></div>
+      )}
+    </div>
+    
+    {sidebarOpen && (
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center justify-between">
+          <span className="text-sm font-semibold truncate">{item.label}</span>
+          {item.badge && (
+            <span className={`px-1.5 py-0.5 text-xs font-bold rounded-full flex-shrink-0 ml-1 ${
+              item.badge === 'NEW' 
+                ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-sm'
+                : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
+            }`}>
+              {item.badge}
+            </span>
+          )}
+        </div>
+        <p className="text-xs text-gray-400 mt-0.5 group-hover:text-gray-500 transition-colors truncate">
+          {item.description}
+        </p>
+      </div>
+    )}
+
+    {/* Active Indicator */}
+    {isActive && (
+      <div className={`absolute left-0 top-1/2 -translate-y-1/2 bg-gradient-to-b from-brand-500 to-purple-500 rounded-r-full shadow-sm ${
+        sidebarOpen ? 'w-1 h-6' : 'w-1.5 h-8'
+      }`}></div>
+    )}
+    
+    {/* Hover Effect Overlay */}
+    <div className={`absolute inset-0 bg-gradient-to-r from-brand-500/3 to-purple-500/3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+      sidebarOpen ? 'rounded-xl' : 'rounded-lg'
+    }`}></div>
+  </Link>
+))
+
+NavigationItem.displayName = 'NavigationItem'
+
 const ClientLayout: React.FC<ClientLayoutProps> = ({ 
   children, 
   user = { 
@@ -56,10 +124,29 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
   },
   notifications = 3
 }) => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const pathname = usePathname()
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const pathname = usePathname()
+  const [isNavigating, setIsNavigating] = useState(false)
+  const [isPageTransitioning, setIsPageTransitioning] = useState(false)
+  const [currentPath, setCurrentPath] = useState(pathname)
+
+  // Initialize sidebar state from localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedSidebarState = localStorage.getItem('sidebarOpen')
+      if (savedSidebarState !== null) {
+        setSidebarOpen(JSON.parse(savedSidebarState))
+      }
+    }
+  }, [])
+
+  // Save sidebar state to localStorage when it changes
+  const handleSidebarToggle = useCallback((newState: boolean) => {
+    setSidebarOpen(newState)
+    localStorage.setItem('sidebarOpen', JSON.stringify(newState))
+  }, [])
 
   // Handle scroll effect
   useEffect(() => {
@@ -70,8 +157,8 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Navigation items with enhanced styling
-  const navigationItems = [
+  // Navigation items with enhanced styling - memoized for performance
+  const navigationItems = useMemo(() => [
     { 
       icon: LayoutDashboard, 
       label: 'Dashboard', 
@@ -120,14 +207,14 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
       description: 'Account settings',
       gradient: 'from-rose-500 to-rose-600'
     }
-  ]
+  ], [])
 
-  const isActive = (href: string) => {
+  const isActive = useCallback((href: string) => {
     if (href === '/client') {
       return pathname === '/client'
     }
     return pathname.startsWith(href)
-  }
+  }, [pathname])
 
   const getMembershipIcon = () => {
     switch (user.membershipStatus?.toLowerCase()) {
@@ -153,11 +240,23 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
 
   const MembershipIcon = getMembershipIcon()
 
-  // Close sidebar on route change
+  // Handle navigation transitions smoothly
   useEffect(() => {
-    setSidebarOpen(false)
-    setUserMenuOpen(false)
-  }, [pathname])
+    if (pathname !== currentPath) {
+      setUserMenuOpen(false)
+      setIsPageTransitioning(true)
+      
+      // Fade out current content, then fade in new content
+      const fadeOutTimer = setTimeout(() => {
+        setCurrentPath(pathname)
+        setIsPageTransitioning(false)
+      }, 150)
+      
+      return () => {
+        clearTimeout(fadeOutTimer)
+      }
+    }
+  }, [pathname, currentPath])
 
   // Close user menu when clicking outside
   useEffect(() => {
@@ -182,121 +281,113 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
         <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-gradient-to-br from-purple-400/3 to-pink-400/3 rounded-full blur-2xl animate-float"></div>
       </div>
 
-      {/* Refined Sidebar */}
-      <aside className={`fixed inset-y-0 left-0 z-50 w-64 sm:w-72 bg-white/85 backdrop-blur-xl border-r border-white/20 shadow-xl shadow-black/3 transform transition-all duration-500 ease-out lg:translate-x-0 flex flex-col ${
-        sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      {/* Sidebar */}
+      <aside 
+        key="main-sidebar"
+        className={`fixed inset-y-0 left-0 z-50 bg-white/85 backdrop-blur-xl border-r border-white/20 shadow-xl shadow-black/3 transform transition-all duration-500 ease-out flex flex-col ${
+          sidebarOpen 
+            ? 'w-64 sm:w-72 translate-x-0' 
+            : 'w-16 -translate-x-full lg:translate-x-0'
+        }`}>
         
-        {/* Logo Section - Refined and compact */}
+        {/* Logo/Toggle Section */}
         <div className="relative flex-shrink-0">
           <div className="absolute inset-0 bg-gradient-to-br from-brand-500/8 to-purple-500/8 backdrop-blur-sm"></div>
-          <div className="relative flex items-center gap-2.5 px-3 sm:px-4 py-3 sm:py-4 border-b border-white/15">
-            <div className="relative">
-              <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br from-brand-500 via-brand-600 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-brand-500/20 transition-all duration-300">
-                <Car className="w-4 sm:w-5 h-4 sm:h-5 text-white" />
+          <div className="relative flex items-center justify-center px-3 py-4 border-b border-white/15">
+            {sidebarOpen ? (
+              // Expanded State
+              <div className="flex items-center gap-2.5 w-full">
+                <div className="relative">
+                  <div className="w-8 h-8 bg-gradient-to-br from-brand-500 via-brand-600 to-purple-600 rounded-lg flex items-center justify-center shadow-lg shadow-brand-500/20">
+                    <Car className="w-4 h-4 text-white" />
+                  </div>
+                  <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 border border-white rounded-full"></div>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h1 className="text-sm font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent truncate">
+                    Bling Auto
+                  </h1>
+                  <p className="text-xs text-gray-500 font-medium">Premium Care</p>
+                </div>
+                <button
+                  onClick={() => handleSidebarToggle(false)}
+                  className="p-1.5 text-gray-400 hover:text-gray-600 hover:bg-white/40 rounded-lg transition-all duration-200"
+                  title="Collapse Sidebar"
+                >
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-2.5 sm:w-3 h-2.5 sm:h-3 bg-emerald-500 border border-white rounded-full"></div>
-            </div>
-            <div className="flex-1 min-w-0">
-              <h1 className="text-sm sm:text-base font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent truncate">
-                Bling Auto
-              </h1>
-              <p className="text-xs text-gray-500 font-medium hidden sm:block">Premium Care</p>
+            ) : (
+              // Collapsed State  
+              <button
+                onClick={() => handleSidebarToggle(true)}
+                className="group p-2 bg-gradient-to-br from-brand-500 to-brand-600 text-white rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
+                title="Expand Sidebar"
+              >
+                <Menu className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* User Profile Section */}
+        {sidebarOpen ? (
+          <div className="flex-shrink-0 px-3 py-3 border-b border-white/10">
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="relative">
+                <div className={`w-8 h-8 bg-gradient-to-br ${getMembershipGradient()} rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/15`}>
+                  <span className="text-white font-bold text-xs">{user.name.charAt(0)}</span>
+                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-white rounded-full flex items-center justify-center shadow-md">
+                  <MembershipIcon className="w-1.5 h-1.5 text-amber-500" />
+                </div>
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-gray-900 text-xs truncate">{user.name}</p>
+                <div className="flex items-center gap-1.5 mt-0.5">
+                  <span className="text-xs font-medium text-brand-600">{user.membershipStatus}</span>
+                  <span className="text-xs text-gray-400">•</span>
+                  <span className="text-xs text-gray-600">{user.loyaltyPoints?.toLocaleString()}</span>
+                </div>
+              </div>
             </div>
             
-            <button
-              onClick={() => setSidebarOpen(false)}
-              className="lg:hidden p-1.5 text-gray-400 hover:text-gray-600 hover:bg-white/40 rounded-lg transition-all duration-200"
-            >
-              <X className="w-4 h-4" />
-            </button>
+            {/* Quick Stats */}
+            <div className="grid grid-cols-2 gap-2">
+              <div className="p-2 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-lg backdrop-blur-sm border border-blue-200/30">
+                <div className="text-sm font-bold text-blue-600">3</div>
+                <div className="text-xs text-blue-600/70 font-medium">Days left</div>
+              </div>
+              <div className="p-2 bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-lg backdrop-blur-sm border border-emerald-200/30">
+                <div className="text-sm font-bold text-emerald-600">$85</div>
+                <div className="text-xs text-emerald-600/70 font-medium">Saved</div>
+              </div>
+            </div>
           </div>
-        </div>
-
-        {/* User Profile Section - Refined and minimal */}
-        <div className="flex-shrink-0 px-3 sm:px-4 py-2.5 sm:py-3 border-b border-white/10">
-          <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+        ) : (
+          <div className="flex-shrink-0 px-3 py-3 border-b border-white/10 flex justify-center">
             <div className="relative">
-              <div className={`w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-br ${getMembershipGradient()} rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/15`}>
-                <span className="text-white font-bold text-xs sm:text-sm">{user.name.charAt(0)}</span>
+              <div className={`w-8 h-8 bg-gradient-to-br ${getMembershipGradient()} rounded-lg flex items-center justify-center shadow-lg shadow-purple-500/15`}>
+                <span className="text-white font-bold text-xs">{user.name.charAt(0)}</span>
               </div>
-              <div className="absolute -bottom-0.5 -right-0.5 w-3 sm:w-3.5 h-3 sm:h-3.5 bg-white rounded-full flex items-center justify-center shadow-md">
-                <MembershipIcon className="w-1.5 sm:w-2 h-1.5 sm:h-2 text-amber-500" />
-              </div>
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-semibold text-gray-900 text-xs sm:text-sm truncate">{user.name}</p>
-              <div className="flex items-center gap-1.5 mt-0.5">
-                <span className="text-xs font-medium text-brand-600">{user.membershipStatus}</span>
-                <span className="text-xs text-gray-400">•</span>
-                <span className="text-xs text-gray-600">{user.loyaltyPoints?.toLocaleString()}</span>
+              <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-white rounded-full flex items-center justify-center shadow-md">
+                <MembershipIcon className="w-1.5 h-1.5 text-amber-500" />
               </div>
             </div>
           </div>
-          
-          {/* Minimal Quick Stats */}
-          <div className="hidden sm:grid grid-cols-2 gap-2">
-            <div className="p-2 bg-gradient-to-br from-blue-50 to-blue-100/50 rounded-lg backdrop-blur-sm border border-blue-200/30">
-              <div className="text-sm font-bold text-blue-600">3</div>
-              <div className="text-xs text-blue-600/70 font-medium">Days left</div>
-            </div>
-            <div className="p-2 bg-gradient-to-br from-emerald-50 to-emerald-100/50 rounded-lg backdrop-blur-sm border border-emerald-200/30">
-              <div className="text-sm font-bold text-emerald-600">$85</div>
-              <div className="text-xs text-emerald-600/70 font-medium">Saved</div>
-            </div>
-          </div>
-        </div>
+        )}
 
-        {/* Navigation - Refined and compact */}
-        <nav className="flex-1 px-2.5 sm:px-3 py-1.5 sm:py-2 space-y-0.5 sm:space-y-1 overflow-y-auto min-h-0">
+        {/* Navigation */}
+        <nav className="flex-1 px-2 py-2 space-y-1 overflow-y-auto min-h-0">
           {navigationItems.map((item, index) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className={`group relative flex items-center gap-2.5 px-2 sm:px-3 py-2 sm:py-2.5 rounded-lg sm:rounded-xl font-medium transition-all duration-300 hover:scale-[1.01] ${
-                isActive(item.href)
-                  ? 'bg-gradient-to-r from-brand-50 to-purple-50 text-brand-700 shadow-md shadow-brand-500/8'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-white/50 hover:shadow-sm'
-              }`}
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              <div className={`relative p-1.5 sm:p-2 rounded-md sm:rounded-lg transition-all duration-300 group-hover:scale-105 ${
-                isActive(item.href)
-                  ? `bg-gradient-to-br ${item.gradient} text-white shadow-md`
-                  : 'bg-gray-100 group-hover:bg-gray-200 text-gray-500'
-              }`}>
-                <item.icon className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-                {isActive(item.href) && (
-                  <div className="absolute inset-0 bg-white/15 rounded-md sm:rounded-lg"></div>
-                )}
-              </div>
-              
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs sm:text-sm font-semibold truncate">{item.label}</span>
-                  {item.badge && (
-                    <span className={`px-1.5 py-0.5 text-xs font-bold rounded-full flex-shrink-0 ml-1 ${
-                      item.badge === 'NEW' 
-                        ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-sm'
-                        : 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-sm'
-                    }`}>
-                      {item.badge}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-gray-400 mt-0.5 group-hover:text-gray-500 transition-colors truncate hidden sm:block">
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Active Indicator - Refined */}
-              {isActive(item.href) && (
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 bg-gradient-to-b from-brand-500 to-purple-500 rounded-r-full shadow-sm"></div>
-              )}
-              
-              {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-brand-500/3 to-purple-500/3 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </Link>
+            <NavigationItem
+              key={`nav-${item.href}`}
+              item={item}
+              index={index}
+              sidebarOpen={sidebarOpen}
+              isActive={isActive(item.href)}
+              isNavigating={isNavigating}
+            />
           ))}
         </nav>
 
@@ -318,7 +409,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
       </aside>
 
       {/* Main Content Area */}
-      <div className="lg:ml-72 xl:ml-80 transition-all duration-300">
+      <div className={`${sidebarOpen ? 'lg:ml-72' : 'lg:ml-16'}`} style={{ transition: 'none' }}>
         {/* Refined Header */}
         <header className={`sticky top-0 z-40 transition-all duration-500 ${
           scrolled 
@@ -327,12 +418,13 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
         }`}>
           <div className="flex items-center justify-between px-4 lg:px-6 py-3">
             
-            {/* Mobile Menu Button */}
+            {/* Sidebar Toggle Button - Mobile Only (Desktop uses collapsed strip) */}
             <button
-              onClick={() => setSidebarOpen(true)}
-              className="lg:hidden group p-2 text-gray-400 hover:text-gray-600 hover:bg-white/50 rounded-lg transition-all duration-200"
+              onClick={() => handleSidebarToggle(!sidebarOpen)}
+              className="lg:hidden group p-2 text-gray-400 hover:text-gray-600 hover:bg-white/50 rounded-lg transition-all duration-200 flex items-center gap-2"
+              title={sidebarOpen ? "Hide Sidebar" : "Show Sidebar"}
             >
-              <Menu className="w-5 h-5 group-hover:rotate-90 transition-transform duration-300" />
+              <Menu className={`w-5 h-5 transition-all duration-300 ${sidebarOpen ? 'rotate-90' : 'group-hover:rotate-90'}`} />
             </button>
 
             {/* Compact Search Bar */}
@@ -435,7 +527,13 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
 
         {/* Enhanced Page Content */}
         <main className="relative">
-          <div className="px-6 lg:px-8 py-8">
+          <div 
+            key={currentPath} 
+            className={`px-6 lg:px-8 py-8 transition-opacity duration-150 ease-in-out ${
+              isPageTransitioning ? 'opacity-0' : 'opacity-100'
+            }`}
+            style={{ transform: 'none' }}
+          >
             {children}
           </div>
         </main>
@@ -445,7 +543,7 @@ const ClientLayout: React.FC<ClientLayoutProps> = ({
       {sidebarOpen && (
         <div
           className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 lg:hidden animate-in fade-in duration-300"
-          onClick={() => setSidebarOpen(false)}
+          onClick={() => handleSidebarToggle(false)}
         />
       )}
 
